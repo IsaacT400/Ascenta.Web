@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-04",
+  "referenceCommit": "1d2ca8b",
+  "method": "Same Chromium/Playwright session; original Git worktree and migrated worktree; full-page PNG capture after 1800 ms settle time; exact byte comparison.",
+  "digest": "FNV-1a 32-bit of PNG bytes, used only as a compact record after exact byte equality was evaluated.",
+  "exactComparisons": [
+    { "viewport": "390x844", "route": "/", "originalDigest": "de9e6969", "migratedDigest": "de9e6969", "exact": true },
+    { "viewport": "390x844", "route": "/services", "originalDigest": "0ca8a8e0", "migratedDigest": "0ca8a8e0", "exact": true },
+    { "viewport": "390x844", "route": "/fleet", "originalDigest": "d96a6603", "migratedDigest": "d96a6603", "exact": true },
+    { "viewport": "768x1024", "route": "/", "originalDigest": "d28f40b9", "migratedDigest": "d28f40b9", "exact": true },
+    { "viewport": "768x1024", "route": "/services", "originalDigest": "7d3d340b", "migratedDigest": "7d3d340b", "exact": true },
+    { "viewport": "768x1024", "route": "/fleet", "originalDigest": "11e32929", "migratedDigest": "11e32929", "exact": true },
+    { "viewport": "1024x768", "route": "/", "originalDigest": "67ea4257", "migratedDigest": "67ea4257", "exact": true },
+    { "viewport": "1024x768", "route": "/services", "originalDigest": "af277075", "migratedDigest": "af277075", "exact": true },
+    { "viewport": "1024x768", "route": "/fleet", "originalDigest": "0a038869", "migratedDigest": "0a038869", "exact": true },
+    { "viewport": "1440x900", "route": "/", "originalDigest": "ae448417", "migratedDigest": "ae448417", "exact": true },
+    { "viewport": "1440x900", "route": "/services", "originalDigest": "014eed35", "migratedDigest": "014eed35", "exact": true },
+    { "viewport": "1440x900", "route": "/fleet", "originalDigest": "60eca546", "migratedDigest": "60eca546", "exact": true },
+    { "viewport": "1920x1080", "route": "/", "originalDigest": "06371e16", "migratedDigest": "06371e16", "exact": true },
+    { "viewport": "1920x1080", "route": "/services", "originalDigest": "106578a6", "migratedDigest": "106578a6", "exact": true },
+    { "viewport": "1920x1080", "route": "/fleet", "originalDigest": "84bdd88b", "migratedDigest": "84bdd88b", "exact": true },
+    { "viewport": "390x844", "route": "/booking", "originalDigest": "0e4f2775", "migratedDigest": "0e4f2775", "exact": true },
+    { "viewport": "1440x900", "route": "/booking", "originalDigest": "a426e281", "migratedDigest": "a426e281", "exact": true },
+    { "viewport": "390x844", "route": "/dashboard", "originalDigest": "e133c55c", "migratedDigest": "e133c55c", "exact": true },
+    { "viewport": "1440x900", "route": "/dashboard", "originalDigest": "e87061fb", "migratedDigest": "e87061fb", "exact": true },
+    { "viewport": "390x844", "route": "/corporate", "originalDigest": "7991fe71", "migratedDigest": "7991fe71", "exact": true },
+    { "viewport": "1440x900", "route": "/corporate", "originalDigest": "0f643da7", "migratedDigest": "0f643da7", "exact": true },
+    { "viewport": "390x844", "route": "/corporate/usage", "originalDigest": "f95ff351", "migratedDigest": "f95ff351", "exact": true },
+    { "viewport": "1440x900", "route": "/corporate/usage", "originalDigest": "e872383d", "migratedDigest": "e872383d", "exact": true }
+  ],
+  "reviewedDifferences": [
+    {
+      "route": "/login",
+      "viewports": ["390x844", "1440x900"],
+      "intentional": true,
+      "reason": "The former inactive prototype form now exposes real local customer/corporate sign-in, prefilled fictional demo credentials, loading/error states, and accurate authentication copy. Layout, typography, controls, spacing and responsive composition were visually reviewed and preserved."
+    }
+  ]
+}

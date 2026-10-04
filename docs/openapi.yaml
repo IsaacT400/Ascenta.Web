@@ -1,0 +1,241 @@
+openapi: 3.1.0
+info:
+  title: Ascenta Executive API
+  version: 0.2.0
+  description: Local Stage A contract. Pricing, payments and operational dispatch are intentionally excluded.
+servers:
+  - url: http://localhost:4000/api/v1
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      responses:
+        "200":
+          description: API and data dependency are available
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/HealthResponse" }
+        "503": { $ref: "#/components/responses/Error" }
+  /auth/login:
+    post:
+      operationId: login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/LoginInput" }
+      responses:
+        "200":
+          description: Session cookie set
+          headers:
+            Set-Cookie:
+              schema: { type: string }
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/SessionResponse" }
+        "401": { $ref: "#/components/responses/Error" }
+        "422": { $ref: "#/components/responses/Error" }
+  /auth/me:
+    get:
+      operationId: getCurrentSession
+      security: [{ sessionCookie: [] }]
+      responses:
+        "200":
+          description: Current identity
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/CurrentUserResponse" }
+        "401": { $ref: "#/components/responses/Error" }
+  /auth/logout:
+    post:
+      operationId: logout
+      security: [{ sessionCookie: [], csrfToken: [] }]
+      responses:
+        "204": { description: Session revoked }
+        "401": { $ref: "#/components/responses/Error" }
+        "403": { $ref: "#/components/responses/Error" }
+  /catalog:
+    get:
+      operationId: getCatalog
+      responses:
+        "200":
+          description: Active service and vehicle types
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessEnvelope"
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        required: [serviceTypes, vehicleClasses]
+                        properties:
+                          serviceTypes:
+                            type: array
+                            items: { $ref: "#/components/schemas/CatalogItem" }
+                          vehicleClasses:
+                            type: array
+                            items: { $ref: "#/components/schemas/CatalogItem" }
+  /reservations:
+    get:
+      operationId: listReservations
+      security: [{ sessionCookie: [] }]
+      responses:
+        "200":
+          description: Reservations visible to current user
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessEnvelope"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items: { $ref: "#/components/schemas/Reservation" }
+        "401": { $ref: "#/components/responses/Error" }
+    post:
+      operationId: createReservation
+      security: [{ sessionCookie: [], csrfToken: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/ReservationInput" }
+      responses:
+        "201":
+          description: Reservation request created or existing idempotent result returned
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessEnvelope"
+                  - type: object
+                    properties:
+                      data: { $ref: "#/components/schemas/Reservation" }
+        "401": { $ref: "#/components/responses/Error" }
+        "403": { $ref: "#/components/responses/Error" }
+        "422": { $ref: "#/components/responses/Error" }
+components:
+  securitySchemes:
+    sessionCookie:
+      type: apiKey
+      in: cookie
+      name: ascenta_session
+    csrfToken:
+      type: apiKey
+      in: header
+      name: X-CSRF-Token
+  responses:
+    Error:
+      description: Uniform error response
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+  schemas:
+    SuccessEnvelope:
+      type: object
+      required: [data, requestId]
+      properties:
+        data: {}
+        requestId: { type: string }
+    ErrorEnvelope:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: object
+          required: [code, message, requestId]
+          properties:
+            code: { type: string }
+            message: { type: string }
+            requestId: { type: string }
+            details: {}
+    HealthResponse:
+      allOf:
+        - $ref: "#/components/schemas/SuccessEnvelope"
+        - type: object
+          properties:
+            data:
+              type: object
+              required: [status, dataMode]
+              properties:
+                status: { type: string, const: ok }
+                dataMode: { type: string, enum: [mysql, demo] }
+    LoginInput:
+      type: object
+      required: [email, password]
+      additionalProperties: false
+      properties:
+        email: { type: string, format: email, maxLength: 254 }
+        password: { type: string, minLength: 8, maxLength: 128 }
+    User:
+      type: object
+      required: [id, email, displayName, roles]
+      properties:
+        id: { type: string, format: uuid }
+        email: { type: string, format: email }
+        displayName: { type: string }
+        roles:
+          type: array
+          items: { type: string, enum: [CUSTOMER, CORPORATE_BOOKER, CORPORATE_ADMIN, ASCENTA_ADMIN] }
+    SessionResponse:
+      allOf:
+        - $ref: "#/components/schemas/SuccessEnvelope"
+        - type: object
+          properties:
+            data:
+              type: object
+              required: [user, csrfToken]
+              properties:
+                user: { $ref: "#/components/schemas/User" }
+                csrfToken: { type: string }
+    CurrentUserResponse:
+      allOf:
+        - $ref: "#/components/schemas/SuccessEnvelope"
+        - type: object
+          properties:
+            data:
+              type: object
+              required: [user]
+              properties:
+                user: { $ref: "#/components/schemas/User" }
+    CatalogItem:
+      type: object
+      required: [code, name]
+      properties:
+        code: { type: string }
+        name: { type: string }
+        passengerLimit: { type: integer, minimum: 1 }
+        luggageLimit: { type: integer, minimum: 0 }
+    ReservationInput:
+      type: object
+      additionalProperties: false
+      required: [serviceTypeCode, vehicleClassCode, pickupAddress, destinationAddress, scheduledAt, scheduledTimeZone, passengerCount, idempotencyKey]
+      properties:
+        serviceTypeCode: { type: string, enum: [ONE_WAY, AIRPORT_TRANSFER, HOURLY, ROUND_TRIP, CITY_TO_CITY] }
+        vehicleClassCode: { type: string, enum: [EXECUTIVE_SUV, PREMIUM_SUV, EXECUTIVE_VAN] }
+        pickupAddress: { type: string, minLength: 3, maxLength: 300 }
+        destinationAddress: { type: string, minLength: 3, maxLength: 300 }
+        scheduledAt: { type: string, format: date-time }
+        scheduledTimeZone: { type: string, example: America/New_York }
+        passengerCount: { type: integer, minimum: 1, maximum: 50 }
+        notes: { type: string, maxLength: 2000 }
+        organizationId: { type: string, format: uuid }
+        idempotencyKey: { type: string, minLength: 8, maxLength: 128 }
+    Reservation:
+      type: object
+      required: [id, status, serviceTypeCode, vehicleClassCode, pickupAddress, destinationAddress, scheduledAt, scheduledTimeZone, passengerCount, createdAt]
+      properties:
+        id: { type: string }
+        status: { type: string, enum: [DRAFT, REQUESTED, QUOTED, CONFIRMED, COMPLETED, CANCELLED] }
+        serviceTypeCode: { type: string }
+        vehicleClassCode: { type: string }
+        pickupAddress: { type: string }
+        destinationAddress: { type: string }
+        scheduledAt: { type: string, format: date-time }
+        scheduledTimeZone: { type: string }
+        passengerCount: { type: integer }
+        organizationId: { type: string, format: uuid }
+        createdAt: { type: string, format: date-time }

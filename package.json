@@ -16,7 +16,7 @@
     "typecheck": "pnpm db:generate && pnpm -r --if-present typecheck",
     "lint": "pnpm -r --if-present lint",
     "test": "pnpm -r --if-present test",
-    "test:e2e": "pnpm --filter @ascenta/api test:integration",
+    "test:e2e": "pnpm build:packages && pnpm --filter @ascenta/api test:integration",
     "test:visual": "pnpm --filter @ascenta/web test:visual",
     "db:generate": "pnpm --filter @ascenta/database generate",
     "db:migrate": "pnpm --filter @ascenta/database migrate:dev",

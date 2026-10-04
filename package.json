@@ -1,0 +1,32 @@
+{
+  "name": "ascenta-executive-platform",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.19.0",
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "scripts": {
+    "dev": "pnpm build:packages && pnpm --parallel --filter @ascenta/web --filter @ascenta/api run dev",
+    "dev:web": "pnpm --filter @ascenta/web dev",
+    "dev:api": "pnpm build:packages && pnpm --filter @ascenta/api dev",
+    "build:packages": "pnpm --filter @ascenta/shared build && pnpm --filter @ascenta/database generate && pnpm --filter @ascenta/database build",
+    "build": "pnpm build:packages && pnpm --filter @ascenta/api build && pnpm --filter @ascenta/web build",
+    "typecheck": "pnpm db:generate && pnpm -r --if-present typecheck",
+    "lint": "pnpm -r --if-present lint",
+    "test": "pnpm -r --if-present test",
+    "test:e2e": "pnpm build:packages && pnpm --filter @ascenta/api test:integration",
+    "test:visual": "pnpm --filter @ascenta/web test:visual",
+    "db:generate": "pnpm --filter @ascenta/database generate",
+    "db:migrate": "pnpm --filter @ascenta/database migrate:dev",
+    "db:migrate:deploy": "pnpm --filter @ascenta/database migrate:deploy",
+    "db:seed": "pnpm --filter @ascenta/database seed",
+    "db:validate": "pnpm --filter @ascenta/database validate"
+  },
+  "devDependencies": {
+    "@types/supertest": "6.0.3",
+    "supertest": "7.2.2",
+    "vitest": "5.0.3"
+  }
+}

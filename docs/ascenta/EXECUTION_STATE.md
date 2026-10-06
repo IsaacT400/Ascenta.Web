@@ -1,4 +1,4 @@
-﻿# ASCENTA WEB - estado de ejecucion
+# ASCENTA WEB - estado de ejecucion
 
 Actualizado: 2026-10-06
 
@@ -32,7 +32,7 @@ Runtime: Node `v24.21.0`, pnpm `11.19.0` desde `work/tooling`.
 - `pnpm db:validate`: esquema Prisma valido.
 - `pnpm build`: build completo API + Vinext/Vite del workspace, con rutas `/`, `/admin`, `/booking`, `/business`, `/corporate`, `/corporate/usage`, `/dashboard`, `/fleet`, `/login`, `/services`.
 - Pruebas HTTP verifican alta/verificacion local, misma referencia en portal/operaciones e idempotencia/conflicto. El codigo UI conecta Home, booking, login, portal y cola. No hubo automatizacion E2E de navegador que complete el recorrido visible.
-- Capturas nuevas inspeccionadas: `work/evidence/home-desktop.png`, `work/evidence/login-desktop.png`. Capturas headless de 390px no emulan bien el viewport Edge disponible; no contarlas como comprobacion movil. Las capturas se quedan locales/ignoradas y no entran al repo.
+- Capturas nuevas inspeccionadas: `work/evidence/home-desktop.png`, `login-desktop.png` y `booking-desktop.png` (despues de corregir el copy de booking).
 - No se ejecuto migracion: faltan `DATABASE_URL`/`TEST_DATABASE_URL` aisladas y Docker. No apuntar a `ascenta_dev`.
 
 ## Publicacion y reanudacion
@@ -41,5 +41,3 @@ Runtime: Node `v24.21.0`, pnpm `11.19.0` desde `work/tooling`.
 - `.env`, DOCX y `work/evidence` excluidos de commits. `.env.example` es plantilla.
 - Comandos locales tras checkout e instalacion: `$env:DATA_MODE='demo'`; `pnpm dev`; web `http://localhost:5173`, API `http://localhost:4000/api/v1`. En demo la solicitud desaparece al reiniciar el proceso; MySQL requiere configurar una base aislada y aplicar migracion.
 - Sin merge en `main`, sin force-push, PR ni despliegue comercial.
-
-

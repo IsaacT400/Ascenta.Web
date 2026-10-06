@@ -1,6 +1,6 @@
 import { hash } from "bcryptjs";
 
-import { createPrismaClient } from "../src/index.js";
+import { createPrismaClient, hashReservationInput } from "../src/index.js";
 
 const prisma = createPrismaClient();
 const DEMO_PASSWORD = "AscentaDemo!2026";
@@ -68,6 +68,17 @@ async function main() {
 
   const serviceType = await prisma.serviceType.findUniqueOrThrow({ where: { code: "AIRPORT_TRANSFER" } });
   const vehicleClass = await prisma.vehicleClass.findUniqueOrThrow({ where: { code: "EXECUTIVE_SUV" } });
+  const seededRequest = {
+    serviceTypeCode: "AIRPORT_TRANSFER",
+    vehicleClassCode: "EXECUTIVE_SUV",
+    pickupAddress: "JFK Airport, Queens, NY",
+    destinationAddress: "The Plaza, New York, NY",
+    scheduledAt: "2026-09-22T14:30:00.000Z",
+    scheduledTimeZone: "America/New_York",
+    passengerCount: 2,
+    notes: "Synthetic local-development reservation.",
+    idempotencyKey: "seed-demo-reservation-2026",
+  };
   await prisma.reservation.upsert({
     where: { idempotencyKey: "seed-demo-reservation-2026" },
     update: {},
@@ -84,6 +95,7 @@ async function main() {
       passengerCount: 2,
       notes: "Synthetic local-development reservation.",
       idempotencyKey: "seed-demo-reservation-2026",
+      requestHash: hashReservationInput(seededRequest),
     },
   });
 

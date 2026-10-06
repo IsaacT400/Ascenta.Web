@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { compare } from "bcryptjs";
+import { compare, hash } from "bcryptjs";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express, { type NextFunction, type Request, type Response } from "express";
@@ -7,7 +7,7 @@ import { rateLimit } from "express-rate-limit";
 import helmet from "helmet";
 import { ZodError } from "zod";
 
-import { loginInputSchema, reservationCreateInputSchema, type SessionView } from "@ascenta/shared";
+import { loginInputSchema, registerInputSchema, reservationCreateInputSchema, type SessionView } from "@ascenta/shared";
 import type { AppConfig } from "./config.js";
 import { HttpError } from "./http-error.js";
 import type { AscentaRepository } from "./repository.js";
@@ -62,6 +62,7 @@ export function createApp({ repository, config }: AppDependencies) {
       const input = loginInputSchema.parse(req.body);
       const user = await repository.findUserByEmail(input.email);
       if (!user || !(await compare(input.password, user.passwordHash))) throw new HttpError(401, "CREDENTIALS_INVALID", "Email or password is incorrect.");
+      if (!user.emailVerified) throw new HttpError(403, "EMAIL_NOT_VERIFIED", "Verify your email before signing in.");
       const sessionToken = randomToken();
       const csrfToken = randomToken();
       const expiresAt = new Date(Date.now() + config.sessionTtlHours * 60 * 60 * 1000);
@@ -70,6 +71,31 @@ export function createApp({ repository, config }: AppDependencies) {
       res.cookie(config.csrfCookieName, csrfToken, { httpOnly: false, secure: config.nodeEnv === "production", sameSite: "strict", path: "/", expires: expiresAt });
       const view: SessionView = { user: { id: user.id, email: user.email, displayName: user.displayName, roles: user.roles }, csrfToken };
       res.json({ data: view, requestId: req.requestId });
+    } catch (error) { next(error); }
+  });
+
+  app.post("/api/v1/auth/register", loginLimiter, async (req, res, next) => {
+    try {
+      if (config.nodeEnv === "production") throw new HttpError(503, "REGISTRATION_UNAVAILABLE", "Account registration is unavailable until an email delivery service is configured.");
+      const input = registerInputSchema.parse(req.body);
+      const verificationToken = randomToken();
+      const result = await repository.registerUser({
+        email: input.email,
+        displayName: input.displayName,
+        passwordHash: await hash(input.password, 12),
+        tokenHash: hashToken(verificationToken),
+        expiresAt: new Date(Date.now() + 30 * 60 * 1000),
+      });
+      const localToken = result === "created" ? verificationToken : undefined;
+      res.status(202).json({ data: { status: "verification_required", localVerificationToken: localToken, delivery: "local_only" }, requestId: req.requestId });
+    } catch (error) { next(error); }
+  });
+
+  app.post("/api/v1/auth/verify-email", async (req, res, next) => {
+    try {
+      const token = typeof req.body?.token === "string" ? req.body.token : "";
+      if (token.length < 32 || token.length > 256 || !(await repository.verifyEmail(hashToken(token)))) throw new HttpError(400, "VERIFICATION_INVALID", "This verification link is invalid or expired.");
+      res.json({ data: { status: "verified" }, requestId: req.requestId });
     } catch (error) { next(error); }
   });
 
@@ -93,6 +119,13 @@ export function createApp({ repository, config }: AppDependencies) {
 
   app.get("/api/v1/reservations", authenticate, async (req, res, next) => {
     try { res.json({ data: await repository.listReservations(req.ascentaSession!.user), requestId: req.requestId }); } catch (error) { next(error); }
+  });
+
+  app.get("/api/v1/admin/reservations", authenticate, async (req, res, next) => {
+    try {
+      if (!req.ascentaSession!.user.roles.includes("ASCENTA_ADMIN")) throw new HttpError(403, "FORBIDDEN", "Operations access is required.");
+      res.json({ data: await repository.listOperationsReservations(), requestId: req.requestId });
+    } catch (error) { next(error); }
   });
 
   app.post("/api/v1/reservations", authenticate, verifyCsrf, async (req, res, next) => {

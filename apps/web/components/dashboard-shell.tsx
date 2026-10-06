@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import {
-  BarChart3, Building2, CalendarDays, CreditCard, FileText, History,
-  Home, MapPinned, Plus, Settings, UsersRound,
+  Building2, CalendarDays, Home, LogOut, Plus,
 } from "lucide-react";
 
 import { Brand } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
+import { getCurrentSession, signOut } from "@/lib/api-client";
 import {
   Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
   SidebarHeader, SidebarInset, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider,
@@ -24,28 +26,28 @@ type DashboardShellProps = {
 
 const customerNav = [
   { label: "Overview", href: "/dashboard", icon: Home },
-  { label: "Book a ride", href: "/booking", icon: Plus },
-  { label: "Upcoming rides", href: "/dashboard#upcoming", icon: CalendarDays },
-  { label: "Ride history", href: "/dashboard#history", icon: History },
-  { label: "Saved locations", href: "/dashboard#locations", icon: MapPinned },
-  { label: "Receipts & invoices", href: "/dashboard#receipts", icon: FileText },
+  { label: "Prepare a request", href: "/booking", icon: Plus },
+  { label: "Requests", href: "/dashboard#requests-title", icon: CalendarDays },
 ];
 
 const corporateNav = [
-  { label: "Overview", href: "/corporate", icon: Building2 },
-  { label: "Book a ride", href: "/booking", icon: Plus },
-  { label: "Reservations", href: "/corporate#reservations", icon: CalendarDays },
-  { label: "Travelers", href: "/corporate#travelers", icon: UsersRound },
-  { label: "Usage Matrix", href: "/corporate/usage", icon: BarChart3 },
-  { label: "Invoices", href: "/corporate#invoices", icon: CreditCard },
+  { label: "Requests", href: "/corporate", icon: Building2 },
+  { label: "Prepare a request", href: "/booking", icon: Plus },
 ];
 
 export function DashboardShell({ children, active, mode, title, description }: DashboardShellProps) {
+  const router = useRouter();
+  const [accountName, setAccountName] = useState("Account");
+  const [accountEmail, setAccountEmail] = useState("");
+  useEffect(() => { void getCurrentSession().then(({ user }) => { setAccountName(user.displayName); setAccountEmail(user.email); }).catch(() => undefined); }, []);
+  async function handleSignOut() {
+    try { await signOut(); } finally { router.replace("/login"); }
+  }
   const nav = mode === "corporate" ? corporateNav : customerNav;
   return (
     <SidebarProvider>
       <Sidebar collapsible="offcanvas" className="border-[#1e3540]">
-        <SidebarHeader className="px-5 py-6"><Brand inverted /></SidebarHeader>
+        <SidebarHeader className="px-5 py-6"><Brand /></SidebarHeader>
         <SidebarSeparator className="bg-white/10" />
         <SidebarContent className="px-3 py-4">
           <SidebarGroup>
@@ -66,24 +68,24 @@ export function DashboardShell({ children, active, mode, title, description }: D
         <SidebarFooter className="px-4 pb-5">
           <SidebarMenu>
             <SidebarMenuItem><SidebarMenuButton asChild className="h-10 px-3 text-white/62 hover:bg-white/8 hover:text-white"><Link href="/"><Home /><span>Public website</span></Link></SidebarMenuButton></SidebarMenuItem>
-            <SidebarMenuItem><SidebarMenuButton className="h-10 px-3 text-white/62 hover:bg-white/8 hover:text-white"><Settings /><span>Settings</span></SidebarMenuButton></SidebarMenuItem>
+            <SidebarMenuItem><SidebarMenuButton onClick={() => void handleSignOut()} className="h-10 px-3 text-white/62 hover:bg-white/8 hover:text-white"><LogOut /><span>Sign out</span></SidebarMenuButton></SidebarMenuItem>
           </SidebarMenu>
           <div className="mt-3 flex items-center gap-3 rounded-xl border border-white/10 p-3">
-            <span className="grid size-9 shrink-0 place-items-center rounded-full bg-[#d9c394] text-sm font-bold text-[#07141d]">{mode === "corporate" ? "AC" : "AM"}</span>
-            <span className="min-w-0"><span className="block truncate text-sm font-semibold text-white">{mode === "corporate" ? "Apex Consulting" : "Alex Morgan"}</span><span className="block truncate text-xs text-white/42">Demo account</span></span>
+            <span className="grid size-9 shrink-0 place-items-center rounded-full bg-[#92bef2] text-sm font-bold text-[#001030]">{accountName.slice(0, 1).toUpperCase()}</span>
+            <span className="min-w-0"><span className="block truncate text-sm font-semibold text-white">{accountName}</span><span className="block truncate text-xs text-white/65">{accountEmail}</span></span>
           </div>
         </SidebarFooter>
       </Sidebar>
 
-      <SidebarInset className="min-w-0 bg-[#f4f5f3]">
-        <header className="sticky top-0 z-30 flex min-h-18 items-center justify-between border-b border-[#dfe3e4] bg-[#f4f5f3]/94 px-4 backdrop-blur-xl sm:px-7 lg:px-10">
+      <SidebarInset className="min-w-0 bg-[#f7f9fd]">
+        <header className="sticky top-0 z-30 flex min-h-18 items-center justify-between border-b border-[#dfe3e4] bg-[#f7f9fd]/94 px-4 backdrop-blur-xl sm:px-7 lg:px-10">
           <div className="flex items-center gap-3">
             <SidebarTrigger className="size-9 rounded-full border border-[#d5dbdd] md:hidden" />
-            <div><h1 className="font-display text-2xl tracking-[-.025em] text-[#0b1a24]">{title}</h1>{description && <p className="hidden text-xs text-[#788287] sm:block">{description}</p>}</div>
+            <div><h1 className="font-display text-2xl tracking-[-.025em] text-[#001030]">{title}</h1>{description && <p className="hidden text-xs text-[#788287] sm:block">{description}</p>}</div>
           </div>
           <div className="flex items-center gap-2">
-            {mode === "customer" && <Button asChild variant="outline" className="hidden h-10 rounded-full bg-white sm:flex"><Link href="/corporate"><Building2 /> Corporate demo</Link></Button>}
-            <Button asChild className="h-10 rounded-full bg-[#0b1a24] text-white"><Link href="/booking"><Plus /> <span className="hidden sm:inline">Book a ride</span><span className="sm:hidden">Book</span></Link></Button>
+            {mode === "customer" && <Button asChild variant="outline" className="hidden h-10 rounded-full bg-white sm:flex"><Link href="/business"><Building2 /> For business</Link></Button>}
+            <Button asChild className="h-10 rounded-full bg-[#001030] text-white"><Link href="/booking"><Plus /> <span className="hidden sm:inline">Book a ride</span><span className="sm:hidden">Book</span></Link></Button>
           </div>
         </header>
         <div className="w-full p-4 sm:p-7 lg:p-10">{children}</div>

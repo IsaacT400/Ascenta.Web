@@ -35,6 +35,29 @@ paths:
               schema: { $ref: "#/components/schemas/SessionResponse" }
         "401": { $ref: "#/components/responses/Error" }
         "422": { $ref: "#/components/responses/Error" }
+  /auth/register:
+    post:
+      operationId: registerAccount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/RegisterInput" }
+      responses:
+        "202": { description: Account created or email already requires local verification }
+        "422": { $ref: "#/components/responses/Error" }
+        "503": { description: External email delivery is not configured for production }
+  /auth/verify-email:
+    post:
+      operationId: verifyEmail
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/VerificationInput" }
+      responses:
+        "200": { description: Email verified }
+        "400": { $ref: "#/components/responses/Error" }
   /auth/me:
     get:
       operationId: getCurrentSession
@@ -117,6 +140,14 @@ paths:
         "401": { $ref: "#/components/responses/Error" }
         "403": { $ref: "#/components/responses/Error" }
         "422": { $ref: "#/components/responses/Error" }
+  /admin/reservations:
+    get:
+      operationId: listOperationsReservations
+      security: [{ sessionCookie: [] }]
+      responses:
+        "200": { description: Requests visible to ASCENTA operations staff }
+        "401": { $ref: "#/components/responses/Error" }
+        "403": { $ref: "#/components/responses/Error" }
 components:
   securitySchemes:
     sessionCookie:
@@ -170,6 +201,19 @@ components:
       properties:
         email: { type: string, format: email, maxLength: 254 }
         password: { type: string, minLength: 8, maxLength: 128 }
+    RegisterInput:
+      type: object
+      required: [email, displayName, password, termsAccepted]
+      properties:
+        email: { type: string, format: email, maxLength: 254 }
+        displayName: { type: string, minLength: 2, maxLength: 160 }
+        password: { type: string, minLength: 12, maxLength: 128 }
+        termsAccepted: { type: boolean, const: true }
+    VerificationInput:
+      type: object
+      required: [token]
+      properties:
+        token: { type: string, minLength: 32, maxLength: 256 }
     User:
       type: object
       required: [id, email, displayName, roles]
@@ -212,23 +256,28 @@ components:
     ReservationInput:
       type: object
       additionalProperties: false
-      required: [serviceTypeCode, vehicleClassCode, pickupAddress, destinationAddress, scheduledAt, scheduledTimeZone, passengerCount, idempotencyKey]
+      required: [serviceTypeCode, vehicleClassCode, pickupAddress, scheduledAt, scheduledTimeZone, passengerCount, idempotencyKey]
       properties:
         serviceTypeCode: { type: string, enum: [ONE_WAY, AIRPORT_TRANSFER, HOURLY, ROUND_TRIP, CITY_TO_CITY] }
         vehicleClassCode: { type: string, enum: [EXECUTIVE_SUV, PREMIUM_SUV, EXECUTIVE_VAN] }
         pickupAddress: { type: string, minLength: 3, maxLength: 300 }
-        destinationAddress: { type: string, minLength: 3, maxLength: 300 }
+        destinationAddress: { type: string, minLength: 3, maxLength: 300, description: Required except for HOURLY requests }
+        durationHours: { type: number, exclusiveMinimum: 0, description: Required for HOURLY requests; no commercial duration minimum or rate is implied }
         scheduledAt: { type: string, format: date-time }
         scheduledTimeZone: { type: string, example: America/New_York }
         passengerCount: { type: integer, minimum: 1, maximum: 50 }
+        passengerName: { type: string, minLength: 2, maxLength: 160 }
+        passengerEmail: { type: string, format: email, maxLength: 254 }
+        passengerPhone: { type: string, minLength: 7, maxLength: 32 }
         notes: { type: string, maxLength: 2000 }
         organizationId: { type: string, format: uuid }
         idempotencyKey: { type: string, minLength: 8, maxLength: 128 }
     Reservation:
       type: object
-      required: [id, status, serviceTypeCode, vehicleClassCode, pickupAddress, destinationAddress, scheduledAt, scheduledTimeZone, passengerCount, createdAt]
+      required: [id, reference, status, serviceTypeCode, vehicleClassCode, pickupAddress, destinationAddress, scheduledAt, scheduledTimeZone, passengerCount, createdAt]
       properties:
         id: { type: string }
+        reference: { type: string, pattern: '^ASC-' }
         status: { type: string, enum: [DRAFT, REQUESTED, QUOTED, CONFIRMED, COMPLETED, CANCELLED] }
         serviceTypeCode: { type: string }
         vehicleClassCode: { type: string }
@@ -237,5 +286,8 @@ components:
         scheduledAt: { type: string, format: date-time }
         scheduledTimeZone: { type: string }
         passengerCount: { type: integer }
+        passengerName: { type: string }
+        passengerEmail: { type: string, format: email }
+        passengerPhone: { type: string }
         organizationId: { type: string, format: uuid }
         createdAt: { type: string, format: date-time }

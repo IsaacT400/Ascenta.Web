@@ -46,14 +46,29 @@ model User {
   displayName  String        @map("display_name") @db.VarChar(160)
   status       UserStatus    @default(ACTIVE)
   isAdmin      Boolean       @default(false) @map("is_admin")
+  emailVerified Boolean      @default(true) @map("email_verified")
   createdAt    DateTime      @default(now()) @map("created_at")
   updatedAt    DateTime      @updatedAt @map("updated_at")
   sessions     Session[]
   memberships  Membership[]
   reservations Reservation[] @relation("ReservationCreator")
   auditLogs    AuditLog[]    @relation("AuditActor")
+  verificationToken EmailVerificationToken?
 
   @@map("users")
+}
+
+model EmailVerificationToken {
+  id        String    @id @default(uuid()) @db.Char(36)
+  userId    String    @unique @map("user_id") @db.Char(36)
+  tokenHash String    @unique @map("token_hash") @db.Char(64)
+  expiresAt DateTime  @map("expires_at")
+  consumedAt DateTime? @map("consumed_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([expiresAt])
+  @@map("email_verification_tokens")
 }
 
 model Session {
@@ -130,12 +145,17 @@ model Reservation {
   serviceTypeId        String            @map("service_type_id") @db.Char(36)
   vehicleClassId       String            @map("vehicle_class_id") @db.Char(36)
   pickupAddress        String            @map("pickup_address") @db.VarChar(300)
-  destinationAddress   String            @map("destination_address") @db.VarChar(300)
+  destinationAddress   String?           @map("destination_address") @db.VarChar(300)
   scheduledAtUtc       DateTime          @map("scheduled_at_utc")
   scheduledTimeZone    String            @map("scheduled_time_zone") @db.VarChar(64)
   passengerCount       Int               @map("passenger_count")
+  passengerName        String?           @map("passenger_name") @db.VarChar(160)
+  passengerEmail       String?           @map("passenger_email") @db.VarChar(254)
+  passengerPhone       String?           @map("passenger_phone") @db.VarChar(32)
+  durationHours        Decimal?          @map("duration_hours") @db.Decimal(8, 2)
   notes                String?           @db.Text
   idempotencyKey       String            @unique @map("idempotency_key") @db.VarChar(128)
+  requestHash          String            @map("request_hash") @db.Char(64)
   createdAt            DateTime          @default(now()) @map("created_at")
   updatedAt            DateTime          @updatedAt @map("updated_at")
   createdBy            User              @relation("ReservationCreator", fields: [createdById], references: [id])

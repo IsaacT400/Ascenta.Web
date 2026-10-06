@@ -55,15 +55,15 @@ function MonthlyMovementChart() {
           );
         })}
         <path d={areaPath} fill="url(#ascenta-spend-fill)" />
-        <polyline points={points} fill="none" stroke="#9b7b43" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <polyline points={points} fill="none" stroke="#3270bf" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
         {monthly.map((item, index) => (
           <g key={item.month}>
-            <circle cx={xFor(index)} cy={yFor(item.spend)} r="4" fill="#f8f8f5" stroke="#9b7b43" strokeWidth="2.5" />
+            <circle cx={xFor(index)} cy={yFor(item.spend)} r="4" fill="#f8f8f5" stroke="#3270bf" strokeWidth="2.5" />
             <text x={xFor(index)} y={chartHeight - 10} textAnchor="middle" className="fill-[#68747a] text-[11px] font-semibold">{item.month}</text>
           </g>
         ))}
       </svg>
-      <div className="mt-2 flex items-center justify-end gap-2 text-xs font-semibold text-[#68747a]"><span className="size-2 rounded-full bg-[#9b7b43]" /> Transportation spend · DEMO</div>
+      <div className="mt-2 flex items-center justify-end gap-2 text-xs font-semibold text-[#68747a]"><span className="size-2 rounded-full bg-[#3270bf]" /> Transportation spend · DEMO</div>
     </div>
   );
 }
@@ -138,8 +138,8 @@ export function UsageMatrix() {
           <div className="border-b border-[#e1e5e6] p-5 sm:p-6"><p className="text-xs font-bold tracking-[.12em] text-[#7b8589] uppercase">Traveler usage</p><h2 className="mt-1 font-display text-2xl tracking-[-.025em]">Most frequent travelers</h2></div>
           <Table><TableHeader className="bg-[#f7f8f6]"><TableRow><TableHead className="pl-6 text-[10px] font-bold tracking-[.1em] text-[#7c878b] uppercase">Traveler</TableHead><TableHead className="text-[10px] font-bold tracking-[.1em] text-[#7c878b] uppercase">Department</TableHead><TableHead className="text-[10px] font-bold tracking-[.1em] text-[#7c878b] uppercase">Rides</TableHead><TableHead className="pr-6 text-right text-[10px] font-bold tracking-[.1em] text-[#7c878b] uppercase">Spend</TableHead></TableRow></TableHeader><TableBody>{travelers.map((item) => <TableRow key={item.name}><TableCell className="py-4 pl-6 font-semibold">{item.name}</TableCell><TableCell className="py-4 text-[#68747a]">{item.department}</TableCell><TableCell className="py-4">{item.rides}</TableCell><TableCell className="py-4 pr-6 text-right font-semibold">{item.spend}</TableCell></TableRow>)}</TableBody></Table>
         </section>
-        <section className="rounded-[1.25rem] border border-[#dce1e3] bg-[#07141d] p-6 text-white">
-          <p className="text-xs font-bold tracking-[.12em] text-[#d9c394] uppercase">Popular routes</p><h2 className="mt-2 font-display text-2xl">Where your team moves</h2>
+        <section className="rounded-[1.25rem] border border-[#dce1e3] bg-[#001030] p-6 text-white">
+          <p className="text-xs font-bold tracking-[.12em] text-[#92bef2] uppercase">Popular routes</p><h2 className="mt-2 font-display text-2xl">Where your team moves</h2>
           <div className="mt-7 space-y-5">
             {[{ route: "JFK → Midtown Manhattan", rides: 9 }, { route: "LGA → Financial District", rides: 6 }, { route: "Midtown → Teterboro FBO", rides: 4 }].map((item, index) => <div key={item.route} className="flex items-center gap-4"><span className="grid size-8 place-items-center rounded-full border border-white/15 text-xs text-white/55">0{index + 1}</span><span className="flex-1 text-sm font-semibold">{item.route}</span><span className="text-xs text-white/48">{item.rides} rides</span></div>)}
           </div>

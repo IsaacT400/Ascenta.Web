@@ -40,7 +40,11 @@ El login regenera un token opaco aleatorio por sesión y solo guarda su SHA-256 
 
 ## Rutas y autorización
 
-Las ocho URLs existentes se preservan. `/dashboard`, `/corporate` y `/corporate/usage` ejecutan un guard de sesión en el cliente; los datos privados futuros solo se entregarán desde endpoints autorizados. La API protege reservas y valida membresía organizacional. El contenido actual de dashboards es ficticio y permanece hard-coded para preservar la referencia visual.
+Las rutas existentes se preservan. `/dashboard` y `/corporate` ejecutan un guard de sesión en el cliente; sus listas vienen de `/api/v1/reservations`. La recepción de operaciones está en `/admin` y su API exige `ASCENTA_ADMIN`. El guard del cliente mejora la experiencia; la API valida autenticación, rol y membresía.
+
+## Identidad, verificación y compatibilidad
+
+`POST /api/v1/auth/register` crea solo una cuenta CUSTOMER sin verificar. `POST /api/v1/auth/verify-email` consume un token hash de un solo uso con 30 minutos de vigencia. En `development` el token se muestra localmente para pruebas; no se envía correo. Producción falla cerrada hasta configurar entrega. No existe v2 ni una segunda familia de cookies o usuarios.
 
 ## Operaciones externas pendientes
 

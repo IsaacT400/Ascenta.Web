@@ -12,6 +12,7 @@ type RevealProps = {
 export function Reveal({ children, className = "", delay = 0, variant = "default" }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [enhanced, setEnhanced] = useState(false);
 
   useEffect(() => {
     const node = ref.current;
@@ -42,6 +43,7 @@ export function Reveal({ children, className = "", delay = 0, variant = "default
       );
 
       observer.observe(node);
+      setEnhanced(true);
     });
 
     return () => {
@@ -54,6 +56,7 @@ export function Reveal({ children, className = "", delay = 0, variant = "default
     <div
       ref={ref}
       data-visible={visible}
+      data-enhanced={enhanced}
       className={`reveal-${variant} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >

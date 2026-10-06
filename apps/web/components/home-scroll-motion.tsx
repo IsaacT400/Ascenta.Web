@@ -5,6 +5,7 @@ import { useEffect } from "react";
 export function HomeScrollMotion() {
   useEffect(() => {
     const hero = document.querySelector<HTMLElement>(".home-hero");
+    const statement = document.querySelector<HTMLElement>(".home-statement");
     if (!hero) return;
 
     let frame = 0;
@@ -15,6 +16,11 @@ export function HomeScrollMotion() {
       const pageProgress = Math.min(Math.max(window.scrollY / pageRange, 0), 1);
 
       hero.style.setProperty("--hero-scroll", heroProgress.toFixed(4));
+      if (statement) {
+        const rect = statement.getBoundingClientRect();
+        const progress = Math.min(Math.max((window.innerHeight - rect.top) / (rect.height + window.innerHeight * 0.2), 0), 1);
+        statement.style.setProperty("--statement-progress", progress.toFixed(4));
+      }
       document.documentElement.style.setProperty("--page-scroll", pageProgress.toFixed(4));
     };
 
@@ -31,6 +37,7 @@ export function HomeScrollMotion() {
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
       hero.style.removeProperty("--hero-scroll");
+      statement?.style.removeProperty("--statement-progress");
       document.documentElement.style.removeProperty("--page-scroll");
     };
   }, []);

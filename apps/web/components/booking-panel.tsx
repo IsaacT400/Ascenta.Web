@@ -1,87 +1,80 @@
 "use client";
 
-import Link from "next/link";
+import { useMemo, useState, useSyncExternalStore, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import { ArrowRight, CalendarDays, Clock3, MapPin, Users } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { emptyJourneyDraft, getEmptyJourneyDraftSnapshot, getJourneyDraftSnapshot, parseJourneyDraft, saveJourneyDraft, subscribeJourneyDraft, type JourneyDraft } from "@/lib/journey-draft";
 
 type BookingPanelProps = { compact?: boolean };
-
-const tripTypes = [
-  { value: "one-way", label: "One way" },
-  { value: "airport", label: "Airport" },
-  { value: "hourly", label: "Hourly" },
-  { value: "round-trip", label: "Round trip" },
-  { value: "city", label: "City to city" },
-];
-
-const prototypeMode = process.env.NEXT_PUBLIC_PROTOTYPE_MODE !== "false";
+const modes = [
+  { code: "ONE_WAY", label: "One way" },
+  { code: "AIRPORT_TRANSFER", label: "Airport" },
+  { code: "HOURLY", label: "By the hour" },
+  { code: "ROUND_TRIP", label: "Round trip" },
+  { code: "CITY_TO_CITY", label: "City to city" },
+] as const;
 
 export function BookingPanel({ compact = false }: BookingPanelProps) {
+  const router = useRouter();
+  const serialized = useSyncExternalStore(subscribeJourneyDraft, getJourneyDraftSnapshot, getEmptyJourneyDraftSnapshot);
+  const draft = useMemo(() => parseJourneyDraft(serialized) ?? emptyJourneyDraft(), [serialized]);
+  const [storageWarning, setStorageWarning] = useState(false);
+
+  function update<K extends keyof JourneyDraft>(key: K, value: JourneyDraft[K]) {
+    // eslint-disable-next-line react-hooks/purity -- Called only from a user input event to refresh draft expiry.
+    const next = { ...draft, [key]: value, updatedAt: Date.now() };
+    setStorageWarning(!saveJourneyDraft(next));
+  }
+
+  function continueToBooking(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!draft.pickupAddress.trim() || (draft.serviceTypeCode !== "HOURLY" && !draft.destinationAddress.trim()) || (draft.serviceTypeCode === "HOURLY" && Number(draft.durationHours) <= 0) || !draft.pickupDate || !draft.pickupTime) return;
+    if (!saveJourneyDraft(draft)) {
+      setStorageWarning(true);
+      return;
+    }
+    router.push("/booking");
+  }
+
   return (
-    <div className="booking-panel min-w-0 w-full rounded-[1.5rem] border border-white/30 bg-white/96 p-5 text-[#15232a] shadow-[0_32px_100px_rgba(7,26,36,.34)] backdrop-blur-xl sm:p-6">
-      <div className="flex items-start justify-between gap-5">
-        <div>
-          <p className="text-xs font-bold tracking-[.16em] text-[#527181] uppercase">Plan your ride</p>
-          <h2 className="mt-1 font-display text-[1.7rem] tracking-[-.025em]">Where can we take you?</h2>
-        </div>
-        {prototypeMode && <span className="mt-1 rounded-full bg-[#e7eff1] px-3 py-1 text-[10px] font-bold tracking-[.1em] text-[#466574] uppercase">Demo</span>}
+    <form onSubmit={continueToBooking} className="booking-panel w-full rounded-2xl border border-white/70 bg-white p-5 text-[#001030] shadow-[0_24px_80px_rgba(0,16,48,.2)] sm:p-6">
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div><p className="eyebrow text-[#3270bf]">Start a journey</p><h2 className="mt-2 font-display text-2xl tracking-[-.025em] sm:text-3xl">Where would you like to go?</h2></div>
+        <span className="mb-1 text-xs text-[#53627a]">Request only · no payment</span>
       </div>
-
-      <Tabs defaultValue="one-way" className="mt-5">
-        <TabsList className="scrollbar-none h-auto w-full justify-start gap-1 overflow-x-auto rounded-none border-b border-[#dfe3e5] bg-transparent p-0">
-          {tripTypes.map((type) => (
-            <TabsTrigger key={type.value} value={type.value} className="min-w-max rounded-none px-2.5 pb-3 text-[13px] font-semibold transition-colors duration-200 data-[state=active]:bg-transparent data-[state=active]:text-[#0d2a38] data-[state=active]:shadow-none after:bottom-0 after:bg-[#6f93a3]">
-              {type.label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-
-        {tripTypes.map((type) => (
-          <TabsContent key={type.value} value={type.value} className="mt-5">
-            {type.value === "hourly" ? (
-              <div className="grid gap-3 sm:grid-cols-2">
-                <Field icon={MapPin} label="Pickup" placeholder="Address, airport or hotel" />
-                <Field icon={Clock3} label="Duration" placeholder="Select hours" />
-              </div>
-            ) : type.value === "airport" ? (
-              <div className="grid gap-3 sm:grid-cols-2">
-                <Field icon={MapPin} label="Airport" placeholder="Airport or flight number" />
-                <Field icon={MapPin} label="Pickup / drop-off" placeholder="Address or hotel" />
-              </div>
-            ) : (
-              <div className="grid gap-3 sm:grid-cols-2">
-                <Field icon={MapPin} label={type.value === "city" ? "Origin city" : "Pickup"} placeholder="Address, airport or hotel" />
-                <Field icon={MapPin} label={type.value === "city" ? "Destination city" : "Destination"} placeholder="Where are you going?" />
-              </div>
-            )}
-            <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
-              <Field icon={CalendarDays} label="Date" placeholder="Select date" />
-              <Field icon={Clock3} label="Time" placeholder="Select time" />
-              <div className="col-span-2 sm:col-span-1"><Field icon={Users} label="Passengers" placeholder="1 passenger" /></div>
-            </div>
-          </TabsContent>
-        ))}
-      </Tabs>
-
-      <Button asChild className="mt-5 h-12 w-full rounded-xl bg-[#0d2a38] text-[15px] text-white shadow-none transition-colors duration-200 hover:bg-[#355b6d]">
-        <Link href="/booking">View ride options <ArrowRight className="size-4" /></Link>
-      </Button>
-      {!compact && <p className="mt-4 text-center text-xs leading-5 text-[#6c757a]">No payment is taken in this prototype.</p>}
-    </div>
+      <div role="group" aria-label="Journey type" className="mt-5 grid w-full grid-cols-2 gap-1 sm:flex sm:overflow-x-auto">
+        {modes.map((mode) => <button key={mode.code} type="button" aria-pressed={draft.serviceTypeCode === mode.code} onClick={() => update("serviceTypeCode", mode.code)} className={`min-h-11 min-w-0 rounded-md border px-2 text-xs font-semibold transition-colors sm:shrink-0 sm:rounded-none sm:border-x-0 sm:border-t-0 ${draft.serviceTypeCode === mode.code ? "border-[#c6defc] bg-[#eaf2fc] text-[#001030]" : "border-transparent text-[#53627a] hover:bg-[#f7f9fd]"}`}>{mode.label}</button>)}
+      </div>
+      <div className="mt-5 grid gap-3 sm:grid-cols-2">
+        <JourneyField id="home-pickup" label={draft.serviceTypeCode === "AIRPORT_TRANSFER" ? "Airport or pickup" : "Pickup"} icon={MapPin} value={draft.pickupAddress} placeholder="Address, airport or hotel" onChange={(value) => update("pickupAddress", value)} required />
+        {draft.serviceTypeCode === "HOURLY" ? <JourneyField id="home-duration" label="Requested duration (hours)" icon={Clock3} type="number" step="any" value={draft.durationHours} placeholder="Enter hours" onChange={(value) => update("durationHours", value)} required /> : <JourneyField id="home-destination" label="Destination" icon={MapPin} value={draft.destinationAddress} placeholder="Address or city" onChange={(value) => update("destinationAddress", value)} required />}
+      </div>
+      <div className="mt-3 grid gap-3 sm:grid-cols-[1fr_1fr_.7fr]">
+        <JourneyField id="home-date" label="Pickup date" icon={CalendarDays} type="date" value={draft.pickupDate} onChange={(value) => update("pickupDate", value)} required />
+        <JourneyField id="home-time" label="Local pickup time" icon={Clock3} type="time" value={draft.pickupTime} onChange={(value) => update("pickupTime", value)} required />
+        <JourneyField id="home-passengers" label="Passengers" icon={Users} type="number" min="1" max="50" value={String(draft.passengerCount)} onChange={(value) => update("passengerCount", Math.max(1, Math.min(50, Number(value) || 1)))} required />
+      </div>
+      <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <p className="max-w-md text-xs leading-5 text-[#53627a]">We’ll keep these details in this browser for 30 minutes while you prepare your request.</p>
+        <Button type="submit" className="h-12 shrink-0 rounded-lg bg-[#3270bf] px-6 text-white hover:bg-[#245b9f]">Continue your request <ArrowRight className="size-4" /></Button>
+      </div>
+      {storageWarning && <p role="alert" className="mt-3 text-sm text-red-700">This browser could not save the journey. Check storage access and try again.</p>}
+      {!compact && <p className="sr-only">Your journey is a request and is not confirmed until reviewed.</p>}
+    </form>
   );
 }
 
-function Field({ icon: Icon, label, placeholder }: { icon: typeof MapPin; label: string; placeholder: string }) {
-  const inputId = `field-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
-  return (
-    <div className="relative rounded-xl border border-[#d5e0e3] bg-white px-3.5 py-2 transition-[border-color,box-shadow] duration-200 focus-within:border-[#6f93a3] focus-within:ring-2 focus-within:ring-[#6f93a3]/18">
-      <Label htmlFor={inputId} className="ml-7 block text-[10px] font-bold tracking-[.11em] text-[#727b80] uppercase">{label}</Label>
-      <Icon className="absolute bottom-[15px] left-3.5 size-4 text-[#52798a]" strokeWidth={1.7} aria-hidden="true" />
-      <Input id={inputId} placeholder={placeholder} className="h-6 border-0 bg-transparent py-0 pr-0 pl-7 text-[13px] font-medium shadow-none placeholder:text-[#9aa1a5] focus-visible:ring-0" />
-    </div>
-  );
+function JourneyField({ id, label, icon: Icon, value, onChange, ...inputProps }: {
+  id: string; label: string; icon: typeof MapPin; value: string; onChange: (value: string) => void;
+  type?: string; step?: string; placeholder?: string; min?: string; max?: string; required?: boolean;
+}) {
+  return <div className="relative rounded-lg border border-[#c7d5e7] bg-white px-3 py-2 focus-within:border-[#3270bf] focus-within:ring-2 focus-within:ring-[#3270bf]/20">
+    <Label htmlFor={id} className="ml-7 block text-[11px] font-semibold text-[#53627a]">{label}</Label>
+    <Icon className="absolute bottom-3.5 left-3 size-4 text-[#3270bf]" aria-hidden="true" />
+    <Input id={id} value={value} onChange={(event) => onChange(event.target.value)} {...inputProps} className="h-8 border-0 bg-transparent py-0 pl-7 text-sm shadow-none focus-visible:ring-0" />
+  </div>;
 }

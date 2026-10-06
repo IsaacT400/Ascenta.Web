@@ -5,7 +5,7 @@ Actualizado: 2026-10-06
 ## Base y proteccion
 
 - Repositorio original `IsaacT400/Ascenta.Web`; base local/remota `migration/react-node-mysql` en `f4f8b48d54972b26bbb4861c5e31e1ce2afbda9f`.
-- Rama `feature/ascenta-integracion-v1`; commits locales: `8b37355` (implementacion) y el commit de estado que sigue a este archivo.
+- Rama `feature/ascenta-integracion-v1`; commit de implementacion `8b37355`; el registro de continuidad esta versionado aparte.
 - No habia commits posteriores en la base. `main` no se uso.
 - Antes de editar: cambio local en `apps/web/components/booking-panel.tsx` y DOCX maestro no rastreado. El ajuste de booking se reconcilio; el DOCX se mantiene sin seguimiento y excluido.
 - No se encontro `AGENTS.md` aplicable. Se encontro/extrajo `01_ASCENTA_SCRIPT_MAESTRO_CODEX_v2.docx` a `work/` para lectura. El paquete secundario no estaba completo: no se encontraron Markdown operativo, documentos de `02_REFERENCIAS`, `03_IMAGENES`, `04_CODIGO_REFERENCIA` ni Site local; esas fuentes no se publicaron ni se declaran revisadas.
@@ -37,7 +37,9 @@ Runtime: Node `v24.21.0`, pnpm `11.19.0` desde `work/tooling`.
 
 ## Publicacion y reanudacion
 
-- GitHub autentica como `IsaacT400`, permiso repo `push=true`; base remota confirmada en SHA auditado. La rama feature se publicara con push ordinario y se releera su SHA remoto.
+- GitHub autentica como `IsaacT400`, permiso repo `push=true`. Push ordinario completado; antes de registrar esta actualizacion, la API de GitHub confirmo el head remoto `2037cd5e4c9a0b667ca14fc8f62a969cfbac4105`, que incluye el commit de implementacion `8b373551ee13d8cd69396c0accc3de73d51a890a`.
 - `.env`, DOCX y `work/evidence` excluidos de commits. `.env.example` es plantilla.
 - Comandos locales tras checkout e instalacion: `$env:DATA_MODE='demo'`; `pnpm dev`; web `http://localhost:5173`, API `http://localhost:4000/api/v1`. En demo la solicitud desaparece al reiniciar el proceso; MySQL requiere configurar una base aislada y aplicar migracion.
-- Sin merge en `main`, sin force-push y sin despliegue comercial.
+- Sin merge en `main`, sin force-push, PR ni despliegue comercial.
+
+

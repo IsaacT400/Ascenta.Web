@@ -1,20 +1,14 @@
-import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
-import { PageTransition } from "@/components/page-transition";
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap" });
-
+import type { Metadata, Viewport } from 'next';
+import type { ReactNode } from 'react';
+import { AscentaApp } from '@/components/ascenta/App';
+import './ascenta.css';
 export const metadata: Metadata = {
-  title: { default: "ASCENTA · Executive Transportation", template: "%s | ASCENTA" },
-  description: "Prepare executive transportation requests and follow their review in your ASCENTA account.",
-  other: { "codex-preview": "development" },
-  icons: { icon: "/ascenta-logo.png", shortcut: "/ascenta-logo.png" },
+  title: { default: 'ASCENTA — Executive Transportation', template: '%s | ASCENTA' },
+  description: 'Executive transportation. Begin a journey with clarity, care and a personal sense of direction.',
+  icons: { icon: '/brand/favicon.png', shortcut: '/brand/favicon.png' },
+  robots: { index: false, follow: false },
 };
-
-export const viewport: Viewport = { width: "device-width", initialScale: 1 };
-
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body className={`${inter.variable} ${playfair.variable} antialiased`}><PageTransition>{children}</PageTransition></body></html>;
+export const viewport: Viewport = { width: 'device-width', initialScale: 1 };
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return <html lang="en"><body><AscentaApp>{children}</AscentaApp></body></html>;
 }

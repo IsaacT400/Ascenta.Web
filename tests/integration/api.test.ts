@@ -79,7 +79,7 @@ describe("Ascenta API", () => {
     await agent.post("/api/v1/auth/verify-email").send({ token: signup.body.data.localVerificationToken }).expect(200);
     const login = await agent.post("/api/v1/auth/login").send({ email: "requester@example.test", password: "LocalOnlyPassword!2026" }).expect(200);
     const input = {
-      serviceTypeCode: "AIRPORT_TRANSFER", vehicleClassCode: "EXECUTIVE_SUV", pickupAddress: "Logan Airport", destinationAddress: "Boston", scheduledAt: "2026-11-22T15:30:00-05:00", scheduledTimeZone: "America/New_York", passengerCount: 2, passengerName: "Traveler Example", passengerEmail: "traveler@example.test", idempotencyKey: "request-vertical-flow-01",
+      serviceTypeCode: "AIRPORT_TRANSFER", vehicleClassCode: "EXECUTIVE_SUV", pickupAddress: "Logan Airport", destinationAddress: "Boston", scheduledAt: "2026-11-22T15:30:00-05:00", scheduledTimeZone: "America/New_York", passengerCount: 2, passengerName: "Traveler Example", passengerEmail: "traveler@example.test", notes: "Meet at terminal B.\n\nLuggage / Equipaje: 2\nFlight / Vuelo: Arrival / Llegada; AA123", idempotencyKey: "request-vertical-flow-01",
     };
     const created = await agent.post("/api/v1/reservations").set("x-csrf-token", login.body.data.csrfToken).send(input).expect(201);
     expect(created.body.data.reference).toMatch(/^ASC-/);
@@ -87,10 +87,13 @@ describe("Ascenta API", () => {
     const customerList = await agent.get("/api/v1/reservations").expect(200);
     expect(customerList.body.data[0].reference).toBe(created.body.data.reference);
     expect(customerList.body.data[0].passengerName).toBe("Traveler Example");
+    expect(created.body.data.notes).toBe(input.notes);
+    expect(customerList.body.data[0].notes).toBe(input.notes);
     await operationsAgent.post("/api/v1/auth/login").send({ email: "demo.admin@ascenta.local", password: "AscentaDemo!2026" }).expect(200);
     const operations = await operationsAgent.get("/api/v1/admin/reservations").expect(200);
     expect(operations.body.data[0].reference).toBe(created.body.data.reference);
     expect(operations.body.data[0].requesterEmail).toBe("requester@example.test");
+    expect(operations.body.data[0].notes).toBe(input.notes);
     await agent.get("/api/v1/admin/reservations").expect(403);
   });
 
@@ -99,5 +102,24 @@ describe("Ascenta API", () => {
     const input = { serviceTypeCode: "ONE_WAY", vehicleClassCode: "EXECUTIVE_SUV", pickupAddress: "A valid pickup", destinationAddress: "A valid destination", scheduledAt: "2026-11-22T15:30:00-05:00", scheduledTimeZone: "America/New_York", passengerCount: 1, idempotencyKey: "same-key-payload-001" };
     await agent.post("/api/v1/reservations").set("x-csrf-token", login.body.data.csrfToken).send(input).expect(201);
     await agent.post("/api/v1/reservations").set("x-csrf-token", login.body.data.csrfToken).send({ ...input, destinationAddress: "Changed destination" }).expect(409);
+  });
+
+  it("returns only the authenticated user's memberships and verification state", async () => {
+    const login = await agent.post("/api/v1/auth/login").send({ email: "demo.corporate@ascenta.local", password: "AscentaDemo!2026" }).expect(200);
+    expect(login.body.data.user.organizationIds).toEqual(["10000000-0000-4000-8000-000000000001"]);
+    expect(login.body.data.user.emailVerified).toBe(true);
+    const session = await agent.get("/api/v1/auth/me").expect(200);
+    expect(session.body.data.user).toEqual(login.body.data.user);
+    expect(session.body.data.user).not.toHaveProperty("passwordHash");
+  });
+
+  it("keeps personal requests private and rejects an unrelated organization", async () => {
+    const login = await agent.post("/api/v1/auth/login").send({ email: "demo.customer@ascenta.local", password: "AscentaDemo!2026" }).expect(200);
+    const input = { serviceTypeCode: "ONE_WAY", vehicleClassCode: "EXECUTIVE_SUV", pickupAddress: "A valid pickup", destinationAddress: "A valid destination", scheduledAt: "2026-11-22T15:30:00-05:00", scheduledTimeZone: "America/New_York", passengerCount: 1, notes: "Private trip details", idempotencyKey: "private-reservation-001" };
+    await agent.post("/api/v1/reservations").set("x-csrf-token", login.body.data.csrfToken).send(input).expect(201);
+    await agent.post("/api/v1/reservations").set("x-csrf-token", login.body.data.csrfToken).send({ ...input, idempotencyKey: "forbidden-company-001", organizationId: "10000000-0000-4000-8000-000000000001" }).expect(403);
+    await operationsAgent.post("/api/v1/auth/login").send({ email: "demo.corporate@ascenta.local", password: "AscentaDemo!2026" }).expect(200);
+    const list = await operationsAgent.get("/api/v1/reservations").expect(200);
+    expect(list.body.data).toEqual([]);
   });
 });

@@ -107,6 +107,7 @@ export class DemoRepository implements AscentaRepository {
       passengerEmail: input.passengerEmail,
       passengerPhone: input.passengerPhone,
       organizationId: input.organizationId,
+      notes: input.notes,
       createdAt: new Date().toISOString(),
       idempotencyKey: input.idempotencyKey,
       requestHash: hashReservationInput(input),

@@ -7,7 +7,7 @@ import type { AscentaRepository, RepositoryUser } from "./repository.js";
 type MembershipRecord = { role: "CORPORATE_BOOKER" | "CORPORATE_ADMIN"; organizationId: string };
 type ServiceTypeRecord = { code: string; name: string };
 type VehicleClassRecord = ServiceTypeRecord & { passengerLimit: number; luggageLimit: number };
-type ReservationRecord = { id: string; reference: string; status: ReservationView["status"]; pickupAddress: string; destinationAddress: string | null; scheduledAtUtc: Date; scheduledTimeZone: string; passengerCount: number; passengerName: string | null; passengerEmail: string | null; passengerPhone: string | null; durationHours: number | { toString(): string } | null; organizationId: string | null; createdAt: Date; serviceType: { code: string }; vehicleClass: { code: string } };
+type ReservationRecord = { notes: string | null; id: string; reference: string; status: ReservationView["status"]; pickupAddress: string; destinationAddress: string | null; scheduledAtUtc: Date; scheduledTimeZone: string; passengerCount: number; passengerName: string | null; passengerEmail: string | null; passengerPhone: string | null; durationHours: number | { toString(): string } | null; organizationId: string | null; createdAt: Date; serviceType: { code: string }; vehicleClass: { code: string } };
 
 export class MySqlRepository implements AscentaRepository {
   constructor(private readonly prisma: AscentaPrismaClient = createPrismaClient()) {}
@@ -88,7 +88,7 @@ export class MySqlRepository implements AscentaRepository {
   }
 
   private mapReservation(reservation: ReservationRecord): ReservationView {
-    return { id: reservation.id, reference: reservation.reference, status: reservation.status, serviceTypeCode: reservation.serviceType.code, vehicleClassCode: reservation.vehicleClass.code, pickupAddress: reservation.pickupAddress, destinationAddress: reservation.destinationAddress ?? undefined, scheduledAt: reservation.scheduledAtUtc.toISOString(), scheduledTimeZone: reservation.scheduledTimeZone, passengerCount: reservation.passengerCount, passengerName: reservation.passengerName ?? undefined, passengerEmail: reservation.passengerEmail ?? undefined, passengerPhone: reservation.passengerPhone ?? undefined, durationHours: reservation.durationHours === null ? undefined : Number(reservation.durationHours), organizationId: reservation.organizationId ?? undefined, createdAt: reservation.createdAt.toISOString() };
+    return { notes: reservation.notes ?? undefined, id: reservation.id, reference: reservation.reference, status: reservation.status, serviceTypeCode: reservation.serviceType.code, vehicleClassCode: reservation.vehicleClass.code, pickupAddress: reservation.pickupAddress, destinationAddress: reservation.destinationAddress ?? undefined, scheduledAt: reservation.scheduledAtUtc.toISOString(), scheduledTimeZone: reservation.scheduledTimeZone, passengerCount: reservation.passengerCount, passengerName: reservation.passengerName ?? undefined, passengerEmail: reservation.passengerEmail ?? undefined, passengerPhone: reservation.passengerPhone ?? undefined, durationHours: reservation.durationHours === null ? undefined : Number(reservation.durationHours), organizationId: reservation.organizationId ?? undefined, createdAt: reservation.createdAt.toISOString() };
   }
 
   async listReservations(user: RepositoryUser) {

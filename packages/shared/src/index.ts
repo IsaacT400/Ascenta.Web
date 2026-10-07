@@ -76,6 +76,7 @@ export type ReservationView = {
   passengerName?: string;
   passengerEmail?: string;
   passengerPhone?: string;
+  notes?: string;
   requesterName?: string;
   requesterEmail?: string;
   organizationId?: string;
@@ -88,6 +89,8 @@ export type SessionView = {
     email: string;
     displayName: string;
     roles: Role[];
+    organizationIds?: string[];
+    emailVerified?: boolean;
   };
   csrfToken: string;
 };

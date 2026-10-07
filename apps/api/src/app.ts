@@ -69,7 +69,7 @@ export function createApp({ repository, config }: AppDependencies) {
       await repository.createSession({ userId: user.id, tokenHash: hashToken(sessionToken), csrfTokenHash: hashToken(csrfToken), expiresAt });
       res.cookie(config.sessionCookieName, sessionToken, { httpOnly: true, secure: config.nodeEnv === "production", sameSite: "strict", path: "/", expires: expiresAt });
       res.cookie(config.csrfCookieName, csrfToken, { httpOnly: false, secure: config.nodeEnv === "production", sameSite: "strict", path: "/", expires: expiresAt });
-      const view: SessionView = { user: { id: user.id, email: user.email, displayName: user.displayName, roles: user.roles }, csrfToken };
+      const view: SessionView = { user: { id: user.id, email: user.email, displayName: user.displayName, roles: user.roles, organizationIds: user.organizationIds, emailVerified: user.emailVerified }, csrfToken };
       res.json({ data: view, requestId: req.requestId });
     } catch (error) { next(error); }
   });
@@ -101,7 +101,7 @@ export function createApp({ repository, config }: AppDependencies) {
 
   app.get("/api/v1/auth/me", authenticate, (req, res) => {
     const user = req.ascentaSession!.user;
-    res.json({ data: { user: { id: user.id, email: user.email, displayName: user.displayName, roles: user.roles } }, requestId: req.requestId });
+    res.json({ data: { user: { id: user.id, email: user.email, displayName: user.displayName, roles: user.roles, organizationIds: user.organizationIds, emailVerified: user.emailVerified } }, requestId: req.requestId });
   });
 
   app.post("/api/v1/auth/logout", authenticate, verifyCsrf, async (req, res, next) => {

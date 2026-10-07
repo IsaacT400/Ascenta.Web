@@ -1,0 +1,44 @@
+{
+    "verifiedAt":  "2026-10-07T19:28:35.0070242Z",
+    "webStatus":  200,
+    "api":  {
+                "status":  "ok",
+                "dataMode":  "mysql"
+            },
+    "proxy":  {
+                  "status":  "ok",
+                  "dataMode":  "mysql"
+              },
+    "processes":  [
+                      {
+                          "name":  "api",
+                          "pid":  16100,
+                          "entry":  "C:\\Users\\isaac\\OneDrive\\Desktop\\Ascenta\\apps\\api\\dist\\server.js"
+                      },
+                      {
+                          "name":  "web",
+                          "pid":  28184,
+                          "entry":  "C:\\Users\\isaac\\OneDrive\\Desktop\\Ascenta\\apps\\web\\node_modules\\vite\\bin\\vite.js"
+                      }
+                  ],
+    "oldLocationsRemoved":  [
+                                {
+                                    "path":  "html-migration",
+                                    "absent":  true
+                                },
+                                {
+                                    "path":  "runtime",
+                                    "absent":  true
+                                },
+                                {
+                                    "path":  "browser-check",
+                                    "absent":  true
+                                }
+                            ],
+    "browserWindows":  [
+                           {
+                               "ProcessName":  "msedge",
+                               "MainWindowTitle":  "ASCENTA — Executive Transportation and 2 more pages - Personal - Microsoft​ Edge"
+                           }
+                       ]
+}

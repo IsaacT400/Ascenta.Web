@@ -9,6 +9,18 @@ type ServiceTypeRecord = { code: string; name: string };
 type VehicleClassRecord = ServiceTypeRecord & { passengerLimit: number; luggageLimit: number };
 type ReservationRecord = { notes: string | null; id: string; reference: string; status: ReservationView["status"]; pickupAddress: string; destinationAddress: string | null; scheduledAtUtc: Date; scheduledTimeZone: string; passengerCount: number; passengerName: string | null; passengerEmail: string | null; passengerPhone: string | null; durationHours: number | { toString(): string } | null; organizationId: string | null; createdAt: Date; serviceType: { code: string }; vehicleClass: { code: string } };
 
+// Preserve the approved catalog's editorial sequence, independent of translated names.
+const serviceTypeOrder = ["ONE_WAY", "AIRPORT_TRANSFER", "HOURLY", "ROUND_TRIP", "CITY_TO_CITY"];
+const vehicleClassOrder = ["EXECUTIVE_SUV", "PREMIUM_SUV", "EXECUTIVE_VAN"];
+
+function orderCatalog<T extends ServiceTypeRecord>(items: T[], codes: string[]) {
+  const positions = new Map(codes.map((code, index) => [code, index]));
+  return items.toSorted((left, right) =>
+    (positions.get(left.code) ?? codes.length) - (positions.get(right.code) ?? codes.length)
+    || left.code.localeCompare(right.code),
+  );
+}
+
 export class MySqlRepository implements AscentaRepository {
   constructor(private readonly prisma: AscentaPrismaClient = createPrismaClient()) {}
 
@@ -78,12 +90,12 @@ export class MySqlRepository implements AscentaRepository {
 
   async getCatalog() {
     const [serviceTypes, vehicleClasses] = await Promise.all([
-      this.prisma.serviceType.findMany({ where: { isActive: true }, orderBy: { name: "asc" } }),
-      this.prisma.vehicleClass.findMany({ where: { isActive: true }, orderBy: { name: "asc" } }),
+      this.prisma.serviceType.findMany({ where: { isActive: true } }),
+      this.prisma.vehicleClass.findMany({ where: { isActive: true } }),
     ]);
     return {
-      serviceTypes: (serviceTypes as ServiceTypeRecord[]).map(({ code, name }) => ({ code, name })),
-      vehicleClasses: (vehicleClasses as VehicleClassRecord[]).map(({ code, name, passengerLimit, luggageLimit }) => ({ code, name, passengerLimit, luggageLimit })),
+      serviceTypes: orderCatalog(serviceTypes as ServiceTypeRecord[], serviceTypeOrder).map(({ code, name }) => ({ code, name })),
+      vehicleClasses: orderCatalog(vehicleClasses as VehicleClassRecord[], vehicleClassOrder).map(({ code, name, passengerLimit, luggageLimit }) => ({ code, name, passengerLimit, luggageLimit })),
     };
   }
 

@@ -1,0 +1,196 @@
+{
+  "startedAt": "2026-10-07T19:06:49.476Z",
+  "baseUrl": "http://localhost:5175",
+  "dataMode": "mysql",
+  "testEmail": "ascenta.browser.muyhb9qa-f2dfb6@example.invalid",
+  "fixturePolicy": "One explicitly identified local test account and journey request; no external email or dispatch.",
+  "checks": [
+    {
+      "name": "Empty journey fields prevent navigation",
+      "passed": true
+    },
+    {
+      "name": "Home starter transfers its draft to booking",
+      "passed": true
+    },
+    {
+      "name": "Authentication preserves the return route",
+      "passed": true
+    },
+    {
+      "name": "Registration explicitly uses local verification without sending email",
+      "passed": true
+    },
+    {
+      "name": "Express creates the local account",
+      "passed": true
+    },
+    {
+      "name": "Verification token is absent from browser storage",
+      "passed": true
+    },
+    {
+      "name": "Account email verification succeeds",
+      "passed": true
+    },
+    {
+      "name": "Journey and flight draft survive registration, verification, and sign-in",
+      "passed": true
+    },
+    {
+      "name": "Vehicle preference survives authentication",
+      "passed": true
+    },
+    {
+      "name": "Passenger notes survive authentication",
+      "passed": true
+    },
+    {
+      "name": "MySQL-backed API returns a journey request reference",
+      "passed": true
+    },
+    {
+      "name": "Journey creation succeeds through Express",
+      "passed": true
+    },
+    {
+      "name": "Dashboard retains notes and flight details",
+      "passed": true
+    },
+    {
+      "name": "Authenticated mobile dashboard has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "Authenticated session and journey survive a full document reload",
+      "passed": true
+    },
+    {
+      "name": "Logout revokes the server session",
+      "passed": true
+    },
+    {
+      "name": "Signed-out dashboard hides account requests",
+      "passed": true
+    },
+    {
+      "name": "No JavaScript exceptions in the complete account and booking flow",
+      "passed": true
+    },
+    {
+      "name": "No application console errors in the complete flow",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "journey-review-before-auth.png",
+    "email-verified.png",
+    "journey-saved.png",
+    "dashboard-desktop.png",
+    "dashboard-mobile.png",
+    "account.png"
+  ],
+  "apiResponses": [
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/register",
+      "status": 202
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/verify-email",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/login",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/reservations",
+      "status": 201
+    },
+    {
+      "url": "http://localhost:5175/api/v1/reservations",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/reservations",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/logout",
+      "status": 204
+    },
+    {
+      "url": "http://localhost:4000/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    }
+  ],
+  "jsErrors": [],
+  "consoleErrors": [],
+  "success": true,
+  "reference": "ASC-ADD3E00969124EA9",
+  "finishedAt": "2026-10-07T19:07:16.561Z"
+}

@@ -1,0 +1,309 @@
+{
+  "comparedAt": "2026-10-07T19:24:14.733Z",
+  "referenceCapturedAt": "2026-10-07T18:58:17.721Z",
+  "currentCapturedAt": "2026-10-07T19:22:38.415Z",
+  "referenceDataMode": "demo",
+  "currentDataMode": "demo",
+  "thresholds": {
+    "channelTolerance": 12,
+    "maximumChangedPixelRatio": 0.04,
+    "maximumMeanChannelError": 1.6
+  },
+  "comparisons": [
+    {
+      "route": "/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "home-mobile",
+      "passed": true,
+      "referenceSha256": "40f67d5b0f3db59c5d903413c31e6a2be3f89f38baf001271551230bd7ffaf6c",
+      "currentSha256": "40f67d5b0f3db59c5d903413c31e6a2be3f89f38baf001271551230bd7ffaf6c",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capture": "home-desktop",
+      "passed": true,
+      "referenceSha256": "4825c44250f76900a0aaf7aedae17da19bf2873e9f3ffa83e54ecb280576131b",
+      "currentSha256": "4825c44250f76900a0aaf7aedae17da19bf2873e9f3ffa83e54ecb280576131b",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/services",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "services-mobile",
+      "passed": true,
+      "referenceSha256": "1461444faa7b8ca0824d01dac1de23e664b259b5a81cbf65c78c89270c593be9",
+      "currentSha256": "1461444faa7b8ca0824d01dac1de23e664b259b5a81cbf65c78c89270c593be9",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/services",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capture": "services-desktop",
+      "passed": true,
+      "referenceSha256": "5779e138ec9e663988035f01a8bc2e97111e750c8be10f8ada151c4cc5208999",
+      "currentSha256": "5779e138ec9e663988035f01a8bc2e97111e750c8be10f8ada151c4cc5208999",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/fleet",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "fleet-mobile",
+      "passed": true,
+      "referenceSha256": "a1ca0cb284b3e613545b43ec462f52cdb88489a5a8d25e7b7352ea863f0d0c3f",
+      "currentSha256": "a1ca0cb284b3e613545b43ec462f52cdb88489a5a8d25e7b7352ea863f0d0c3f",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/fleet",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capture": "fleet-desktop",
+      "passed": true,
+      "referenceSha256": "f9f4dd60c6225755f6def2487cfe12d93912ad9356b9075626e97fef49d5f6d5",
+      "currentSha256": "f9f4dd60c6225755f6def2487cfe12d93912ad9356b9075626e97fef49d5f6d5",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/business",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "business-mobile",
+      "passed": true,
+      "referenceSha256": "74be4b45cc2311030496bfa1d9e83e54e99b0bfa72c376ae63424ff93600492f",
+      "currentSha256": "74be4b45cc2311030496bfa1d9e83e54e99b0bfa72c376ae63424ff93600492f",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/business",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capture": "business-desktop",
+      "passed": true,
+      "referenceSha256": "80eef45bcb606b8ed4c3aeadbf6d7514323cdcf01e40fcec44e0f1631f3ab623",
+      "currentSha256": "80eef45bcb606b8ed4c3aeadbf6d7514323cdcf01e40fcec44e0f1631f3ab623",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/contact",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "contact-mobile",
+      "passed": true,
+      "referenceSha256": "e9e211f4df2e493d6899a03d24ac41d17bf5260f3e8dc9547759ef4f15a3ebed",
+      "currentSha256": "e9e211f4df2e493d6899a03d24ac41d17bf5260f3e8dc9547759ef4f15a3ebed",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/contact",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capture": "contact-desktop",
+      "passed": true,
+      "referenceSha256": "1c76a577d96007de3eb3f2d54835fe7f7b2942a17b1b6a02ac140be396dfc560",
+      "currentSha256": "1c76a577d96007de3eb3f2d54835fe7f7b2942a17b1b6a02ac140be396dfc560",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/help",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "help-mobile",
+      "passed": true,
+      "referenceSha256": "750a836b9c6b5b80e76a8a7459a7b54b1c2a574923803f21c4020475f664864a",
+      "currentSha256": "750a836b9c6b5b80e76a8a7459a7b54b1c2a574923803f21c4020475f664864a",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/help",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capture": "help-desktop",
+      "passed": true,
+      "referenceSha256": "52e4703d3dff8d28524d2f3d3d56bc1946164e1f3646e2dd270bda25c3794fa1",
+      "currentSha256": "52e4703d3dff8d28524d2f3d3d56bc1946164e1f3646e2dd270bda25c3794fa1",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/privacy",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "privacy-mobile",
+      "passed": true,
+      "referenceSha256": "cf49ed6ebe062c339884c190c61b7d6705dc80597aa533d5dc4b9120b2cc26a7",
+      "currentSha256": "cf49ed6ebe062c339884c190c61b7d6705dc80597aa533d5dc4b9120b2cc26a7",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/privacy",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capture": "privacy-desktop",
+      "passed": true,
+      "referenceSha256": "901e25884f6c442b8724d9d6f0188aa8e6daad0fe2a4ad5dc1686a6be4a2283b",
+      "currentSha256": "901e25884f6c442b8724d9d6f0188aa8e6daad0fe2a4ad5dc1686a6be4a2283b",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/terms",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "terms-mobile",
+      "passed": true,
+      "referenceSha256": "ef62ba5420e9bea3bcf23e7af0db122b6681fdc4860d1c4fe4dae772582a7f26",
+      "currentSha256": "ef62ba5420e9bea3bcf23e7af0db122b6681fdc4860d1c4fe4dae772582a7f26",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/terms",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capture": "terms-desktop",
+      "passed": true,
+      "referenceSha256": "2c0c6f093743d2a16fece41c3e065869301bd7538866b150597effba041338d0",
+      "currentSha256": "2c0c6f093743d2a16fece41c3e065869301bd7538866b150597effba041338d0",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/booking",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "booking-mobile",
+      "passed": true,
+      "referenceSha256": "3fcaa041bb792409eadb5fe8227f32a12ba6a7e1d87ca031b001b200ee25f3a7",
+      "currentSha256": "3fcaa041bb792409eadb5fe8227f32a12ba6a7e1d87ca031b001b200ee25f3a7",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/booking",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capture": "booking-desktop",
+      "passed": true,
+      "referenceSha256": "2cf86410bae725eb28c6e3b4f3808fb422ef44afe0025be9c8d0468ecda3e639",
+      "currentSha256": "2cf86410bae725eb28c6e3b4f3808fb422ef44afe0025be9c8d0468ecda3e639",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/login",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "login-mobile",
+      "passed": true,
+      "referenceSha256": "fe5239c1b8cadeaa1e2cf011f1b700db0db2eed85bde2fcb332000ea7b573fc1",
+      "currentSha256": "fe5239c1b8cadeaa1e2cf011f1b700db0db2eed85bde2fcb332000ea7b573fc1",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0,
+      "exactPixels": true
+    },
+    {
+      "route": "/login",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capture": "login-desktop",
+      "passed": true,
+      "referenceSha256": "d8217561c2662af0efbf921b609051e62e7de43cf2e47c6a3211205d7f0ea8e7",
+      "currentSha256": "a2a9523cf5c5dee8df55ca872716934800653f184c8ee8a6cfc4f00a91f0d141",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0.00000625,
+      "exactPixels": false
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capture": "home-footer",
+      "passed": true,
+      "referenceSha256": "a90668bb03491c149d36e6959b10092568ebb251c7de1c2ce1abcbad11910dce",
+      "currentSha256": "92b10e4ad48ff696e4413e50b0e4fb618696926d99b3b117dbb3a2c6c3053e00",
+      "changedPixelRatio": 0,
+      "meanChannelError": 0.0018583333333333334,
+      "exactPixels": false
+    }
+  ],
+  "passed": true
+}

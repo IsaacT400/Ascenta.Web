@@ -1,0 +1,83 @@
+{
+  "startedAt": "2026-10-07T19:22:53.638Z",
+  "dataMode": "demo",
+  "checks": [
+    {
+      "name": "Corporate page includes organization requests and excludes personal requests",
+      "passed": true
+    },
+    {
+      "name": "Corporate reference search filters the visible list",
+      "passed": true
+    },
+    {
+      "name": "CSV download contains only the authorized filtered selection",
+      "passed": true
+    },
+    {
+      "name": "CSV protects spreadsheet formula values",
+      "passed": true
+    },
+    {
+      "name": "Corporate search has a clear empty state",
+      "passed": true
+    },
+    {
+      "name": "History filter excludes open requests",
+      "passed": true
+    },
+    {
+      "name": "All filter restores open organization requests",
+      "passed": true
+    },
+    {
+      "name": "Corporate usage route preserves the authorized organization list",
+      "passed": true
+    },
+    {
+      "name": "Corporate mobile layout has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "Corporate account cannot access administrator requests",
+      "passed": true
+    },
+    {
+      "name": "Administrator queue includes authorized organization and personal requests",
+      "passed": true
+    },
+    {
+      "name": "Administrator search filters by reference",
+      "passed": true
+    },
+    {
+      "name": "Administrator status filter excludes unmatched open requests",
+      "passed": true
+    },
+    {
+      "name": "Administrator status filter restores matching requests",
+      "passed": true
+    },
+    {
+      "name": "Administrator mobile layout has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "No JavaScript or console errors in authorized portal flows",
+      "passed": true
+    }
+  ],
+  "jsErrors": [],
+  "consoleErrors": [],
+  "screenshots": [
+    "corporate-desktop.png",
+    "corporate-usage-desktop.png",
+    "corporate-mobile.png",
+    "admin-desktop.png",
+    "admin-mobile.png"
+  ],
+  "success": true,
+  "corporateReference": "ASC-B6D4843031114B3B",
+  "personalReference": "ASC-6BA3A5B3683B4AF2",
+  "finishedAt": "2026-10-07T19:23:14.119Z"
+}

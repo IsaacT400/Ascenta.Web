@@ -1,10 +1,12 @@
-import "dotenv/config";
+import { config } from "dotenv";
 import { z } from "zod";
+
+config({ path: new URL("../../../.env", import.meta.url), quiet: true });
 
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   API_PORT: z.coerce.number().int().min(1).max(65535).default(4000),
-  WEB_ORIGIN: z.string().url().default("http://localhost:5173"),
+  WEB_ORIGIN: z.string().url().default("http://localhost:5175"),
   SESSION_COOKIE_NAME: z.string().min(1).default("ascenta_session"),
   CSRF_COOKIE_NAME: z.string().min(1).default("ascenta_csrf"),
   SESSION_TTL_HOURS: z.coerce.number().positive().max(168).default(12),
@@ -25,6 +27,9 @@ export type AppConfig = {
 
 export function loadConfig(source: NodeJS.ProcessEnv = process.env): AppConfig {
   const env = envSchema.parse(source);
+  if (env.NODE_ENV === "production" && env.DATA_MODE === "demo") {
+    throw new Error("DATA_MODE=demo is available only for explicit local development or tests.");
+  }
   return {
     nodeEnv: env.NODE_ENV,
     port: env.API_PORT,

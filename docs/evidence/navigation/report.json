@@ -1,0 +1,38 @@
+{
+  "startedAt": "2026-10-07T19:13:01.465Z",
+  "snapshots": [
+    {
+      "label": "services",
+      "url": "/services",
+      "scrollY": 0,
+      "header": "light"
+    },
+    {
+      "label": "home anchor",
+      "url": "/#experience",
+      "scrollY": 742,
+      "anchorTop": 108,
+      "header": "dark"
+    },
+    {
+      "label": "help",
+      "url": "/help",
+      "scrollY": 0,
+      "header": "light"
+    },
+    {
+      "label": "back home anchor",
+      "url": "/#experience",
+      "scrollY": 742,
+      "anchorTop": 108,
+      "header": "dark"
+    },
+    {
+      "label": "forward help",
+      "url": "/help",
+      "scrollY": 0,
+      "header": "light"
+    }
+  ],
+  "success": true
+}

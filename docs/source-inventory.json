@@ -1,0 +1,1628 @@
+{
+  "sourceRoot": "C:/Users/isaac/OneDrive/Desktop/Ascenta.Web",
+  "sourceCommit": "0e3177e",
+  "recoveryCommit": "f1cacb3",
+  "recoveryBranch": "recovery/local-reference",
+  "workBranch": "refactor/ascenta-react-node-mysql",
+  "externalRecovery": "C:/Users/isaac/OneDrive/Desktop/Ascenta-recovery-20261007-145218",
+  "files": [
+    {
+      "original": ".env.example",
+      "bytes": 492,
+      "sha256": "082af67bb7bad84ef89de459af5d2705349c09102a3dc6eeff118366c8cc8523",
+      "target": ".env.example",
+      "disposition": "reused"
+    },
+    {
+      "original": ".github/workflows/ci.yml",
+      "bytes": 1623,
+      "sha256": "20e1f3be3b60b07fc303205bc232649bdecfafed6557ae8bd12e98fee80e6dd3",
+      "target": ".github/workflows/ci.yml",
+      "disposition": "reused"
+    },
+    {
+      "original": ".gitignore",
+      "bytes": 738,
+      "sha256": "2677697e55bfe1d959ace3c2493a5fff85150dc0f78e8996e1046075ce2e4a9a",
+      "target": ".gitignore",
+      "disposition": "reused"
+    },
+    {
+      "original": ".npmrc",
+      "bytes": 48,
+      "sha256": "7cd80af2e968119afd7b1803b6ac51b51ea010b8da57c3606ea1ef8071a86068",
+      "target": ".npmrc",
+      "disposition": "reused"
+    },
+    {
+      "original": "01_ASCENTA_SCRIPT_MAESTRO_CODEX_v2.docx",
+      "bytes": 8511866,
+      "sha256": "9b9f7c654f9ed180f1ee4d7525427b935a7241caca255c4cdf645fd00dd95081",
+      "target": "01_ASCENTA_SCRIPT_MAESTRO_CODEX_v2.docx",
+      "disposition": "reused"
+    },
+    {
+      "original": "apps/api/package.json",
+      "bytes": 1050,
+      "sha256": "31efccbf39f4b21571e7ccc19a551284d8d019552b77b6f41c50be29614075a8",
+      "target": "apps/api/package.json",
+      "disposition": "reused"
+    },
+    {
+      "original": "apps/api/src/app.ts",
+      "bytes": 8806,
+      "sha256": "5e04480465a95c3aa7de294ff64e696bd993dbcfd1595ad1f86ef51ef6f10cac",
+      "target": "apps/api/src/app.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "apps/api/src/config.ts",
+      "bytes": 1337,
+      "sha256": "7c3646fd41adf2fce53df68e70710731d1e5d8ffe1e89a02d94d590e87654bfb",
+      "target": "apps/api/src/config.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "apps/api/src/demo-repository.ts",
+      "bytes": 6928,
+      "sha256": "3b8c560f155eb04ee1dba8d9f8440fde5395c28f3a6345b83874c736ee6f4b89",
+      "target": "apps/api/src/demo-repository.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "apps/api/src/express.d.ts",
+      "bytes": 225,
+      "sha256": "71446f28fc2d8ee269b536e6372a673b976d110d7d2bcd98d42d5d6dea3e771b",
+      "target": "apps/api/src/express.d.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "apps/api/src/http-error.ts",
+      "bytes": 226,
+      "sha256": "8005192ebecbfd34d3600fdf8c6dd3dfe2a7614705810520389192a7cf8528a4",
+      "target": "apps/api/src/http-error.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "apps/api/src/mysql-repository.ts",
+      "bytes": 10352,
+      "sha256": "830edf073868bd0f22f9477b01abdb5d64f4024adc510efea9a3d1c3ae657b78",
+      "target": "apps/api/src/mysql-repository.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "apps/api/src/repository.ts",
+      "bytes": 1324,
+      "sha256": "9b63cf999a414250d271fc93da3dec421cd59db964d6abed46debaa0632db90e",
+      "target": "apps/api/src/repository.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "apps/api/src/security.ts",
+      "bytes": 556,
+      "sha256": "38c92ead661ebdfbd4c9ef3a0f34692a2c4ec2f23bac18761a0045700337ead3",
+      "target": "apps/api/src/security.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "apps/api/src/server.ts",
+      "bytes": 858,
+      "sha256": "c0b9084150528d774eb73fe3c404be066924421f1ad487d3d20c55ac1be4a4a4",
+      "target": "apps/api/src/server.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "apps/api/tsconfig.build.json",
+      "bytes": 253,
+      "sha256": "0ec08bd8026dc7b29863b883a58308335b7de479e426b3d3d293ffe70decdc20",
+      "target": "apps/api/tsconfig.build.json",
+      "disposition": "reused"
+    },
+    {
+      "original": "apps/api/tsconfig.json",
+      "bytes": 379,
+      "sha256": "edd798841c5d92fc2b3cdd547edd9aa491dcdcfca6ef73cce7b2382b172b7fe2",
+      "target": "apps/api/tsconfig.json",
+      "disposition": "reused"
+    },
+    {
+      "original": "apps/api/vitest.integration.config.ts",
+      "bytes": 204,
+      "sha256": "ba194b844c78e0045564c518b0e8673a66fab6437e6991014081f46857e08cf6",
+      "target": "apps/api/vitest.integration.config.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "apps/web/.openai/hosting.json",
+      "bytes": 35,
+      "sha256": "d2841f8a91a91bab4f4a1e27671e7d3fe8f02261eb41996f43ac61e6970a9d74",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/app/account/page.tsx",
+      "bytes": 118,
+      "sha256": "a7e43c20f3369dae90a8f908feefc7732ffc941ead2b1a52f6bb54aaeeb98cee",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/admin/page.tsx",
+      "bytes": 128,
+      "sha256": "3d1989fa9ac49ea5e64afb4e93874d1f785dc62e3df09b4e7dbfbd80ed3220e5",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/ascenta.css",
+      "bytes": 61823,
+      "sha256": "d1c2de3b38119cc33d5f357c290c8af73a0a66e5035da3c120c77f970b59ae3d",
+      "target": "apps/web/src/styles/ascenta.css",
+      "disposition": "migrated",
+      "preserveBytes": true
+    },
+    {
+      "original": "apps/web/app/booking/page.tsx",
+      "bytes": 119,
+      "sha256": "325568968130dc5b6bcd66c010f1530a17ff7bb4d07b0c7f90ba7fd823fc762f",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/business/page.tsx",
+      "bytes": 119,
+      "sha256": "1abbad28984753dc2047106c7dfb6b6bc63cfcd2ba1c2cab083a7d7b7879707b",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/chatgpt-auth.ts",
+      "bytes": 2640,
+      "sha256": "e19651c2d1db12696883ae3eb79d4f09dce249f7afa1144a62d544e2e18299ca",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/app/contact/page.tsx",
+      "bytes": 117,
+      "sha256": "6f1afb94250af986d89c76fe207000b2a0b340b2a9402b1da236debc9a0016f7",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/corporate/page.tsx",
+      "bytes": 130,
+      "sha256": "09efd44d996973d19fe81110de7907b70738f57f8865607409d93953da4f5b1e",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/corporate/usage/page.tsx",
+      "bytes": 130,
+      "sha256": "09efd44d996973d19fe81110de7907b70738f57f8865607409d93953da4f5b1e",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/dashboard/page.tsx",
+      "bytes": 120,
+      "sha256": "92ef24a1e84f164dfdd20c4588baf52070f98dc06507e895c2bfe46fad5918b4",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/fleet/page.tsx",
+      "bytes": 113,
+      "sha256": "f2fef9b0b4f07d40dafa4086f8569800a2128783b4f4188cab83d628fdff2a7a",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/globals.css",
+      "bytes": 9633,
+      "sha256": "a037cffb249277a4fd3f0e389b4e632b3edb246b824ca8d15c51d5d7c88d7180",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/app/help/page.tsx",
+      "bytes": 111,
+      "sha256": "91790eade8797b6d074eba398db425e9583bed664d4c9439905cf375011dccd5",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/layout.tsx",
+      "bytes": 762,
+      "sha256": "2554bdefdab6ccc2c8dd421266de94b3331dc45663df775e8e7e4e9c7f7eca99",
+      "target": "apps/web/index.html",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/login/page.tsx",
+      "bytes": 110,
+      "sha256": "77bb2ac0637fc71ceeac91b539f544b85ff850f558a8a67e037f0bc75233b5d9",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/not-found.tsx",
+      "bytes": 123,
+      "sha256": "ce1b0458823d44d051b9fd76cc3f4f484aab97bcb2d9682f2e0f30cf2213d46b",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/page.tsx",
+      "bytes": 102,
+      "sha256": "46340bd87abe5127a1ca2ab8ffc8c3a196b3f500915b4195cb6347ccca18657c",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/privacy/page.tsx",
+      "bytes": 123,
+      "sha256": "0ea438693757783c189fcbe44efd4e6077e807a75b19015a190fb69f8bc2e2b0",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/services/page.tsx",
+      "bytes": 119,
+      "sha256": "a63353ffa127363edf4fafff1ca9e7e56d44c5154cd1e6def743dc4ae4fedb41",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/app/terms/page.tsx",
+      "bytes": 131,
+      "sha256": "8af7731141e4f3affabc71648cc4ac7209b5bd588362291820976bfe1b920837",
+      "target": "apps/web/src/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/build/sites-vite-plugin.LICENSE",
+      "bytes": 1084,
+      "sha256": "3dd119f149df88296e82981a51e5131b1018ba2e2f2f6f4bbec2b83d58a43a45",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/build/sites-vite-plugin.ts",
+      "bytes": 7415,
+      "sha256": "5b2d671313fe4ac10a1709e112d570da1267cb916f68655996a3ac3ea1dd80a9",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/cloudflare-env.d.ts",
+      "bytes": 105,
+      "sha256": "2ac980b29c91b8324a0d7864ec329c41e513fe81165aaffbc1220b8e85812759",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ascenta/adapter-api.test.ts",
+      "bytes": 5749,
+      "sha256": "320f242facb1d87173977c8333d3f0f3aa5254c692467047c9924118a623166b",
+      "target": "apps/web/src/components/ascenta/adapter-api.test.ts",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/ascenta/adapter-api.ts",
+      "bytes": 8078,
+      "sha256": "590b0276c86744cb61f67d89dee379145dae47c1f6a79dafae0e0024290995f3",
+      "target": "apps/web/src/components/ascenta/adapter-api.ts",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/ascenta/App.tsx",
+      "bytes": 483,
+      "sha256": "d8cfebedc75e1e25d95c8b7c5f23406711645377a8eb62f420e606e161207e38",
+      "target": "apps/web/src/components/ascenta/App.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/ascenta/auth.tsx",
+      "bytes": 12270,
+      "sha256": "64fb3f3c5e4c96241bbf9ddb693f05bbb34a8d8647acbc0b78de288bd821defa",
+      "target": "apps/web/src/components/ascenta/auth.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/ascenta/booking.tsx",
+      "bytes": 27968,
+      "sha256": "81cb084c69ba17783a6eaaddb7faaf3703efd18150e35a62fbb39301dc2eb15d",
+      "target": "apps/web/src/components/ascenta/booking.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/ascenta/chrome.tsx",
+      "bytes": 7053,
+      "sha256": "5ae500c51d36e23998744108d51b6245390ef981b1f39c091ec8d7c44c428be1",
+      "target": "apps/web/src/components/ascenta/chrome.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/ascenta/context.tsx",
+      "bytes": 9791,
+      "sha256": "293b377204f6f7aa85f94e8a11f5c251ea6a2b137412710469b2eea02078e745",
+      "target": "apps/web/src/components/ascenta/context.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/ascenta/home.tsx",
+      "bytes": 15206,
+      "sha256": "01edc7e06de2ade224d9c4db92efe8e91ff5a2ab4fd1ef442f7f3e450bcbc4da",
+      "target": "apps/web/src/components/ascenta/home.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/ascenta/operations.tsx",
+      "bytes": 4327,
+      "sha256": "bd5279742bf201b6b4fe4732356b4c3c982baf6f8cad89aecd2b32d246e7ad8c",
+      "target": "apps/web/src/components/ascenta/operations.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/ascenta/pages.tsx",
+      "bytes": 22746,
+      "sha256": "41c15b54fe728268e02e06deb04ca3e94e89af3ae0fd9aaab03fa34efba702a5",
+      "target": "apps/web/src/components/ascenta/pages.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/ascenta/platform.test.ts",
+      "bytes": 3733,
+      "sha256": "99e45adc0b5a6267082ff211d45bafbdce9075a665f5242061099f39dd59378f",
+      "target": "apps/web/src/components/ascenta/platform.test.ts",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/ascenta/platform.ts",
+      "bytes": 10789,
+      "sha256": "8675b29b9577363786f0decfc650f280ede17ef62d736b5d06c7060921534aff",
+      "target": "apps/web/src/components/ascenta/platform.ts",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/ascenta/portal.tsx",
+      "bytes": 13299,
+      "sha256": "98b078650e0ab455873ba09df6871d3364731a86eb773520a98e06b7a78ed63c",
+      "target": "apps/web/src/components/ascenta/portal.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/ascenta/types.ts",
+      "bytes": 1759,
+      "sha256": "7a1cf0d25f858efaf1b7a490cb5a053eae37e844a0e84b427b0f8c1add269052",
+      "target": "apps/web/src/components/ascenta/types.ts",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/ascenta/ui.tsx",
+      "bytes": 12889,
+      "sha256": "62955a4b4b0f49389be1bd9d74d2505f95cb50588762bb8e30ecd1d7107b35f6",
+      "target": "apps/web/src/components/ascenta/ui.tsx",
+      "disposition": "migrated"
+    },
+    {
+      "original": "apps/web/components/auth-gate.tsx",
+      "bytes": 1816,
+      "sha256": "80ba3649fabffea2bf93683737489fbd2348a10bb3e5535a4cc9f3288b92010a",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/booking-panel.tsx",
+      "bytes": 6302,
+      "sha256": "66bfce4ac48dae39e570e04acec6efd988121fda216c33d03a6cfa64985449a6",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/booking-wizard.tsx",
+      "bytes": 19411,
+      "sha256": "4c141afe6bfa5b1ace45a7772c829be16ad8de856d1b6459ef8359475362b5aa",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/catalog-choices.tsx",
+      "bytes": 3197,
+      "sha256": "b99dd6462650dfce71c6609ba475951517758185d8ec654bf8b68139603c0030",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/count-metric.tsx",
+      "bytes": 1658,
+      "sha256": "a1cfb1460a1c665293ad677256e7253f20a05bc2ac811a5a28f4fa1f2b170982",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/customer-requests.tsx",
+      "bytes": 3668,
+      "sha256": "9970a17c9ce97ab7fd956d12d305a1233c11273a602ae04a41649561b0bf008a",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/dashboard-shell.tsx",
+      "bytes": 5324,
+      "sha256": "c698380a837fcbf34076caddf917fe731e6fdb3b13ef52f14b8a402f56fe68b8",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/home-experience.tsx",
+      "bytes": 13609,
+      "sha256": "ae2f7fc715e289a22343afeff2a22e5cc5ba70cfbcf7e7b5b7cfc6b773e3875a",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/home-scroll-motion.tsx",
+      "bytes": 1824,
+      "sha256": "3c97ce7f3be695161b8b1aee79b1755417b479a1c86eaedd02981bd03764a60e",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/operations-queue.tsx",
+      "bytes": 3826,
+      "sha256": "2fd5fae6553311de6b1ff3c8dcfb6d05dee7e1ce9ccfc01c75a045187964ae97",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/page-hero.tsx",
+      "bytes": 897,
+      "sha256": "c8abd23b834c13f2b6dcaafb82ab0eb4c9a53b5accdbc71d03d544cdc49e603c",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/page-transition.tsx",
+      "bytes": 255,
+      "sha256": "4c7e1513df17921e94b5ff3ec04f8e2bc18c7f373150fe18328ece8c916b1c8d",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/reveal.tsx",
+      "bytes": 1805,
+      "sha256": "03fe3d9a9a512ddd62f481eff90f0156e618284b0074b18872d6604e02221899",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/site-footer.tsx",
+      "bytes": 1896,
+      "sha256": "d41487e5002a79eab53d16cf304ffae6068276dadc47f3206400e77464261d19",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/site-header.tsx",
+      "bytes": 3896,
+      "sha256": "771bc139a127d6dac13ab884dadb104425719d825ead3390f094d6382273434c",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/stat-card.tsx",
+      "bytes": 1049,
+      "sha256": "14f54f2da041023a5bc074575cfffc66479f75422ed7e36b425fc0514268803e",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/accordion.tsx",
+      "bytes": 2114,
+      "sha256": "810fded6b5f4f1d92370c8fa84b130cd9f26f1f37e30b1efcb48330338d91a70",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/alert-dialog.tsx",
+      "bytes": 5635,
+      "sha256": "1ca7530a1f4727642aa96c619a320bc21488eb3bd6cf00666ef6fa3b1e346de0",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/alert.tsx",
+      "bytes": 1680,
+      "sha256": "a36704ebac55c71e83302b1557d6bf188bb59552a46ea4e564acb4c913976926",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/aspect-ratio.tsx",
+      "bytes": 285,
+      "sha256": "cdcb1701d142b15ad09bd3982493b82c5eb17e6512b8d0719325e6e723850bbd",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/attachment.tsx",
+      "bytes": 6206,
+      "sha256": "c79fd808704543da1df455bbbdbcac7031979e126bafeadd2d5c97513b426159",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/avatar.tsx",
+      "bytes": 3025,
+      "sha256": "d37287410ad1f496bcbd788f94245542984e3a124008d9dc72f92afa0f96de27",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/badge.tsx",
+      "bytes": 1824,
+      "sha256": "9f25d280c75ac367fb5bbeea5f2f0f0fe10be226e364678b065069ec62dfaa06",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/breadcrumb.tsx",
+      "bytes": 2459,
+      "sha256": "1d179a7717f52c7aaceed5a305a4be38f3fc08c3aaf0f593de718ecb59b25ca1",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/bubble.tsx",
+      "bytes": 4824,
+      "sha256": "df3ead10c41081e73ef64e60cbff3f4ad7740af9fd2c21784294dee1504cbbc1",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/button-group.tsx",
+      "bytes": 2285,
+      "sha256": "90f87a3b4398540a58d8fb05559df0939d8073a7550a8af646d86c97145dd00e",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/button.tsx",
+      "bytes": 2456,
+      "sha256": "38447e736fdb7524f96f4adb6eada4ff9e4e68cf9eeb2415c357544ff347e8a3",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/calendar.tsx",
+      "bytes": 8052,
+      "sha256": "0349754fe228253ae94ba9f641d903fdb5917b502bef2087f8f5c6b0a93326ba",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/card.tsx",
+      "bytes": 2079,
+      "sha256": "d213fee777a9c38c3276b0e6b14707987302b83308baf4656dc1d5ae0610053f",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/carousel.tsx",
+      "bytes": 5797,
+      "sha256": "45c8d7786dcbc4e08ed3506fb8946f1c8abf1fa720b228792fe8430a56f3da6a",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/chart.tsx",
+      "bytes": 10991,
+      "sha256": "f60244582b56d42fb6631f9ac7026f3ea421d8cc31bfdda0e7727cae2a064687",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/checkbox.tsx",
+      "bytes": 1246,
+      "sha256": "afcdd47885bdfa92997ef8da0fe231ae19b728594f7448eb437f7d7e94fc5b4f",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/collapsible.tsx",
+      "bytes": 828,
+      "sha256": "c3649a69d53668fcceba2d83c97a3146fc2930a00c30fe281875238384e7bff2",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/combobox.tsx",
+      "bytes": 9468,
+      "sha256": "63f37425ab8eac82374dcb9d7ac4fec1406ffabd1c64006c59800f295fd43f6c",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/command.tsx",
+      "bytes": 5002,
+      "sha256": "67bc4de1f69b46c405ea1209a40a9b08a2e301aa8d36d3c54ce1b05c3039eb6e",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/context-menu.tsx",
+      "bytes": 8520,
+      "sha256": "0e0f98b6cf175912c541330f3b492476f8fa2712f13f265e8779ad0b93437d16",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/dialog.tsx",
+      "bytes": 4461,
+      "sha256": "7ba15f4c9dd993977d4d3dc70aef92d3e95548a32e5edc6f268c44921bbc15e8",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/direction.tsx",
+      "bytes": 528,
+      "sha256": "cd2c00d9757eea6dcf3242d71de8f397d29291a67fba5c39fb03c4c60746f36c",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/drawer.tsx",
+      "bytes": 4390,
+      "sha256": "9c21e1c99e256689192ab009f461568ea9ea99137b3b0e3010f56b7ee2bbd444",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/dropdown-menu.tsx",
+      "bytes": 8675,
+      "sha256": "fe670b2a67ac46915410a17cd5e4d529be2424c1b0fd8b8f41c178ac53ff6c3b",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/empty.tsx",
+      "bytes": 2500,
+      "sha256": "1523589e7664f743fc6cddf7daa7b7c030fbac6c5613a80f79478562277eda56",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/field.tsx",
+      "bytes": 6407,
+      "sha256": "ae5a1b6af5009609b3855acea85cf6cee9dd2698304d61995df458145319be53",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/form.tsx",
+      "bytes": 3924,
+      "sha256": "27d0cc0e59d9102f5287e857a5bf489e9cdd66f4d53cbfac8d0d967c7f2835b7",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/hover-card.tsx",
+      "bytes": 1570,
+      "sha256": "ce70a075f5422d9055eff971f1214b820806637d9fbce235df83206d1448cdb3",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/input-group.tsx",
+      "bytes": 5235,
+      "sha256": "dd5a0fc5dd10d7a829041ca19a3b8f040758761f657783dbae632c851ad10044",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/input-otp.tsx",
+      "bytes": 2331,
+      "sha256": "aa8d62769d9e9a0bf40aec5aa427a3a34be5852a6f61b390aa7aa5fa50ab3b46",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/input.tsx",
+      "bytes": 983,
+      "sha256": "44714284bdbafbf7634a4807eff5d6b493b5b5fc1a562a269a874de1eb50ea7c",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/item.tsx",
+      "bytes": 4679,
+      "sha256": "9ff8e5411d0684cb97a717c8c3498e6c11d56c21ce84dbcd6ba15f5167b1038b",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/kbd.tsx",
+      "bytes": 890,
+      "sha256": "087e34753566167ad99b8c69c6c0a3cfeaabf0d2a579e739ec1dd8d66910da1f",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/label.tsx",
+      "bytes": 630,
+      "sha256": "43e7cadacf1e0d71c1668dc388271656d2db8c4d45f2144d52d594f9aca31ca5",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/marker.tsx",
+      "bytes": 1933,
+      "sha256": "d94da269dd74ff4410393c57bd57bf965808314ce7cd5710e795a33f8b62240e",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/menubar.tsx",
+      "bytes": 8665,
+      "sha256": "1625b156556efa470d6a767596eb3237ece71fb5a799040f6921a367b1e26bc7",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/message-scroller.tsx",
+      "bytes": 4122,
+      "sha256": "abb2e962ef1d6952bb1caee7a135b079fedbd3833a1b871cd9079c880bbc0ffa",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/message.tsx",
+      "bytes": 2324,
+      "sha256": "a4a7f8a104559536a531e198d1a7a239cdd55748da74a0a3e2088f275e153287",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/native-select.tsx",
+      "bytes": 2057,
+      "sha256": "d62b4479c6419a37ee748b1a6536c51d6676a3a04afdea27619e6481b6cdb442",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/navigation-menu.tsx",
+      "bytes": 6826,
+      "sha256": "a42f6e39ce4b18d0cadfe91265b9419ddd8b157a9778a5ed754f45e72a902252",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/pagination.tsx",
+      "bytes": 2844,
+      "sha256": "9d9ba519da639b1993b7df95e8b0d394e8dc2c61fda7320c05ec1c5332ae56fb",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/popover.tsx",
+      "bytes": 2446,
+      "sha256": "2520e46424ba0ce4407c83c47cb717e1a5e7e51c26449b1eabeaeab779c05e76",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/progress.tsx",
+      "bytes": 787,
+      "sha256": "c6f42ff7f284ce9e965b1bad059dd401a951d6254e5070877b129ff8195c7707",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/radio-group.tsx",
+      "bytes": 1505,
+      "sha256": "45af968f5e426f9268a6623ccc55d67f1a0973742dd01f12917f981690d13a68",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/resizable.tsx",
+      "bytes": 1868,
+      "sha256": "bfb26b64a3c1d6e0a71bebe06738f209724588deb8ff3048a10f130ca920828a",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/scroll-area.tsx",
+      "bytes": 1697,
+      "sha256": "509e700a8f6a26386a0e61dcacc3f6b4fe42fa31c5444a2b27d9952e772b80fd",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/select.tsx",
+      "bytes": 6543,
+      "sha256": "f4434ef49e240b581e951cee362cb57e11e8a9bbbe4238395a034ba599ce298c",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/separator.tsx",
+      "bytes": 722,
+      "sha256": "8cdd3c705eb6b04bbe8fbe87cc5f193de72b17d85f02020f7e4e9bd206c50f59",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/sheet.tsx",
+      "bytes": 4331,
+      "sha256": "57d5e84b5b1ac6d1769dc53632b52236096140df8f3a4a10e8343bd73d186290",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/sidebar.tsx",
+      "bytes": 22249,
+      "sha256": "74ecebd633481b76e425e8b40c9cdad7e43c2872cd699d8a56690e889da9620b",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/skeleton.tsx",
+      "bytes": 289,
+      "sha256": "85957151311e53eb49bdb54f5e2e6d8ff4461b14d887d8073e0cde846d539691",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/slider.tsx",
+      "bytes": 2054,
+      "sha256": "deb4c937a6036d33236c8defcb6df42ba5886fef32dc1d67763eecfebcff5b69",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/sonner.tsx",
+      "bytes": 1074,
+      "sha256": "f4d2c855754828ceed89ad6455aa8082f80566d82c3ab79b8db5271c5102b632",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/spinner.tsx",
+      "bytes": 347,
+      "sha256": "cbf9073613aed22ffd4ba21219adc1d1b8dce311d4280800f772b5eae587eeff",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/switch.tsx",
+      "bytes": 1443,
+      "sha256": "21126011e315385b26ba57c494fa18553ac81f85f5814c3c9a79ff864ae66ee5",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/table.tsx",
+      "bytes": 2594,
+      "sha256": "02d16a0d04c4fd2990ef41d9c5963335aa0eec93d41518e18476656113894626",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/tabs.tsx",
+      "bytes": 3873,
+      "sha256": "3a200c6fa6d683681f066f1e9b3868ef22d3cf9d3d925d7364edae9900484aa3",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/textarea.tsx",
+      "bytes": 777,
+      "sha256": "d5084a2bc607d9e2322e440d36643610478982bc4ecd4ddf5ee2b805418e1198",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/toggle-group.tsx",
+      "bytes": 2391,
+      "sha256": "cf2efaaad5b80f1df4636a3e730fe0bfc25e55674fa37414c2f8f1ba02c20708",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/toggle.tsx",
+      "bytes": 1612,
+      "sha256": "961640a6cfdfd1cdfbc2196f6d4b8bc7a0606347769bc0d0d929bd50b6d86140",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/ui/tooltip.tsx",
+      "bytes": 1887,
+      "sha256": "2ed212576e61f83f86a4ea00d40751181e5889b2bf8d660eede5d0adee46cb76",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components/usage-matrix.tsx",
+      "bytes": 10382,
+      "sha256": "62a0a1e0953b91033be0d44a25327fb99a4242e42ae46226a72dd4dfa0e83687",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/components.json",
+      "bytes": 441,
+      "sha256": "820e913f34219d16b5e7ec5865df9c444bb5b8acf230db4e589d660e4a21743e",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/db/index.ts",
+      "bytes": 436,
+      "sha256": "effa59e46bcbb42dfb7b46911e809a1de0f2c37df1fd935e3dca89023eaf97e4",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/db/schema.ts",
+      "bytes": 173,
+      "sha256": "48b4f7fafee1f2720b8977ba31bc0cf03dedb7ea8826c4bcbc8dfd74f2d8744f",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/drizzle/meta/_journal.json",
+      "bytes": 66,
+      "sha256": "5a5f57f8f48fcf1d065725c0f3dab19e590e96e7e1e5bf8ddff17339a0de8d9a",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/drizzle.config.ts",
+      "bytes": 155,
+      "sha256": "73d0807c58e541dc3eaf175909fb5acc966faed61f74ff659d9d55027bf3e25b",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/eslint.config.mjs",
+      "bytes": 874,
+      "sha256": "8ca86af56c21d433c46bfebeb8980b64b6d4ffa0dc3cf3d2ec1ad923b983f38c",
+      "target": "apps/web/eslint.config.mjs",
+      "disposition": "replaced"
+    },
+    {
+      "original": "apps/web/examples/d1/app/api/notes/route.ts",
+      "bytes": 1758,
+      "sha256": "b0b134b9b0b4a9f5947abbd13fd4425b88b59c64f91db1aacb0cecbc16c38f45",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/examples/d1/db/schema.ts",
+      "bytes": 379,
+      "sha256": "1acd70317bcaf22cb140436fb47754c2144e7c2adfc59a3f427ecb1d816fa0f3",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/hooks/use-mobile.ts",
+      "bytes": 584,
+      "sha256": "d2377fbad5ad2bdf7fa896a68c36ac8bf4aa74a974b2061f77b41ae58d623001",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/lib/api-client.ts",
+      "bytes": 3480,
+      "sha256": "9b15fc52c3e218d124404e6771dbc60400208a4a47d4afa20fbb089e9ab8fb41",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/lib/journey-draft.ts",
+      "bytes": 4338,
+      "sha256": "88de0068c9500f22af2f4a8a9bac82a529404bb6f88949f709717a7526863486",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/lib/utils.ts",
+      "bytes": 183,
+      "sha256": "c2aa0cde88a8b5b5db7718003da1a345bdcce5f31085800b66ff0dddedfb0254",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/next.config.ts",
+      "bytes": 140,
+      "sha256": "a972c4f0ffa6dd714e7909b02d1ac19d2f2fe3d01f191efd2c5054bd6f142ec1",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/package.json",
+      "bytes": 2391,
+      "sha256": "78e025c1e680439c155f5bb7112afa46edd51fe5b002f37273c7c713f618e277",
+      "target": "apps/web/package.json",
+      "disposition": "replaced"
+    },
+    {
+      "original": "apps/web/postcss.config.mjs",
+      "bytes": 101,
+      "sha256": "7b299d3d3b16699ddda397c0b2373b3af4f25f8fc9ccc9b3d9e64ef083bc1c21",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/public/ascenta-logo.png",
+      "bytes": 839959,
+      "sha256": "96a919d1e3f926b71dcc82f04ab0caa0836d38dc3167df906378d89489bc92d4",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/public/brand/arrival-detail.webp",
+      "bytes": 61754,
+      "sha256": "5cfa9005c56ad196ec2a5267ca3206e3a6b91fe00a48a9fbde60834f8f9a76ff",
+      "target": "apps/web/public/brand/arrival-detail.webp",
+      "disposition": "reused",
+      "preserveBytes": true
+    },
+    {
+      "original": "apps/web/public/brand/favicon.png",
+      "bytes": 4533,
+      "sha256": "0da814dd0e8e025303dd88efd30b5759a7e8ad40ef81eb6e1a4a3cf5b7e3b92c",
+      "target": "apps/web/public/brand/favicon.png",
+      "disposition": "reused",
+      "preserveBytes": true
+    },
+    {
+      "original": "apps/web/public/brand/journey-hero.webp",
+      "bytes": 113340,
+      "sha256": "66d70816e34956863e9a9605496401f2b584c56a7aad064c2d973ef6526a3ff0",
+      "target": "apps/web/public/brand/journey-hero.webp",
+      "disposition": "reused",
+      "preserveBytes": true
+    },
+    {
+      "original": "apps/web/public/brand/logo-lockup.png",
+      "bytes": 369308,
+      "sha256": "84845463e473bc325cf0818697f7d5b56fd6c4450d10fe9e67b3cd8c23dde18f",
+      "target": "apps/web/public/brand/logo-lockup.png",
+      "disposition": "reused",
+      "preserveBytes": true
+    },
+    {
+      "original": "apps/web/public/brand/logo-wordmark.png",
+      "bytes": 184006,
+      "sha256": "9a0220932650de726fc77004da8218a0f8afe27e92ace9797e9a9918e4daed43",
+      "target": "apps/web/public/brand/logo-wordmark.png",
+      "disposition": "reused",
+      "preserveBytes": true
+    },
+    {
+      "original": "apps/web/public/brand/vehicle-detail.webp",
+      "bytes": 69652,
+      "sha256": "ca862ba41c38da1a8962c1c323c8a6118cd205e97202e3e8102aa5b4867845ee",
+      "target": "apps/web/public/brand/vehicle-detail.webp",
+      "disposition": "reused",
+      "preserveBytes": true
+    },
+    {
+      "original": "apps/web/public/favicon.svg",
+      "bytes": 251,
+      "sha256": "e410025402c56f31b9569a05d73a55cb22a2ad492e246dad46015c529cd603b5",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/public/file.svg",
+      "bytes": 393,
+      "sha256": "81a9ce5ca9bc60870c1d72c0fd5b98b2bc5c8c02b0e04fefeab9efcc11277228",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/public/globe.svg",
+      "bytes": 1037,
+      "sha256": "13187c071b4d369df3a7a179f69a927165bf624e1a524ee6c93b7d3be75d6fc8",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/public/window.svg",
+      "bytes": 387,
+      "sha256": "d3cd4bf0c1123258fcc266409856e28c93d4fc1cf8476702225e17842900ca63",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/scripts/build-verified.sh",
+      "bytes": 687,
+      "sha256": "61024a70b28a732585428398f58ca96331b6850642683bf4a35297974a0125f4",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/scripts/execution-profile.mjs",
+      "bytes": 640,
+      "sha256": "2581f6f47a0903d0d6cb3b26def05fae88026a7ae8c88f5d7dabe5dbcbd6ee32",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/scripts/install-ci.mjs",
+      "bytes": 1667,
+      "sha256": "7b211ba1d60beb4c899ac491f9de050b5dc4355ae1ffddebfb9794597125567d",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/scripts/install-ci.sh",
+      "bytes": 7705,
+      "sha256": "20c31683bd6c0c1e468a1c5337cce91369bbeb0f21cc176531bf9af3b5409d59",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/scripts/install-pnpm.sh",
+      "bytes": 9240,
+      "sha256": "88c00401d197e7dff5ce9a05c6a795c2de86c7675f3089293ae3a61bb94c14fd",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/scripts/pnpm-install.mjs",
+      "bytes": 10903,
+      "sha256": "cb6fe1aca71b0f6486fa6ed3afea11fc5c88d2496d98dffeb5bd0d272b6c7dac",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/scripts/run-framework.mjs",
+      "bytes": 1016,
+      "sha256": "72075798db6191995dee4e15ba5e0a5b0c23060ff0be4acc5be085062b27fcff",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/scripts/sites-env.mjs",
+      "bytes": 928,
+      "sha256": "4cb12e49c5eec402d920cd98d74ebc3267c9a38b0f63445a619d4271979dd774",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/scripts/sites-env.sh",
+      "bytes": 1582,
+      "sha256": "29bc00ff806de5fe25039b869e32e9a458e273555b139a09b4f9c1ed8f59df73",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/tsconfig.json",
+      "bytes": 847,
+      "sha256": "755d473a6eb4f384deb37066c554995d9af3d3eb1e5b566ee7fbbf80a9dda208",
+      "target": "apps/web/tsconfig.json",
+      "disposition": "replaced"
+    },
+    {
+      "original": "apps/web/vendor/shadcn-tailwind-4.13.0.css",
+      "bytes": 16670,
+      "sha256": "f221d959e80b4738fba93b4b4f01472b11cccaf6043ba7f6f9376f6768dad28e",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/vendor/shadcn-tailwind-4.13.0.LICENSE.md",
+      "bytes": 1084,
+      "sha256": "a14c2d6fb5ba9925cba04633226a3b93e6c5566ca6b550dbfaead7ab3fa93b24",
+      "target": null,
+      "disposition": "removed",
+      "reason": "Outside the active reference component tree or exclusive to the replaced renderer/tooling."
+    },
+    {
+      "original": "apps/web/vite.config.ts",
+      "bytes": 2308,
+      "sha256": "7c283af12e8cb19188c98d8571a0b68c3e5fee5a8e7749518754778dabd2a4cd",
+      "target": "apps/web/vite.config.ts",
+      "disposition": "replaced"
+    },
+    {
+      "original": "apps/web/vitest.config.ts",
+      "bytes": 156,
+      "sha256": "0f191712b9ed38a60b02d4e200630785891b71505f20131532d1799c9f0cb58d",
+      "target": "apps/web/vitest.config.ts",
+      "disposition": "replaced"
+    },
+    {
+      "original": "ARCHITECTURE.md",
+      "bytes": 3567,
+      "sha256": "b75eddd79e131a2c3a10eadc27263cadd072c15ec92180229c6b9b284442d6f1",
+      "target": "ARCHITECTURE.md",
+      "disposition": "reused"
+    },
+    {
+      "original": "compose.yaml",
+      "bytes": 805,
+      "sha256": "2cef67c2b39ce558c0a33496cc3259cb8ebb99910152e20741e82ff20b39ce32",
+      "target": "compose.yaml",
+      "disposition": "reused"
+    },
+    {
+      "original": "DECISIONS.md",
+      "bytes": 5636,
+      "sha256": "eb93e463790c5fab9b0c392e5c059b82ab39c31c2378f20a9a5fbfdfb902536d",
+      "target": "DECISIONS.md",
+      "disposition": "reused"
+    },
+    {
+      "original": "DESIGN_SYSTEM.md",
+      "bytes": 3557,
+      "sha256": "3f05d0d1dd1ffb38f49ecf9c6b2a5ce1a0f84372122348b32c4b77de2c35e8bf",
+      "target": "DESIGN_SYSTEM.md",
+      "disposition": "reused"
+    },
+    {
+      "original": "docs/API.md",
+      "bytes": 2274,
+      "sha256": "0fcd1bb68a6378ec1fad25936069df5d20d3e19995ef44288c69b8a64e70a1a1",
+      "target": "docs/API.md",
+      "disposition": "reused"
+    },
+    {
+      "original": "docs/ascenta/EXECUTION_STATE.md",
+      "bytes": 4077,
+      "sha256": "62b34e389acfa9a3dda8c1951a703a27faebebe779d98f5e29df7e00084b0800",
+      "target": "docs/MIGRATION_REPORT.md",
+      "disposition": "consolidated"
+    },
+    {
+      "original": "docs/ascenta/HTML_ADAPTATION.md",
+      "bytes": 4303,
+      "sha256": "82b204d3b4412c088a3ba45824e3309ab235eed1478ab9c67594bf23cdaa409b",
+      "target": "docs/MIGRATION_REPORT.md",
+      "disposition": "consolidated"
+    },
+    {
+      "original": "docs/DATABASE_MODEL.md",
+      "bytes": 2249,
+      "sha256": "0aaa416b75d136f2a5def6b15f8466240134f449bfcfede991b876a1462df5f0",
+      "target": "docs/DATABASE_MODEL.md",
+      "disposition": "reused"
+    },
+    {
+      "original": "docs/MIGRATION_MATRIX.md",
+      "bytes": 2582,
+      "sha256": "7e1bce0902fbd446944d6db247bd9192522ebd418baab80e3746af04e74b794b",
+      "target": "docs/MIGRATION_MATRIX.md",
+      "disposition": "reused"
+    },
+    {
+      "original": "docs/MIGRATION_REPORT.md",
+      "bytes": 5536,
+      "sha256": "a685f5603e2cd6f221ab86028e35466b538f881ca61ca565b2a5d130ccdb785f",
+      "target": "docs/MIGRATION_REPORT.md",
+      "disposition": "reused"
+    },
+    {
+      "original": "docs/openapi.yaml",
+      "bytes": 11010,
+      "sha256": "a48616fc389da1928b68475067f94cc7f5a1938be67cacac1c185593f351feba",
+      "target": "docs/openapi.yaml",
+      "disposition": "reused"
+    },
+    {
+      "original": "docs/PROJECT_INVENTORY.md",
+      "bytes": 4883,
+      "sha256": "cf6dbfc6dcc5d3657dd6c8c288bb4bc91532affff21c7bb8f70d50287223155d",
+      "target": "docs/PROJECT_INVENTORY.md",
+      "disposition": "reused"
+    },
+    {
+      "original": "package.json",
+      "bytes": 1448,
+      "sha256": "ae6419159de906da8f6f85e5d90c93f77644f669c90642c287d7770d06f7b428",
+      "target": "package.json",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/database/package.json",
+      "bytes": 792,
+      "sha256": "c16ee9daf3a521b89f382fc939d856b46201c62df0c937ca7589aa9f48ba63ad",
+      "target": "packages/database/package.json",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/database/prisma/migrations/20261003170000_initial_mysql/migration.sql",
+      "bytes": 10127,
+      "sha256": "f47afc11e91c61e47465338cf10f6fbacb36f6658c52ce358ae011def23766d0",
+      "target": "packages/database/prisma/migrations/20261003170000_initial_mysql/migration.sql",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/database/prisma/migrations/20261006130000_account_verification_and_passenger/migration.sql",
+      "bytes": 1287,
+      "sha256": "3b3280752691202308879b57a3adba194f9ec06895c13d7dfccb24b04e60b9fd",
+      "target": "packages/database/prisma/migrations/20261006130000_account_verification_and_passenger/migration.sql",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/database/prisma/migrations/migration_lock.toml",
+      "bytes": 55,
+      "sha256": "ef012d36a2113d4650020c9b74df11e96c23ca5f1e0684d5246fe015124d3df2",
+      "target": "packages/database/prisma/migrations/migration_lock.toml",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/database/prisma/schema.prisma",
+      "bytes": 10501,
+      "sha256": "52958d96d94dd9971f886cc59e3b3cfa33ecbeb50421f001cc5c9c359f49d996",
+      "target": "packages/database/prisma/schema.prisma",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/database/prisma/seed.ts",
+      "bytes": 4396,
+      "sha256": "83c570ee9829ad78636fec299f7a77ea09f85bf17c66079492749446ff289ce6",
+      "target": "packages/database/prisma/seed.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/database/prisma.config.ts",
+      "bytes": 505,
+      "sha256": "d8f064df0fb7868dd9bd6a9191075ae6ab16da89dc27238cd370de79453af9ca",
+      "target": "packages/database/prisma.config.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/database/src/index.ts",
+      "bytes": 1671,
+      "sha256": "ce100826ce2b76b8612796e20c4db73636aa43bc3cfafe400eedab9089e00a36",
+      "target": "packages/database/src/index.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/database/tsconfig.build.json",
+      "bytes": 319,
+      "sha256": "db4853ecd187b96dc2944bbac66c76f2eec265506cbd3a3b16a8aa2ea7b28fdd",
+      "target": "packages/database/tsconfig.build.json",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/database/tsconfig.json",
+      "bytes": 368,
+      "sha256": "ab9186413a51efb46530f4e4575813f81fbb253954cae0315220ac1744252b2a",
+      "target": "packages/database/tsconfig.json",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/shared/package.json",
+      "bytes": 466,
+      "sha256": "66b5063f767ae5c24e5158cfb83375d100f409bcd897795fde537efe09d5bf0a",
+      "target": "packages/shared/package.json",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/shared/src/index.test.ts",
+      "bytes": 861,
+      "sha256": "24532cbde56169a06eb92e3c3e3868f9ff356a1b3dcf1222c9fe3937e2104834",
+      "target": "packages/shared/src/index.test.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/shared/src/index.ts",
+      "bytes": 3860,
+      "sha256": "a1bca3794c1572ca24b017c46e537d04668465139445b1ce7cbea98e092a3951",
+      "target": "packages/shared/src/index.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/shared/tsconfig.build.json",
+      "bytes": 281,
+      "sha256": "11d6101568a3cba2ed900f0ad61af46c8855103e7dd5a679d76d3da29a2597a2",
+      "target": "packages/shared/tsconfig.build.json",
+      "disposition": "reused"
+    },
+    {
+      "original": "packages/shared/tsconfig.json",
+      "bytes": 255,
+      "sha256": "ec9284a6ed5c8c76c6f565e1823db6e9184ec4d1208a57b788ca5a0f66b85326",
+      "target": "packages/shared/tsconfig.json",
+      "disposition": "reused"
+    },
+    {
+      "original": "pnpm-lock.yaml",
+      "bytes": 432380,
+      "sha256": "10a2c32d9f4734e27c23fc03614f7769073f71057686db00eedf91a0894db6be",
+      "target": "pnpm-lock.yaml",
+      "disposition": "reused"
+    },
+    {
+      "original": "pnpm-workspace.yaml",
+      "bytes": 269,
+      "sha256": "03ba55754ac308055ed7f9936fad0a80f4bbc1cd8c1c48c19daf4de0e37b8d78",
+      "target": "pnpm-workspace.yaml",
+      "disposition": "reused"
+    },
+    {
+      "original": "PROJECT_BRIEF.md",
+      "bytes": 2689,
+      "sha256": "cbbee1e1e5ed763bfb18284bd2e18371491b39c2e64633c8ed2c0105cc0e30be",
+      "target": "PROJECT_BRIEF.md",
+      "disposition": "reused"
+    },
+    {
+      "original": "README.md",
+      "bytes": 4778,
+      "sha256": "e9632f6db8dc4936abfdc94d5bd230df048d8163bed7d5600e87833fa02ef2c1",
+      "target": "README.md",
+      "disposition": "reused"
+    },
+    {
+      "original": "ROADMAP.md",
+      "bytes": 3905,
+      "sha256": "32d04d4aceb9721577958aa4ba1a64e4edb866853a2ceffc7ce6bb376b0610bb",
+      "target": "ROADMAP.md",
+      "disposition": "reused"
+    },
+    {
+      "original": "tests/integration/api.test.ts",
+      "bytes": 8664,
+      "sha256": "d92cd4dd12d21bd5e9881e2dfb4403efe3f291c981fb9a4d1c3f18db49fadf5a",
+      "target": "tests/integration/api.test.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "tests/integration/mysql-api.test.ts",
+      "bytes": 2182,
+      "sha256": "5e1a1d6e4194be6f2ab7e047357d55e2f75f22fb37e9dc3c35ef9fb5c55e3e9e",
+      "target": "tests/integration/mysql-api.test.ts",
+      "disposition": "reused"
+    },
+    {
+      "original": "tests/visual/baseline-manifest.json",
+      "bytes": 840,
+      "sha256": "5cd51d343b91033044774bb317fe7cf75b6eb7740721731aab9b6b5dfce7e915",
+      "target": "tests/visual/baseline-manifest.json",
+      "disposition": "reused"
+    },
+    {
+      "original": "tests/visual/check-baseline-manifest.mjs",
+      "bytes": 1647,
+      "sha256": "1809cf75469be099b39185785f44466fe926efeb9494db1cfc4ddee701c779a7",
+      "target": "tests/visual/check-baseline-manifest.mjs",
+      "disposition": "reused"
+    },
+    {
+      "original": "tests/visual/README.md",
+      "bytes": 1030,
+      "sha256": "39a967137b1524e7f046d93446873fe2cc19c432be4b14ec573a06b2886b58fa",
+      "target": "tests/visual/README.md",
+      "disposition": "reused"
+    },
+    {
+      "original": "tests/visual/validation-2026-10-04.json",
+      "bytes": 3771,
+      "sha256": "6bd25628311c1c68ff3af7b560746ce2b5171802982af39522611cbe1b02e1be",
+      "target": "docs/evidence/reference/report.json",
+      "disposition": "replaced"
+    }
+  ]
+}

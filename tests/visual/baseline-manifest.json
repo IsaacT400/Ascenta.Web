@@ -1,23 +1,13 @@
 {
   "reference": {
-    "gitRef": "checkpoint/pre-react-node-mysql",
-    "commit": "1d2ca8b",
-    "note": "Recoverable pre-migration source of truth. No post-migration capture is accepted as the original baseline."
+    "date": "2026-10-07",
+    "dataMode": "demo",
+    "url": "http://localhost:5175",
+    "evidence": "docs/evidence/reference/report.json",
+    "description": "The running local application, captured before replacing its server."
   },
-  "routes": ["/", "/services", "/fleet", "/booking", "/login", "/dashboard", "/corporate", "/corporate/usage"],
-  "viewports": [
-    { "width": 390, "height": 844 },
-    { "width": 768, "height": 1024 },
-    { "width": 1024, "height": 768 },
-    { "width": 1440, "height": 900 },
-    { "width": 1920, "height": 1080 }
-  ],
-  "conditions": {
-    "browser": "Codex in-app Chromium browser through its Playwright API",
-    "scale": 1,
-    "settleTimeMs": 1800,
-    "prototypeData": true
-  },
-  "evidence": "validation-2026-10-04.json",
-  "status": "validated-local-with-documented-login-difference"
+  "routes": ["/", "/services", "/fleet", "/business", "/contact", "/help", "/privacy", "/terms", "/booking", "/login"],
+  "viewports": [{ "width": 390, "height": 844 }, { "width": 1440, "height": 1000 }],
+  "conditions": { "browser": "Isolated installed Microsoft Edge, CDP", "deviceScaleFactor": 1, "animations": "Unmodified; 550 ms settling after fonts and visible images" },
+  "comparison": { "channelTolerance": 12, "maximumChangedPixelRatio": 0.04, "maximumMeanChannelError": 1.6 }
 }

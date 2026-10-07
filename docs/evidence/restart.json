@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "procedure": "Final PowerShell scripts stopped web, API and dedicated MySQL, then restarted them without resetting data.",
+  "before": {
+    "observedAt": "2026-10-07T19:16:09.190Z",
+    "reference": "ASC-ADD3E00969124EA9",
+    "recordSha256": "bb482c6c46865cb4f7c8bf6bc73f57a66414cd4124771f66da1fdd55cf34ef23"
+  },
+  "after": {
+    "observedAt": "2026-10-07T19:25:29.123Z",
+    "reference": "ASC-ADD3E00969124EA9",
+    "recordSha256": "bb482c6c46865cb4f7c8bf6bc73f57a66414cd4124771f66da1fdd55cf34ef23"
+  },
+  "dataMode": "mysql"
+}

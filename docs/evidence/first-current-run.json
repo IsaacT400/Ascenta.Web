@@ -1,0 +1,56 @@
+{
+  "capturedAt": "2026-10-07T19:06:32.329Z",
+  "finishedAt": "2026-10-07T19:09:11.359Z",
+  "success": false,
+  "supersededBy": "current/report.json",
+  "reason": "This first run overlapped the Vite configuration restart; the clean final MySQL run has zero JS and console errors.",
+  "jsErrorEvents": 84999,
+  "groupedErrors": [
+    {
+      "context": "desktop /help",
+      "error": "TypeError: Cannot read properties of undefined (reading 'send')\n    at Object.send (http://localhost:5175/@vite/client:438:7)\n    at Object.send (http://localhost:5175/@vite/client:876:16)\n    at Object.send (http://localhost:5175/@vite/client:307:21)\n    at Object.send (http://localhost:5175/@vite/client:385:30)",
+      "occurrences": 1
+    },
+    {
+      "context": "desktop /help",
+      "error": "TypeError: Cannot read properties of undefined (reading 'send')\n    at Object.send (http://localhost:5175/@vite/client:438:7)\n    at Object.send (http://localhost:5175/@vite/client:876:16)\n    at Object.send (http://localhost:5175/@vite/client:307:21)\n    at Object.send (http://localhost:5175/@vite/client:385:30)\n    at sendError (http://localhost:5175/@vite/client:480:13)\n    at http://localhost:5175/@vite/client:519:4",
+      "occurrences": 63249
+    },
+    {
+      "context": "desktop /privacy",
+      "error": "TypeError: Cannot read properties of undefined (reading 'send')\n    at Object.send (http://localhost:5175/@vite/client:438:7)\n    at Object.send (http://localhost:5175/@vite/client:876:16)\n    at Object.send (http://localhost:5175/@vite/client:307:21)\n    at Object.send (http://localhost:5175/@vite/client:385:30)\n    at sendError (http://localhost:5175/@vite/client:480:13)\n    at http://localhost:5175/@vite/client:519:4",
+      "occurrences": 21749
+    }
+  ],
+  "consoleErrors": [
+    {
+      "context": "desktop /help",
+      "error": "[vite] failed to connect to websocket.\nyour current setup:\n  (browser) localhost:5175/ <--[HTTP]--> localhost:5175/ (server)\n  (browser) localhost:5175/ <--[WebSocket (failing)]--> localhost:5175/ (server)\nCheck out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr ."
+    }
+  ],
+  "failedRoutes": [
+    {
+      "name": "desktop /help",
+      "error": "Condition timed out: document.readyState === 'complete' && !!document.querySelector('main') && !!document.querySelector('.site-header')"
+    }
+  ],
+  "failedInteractions": [
+    {
+      "name": "Router hash links and browser back/forward preserve navigation",
+      "passed": false,
+      "error": "Condition timed out: location.pathname==='/'&&location.hash==='#experience'&&scrollY>100"
+    }
+  ],
+  "resolvedRegressions": [
+    {
+      "issue": "Browser back to /#experience restored scroll 0",
+      "resolution": "NavigationEffects no longer overwrites the saved position during effect cleanup",
+      "verifiedBy": "navigation/report.json and current/report.json"
+    },
+    {
+      "issue": "MySQL catalog sorted Executive Van before Premium SUV",
+      "resolution": "Repository preserves the original semantic catalog order",
+      "verifiedBy": "visual-equivalent/report.json and comparison.json"
+    }
+  ]
+}

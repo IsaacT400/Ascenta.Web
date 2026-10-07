@@ -5,6 +5,8 @@ import { MySqlRepository } from "./mysql-repository.js";
 
 const config = loadConfig();
 const repository = config.dataMode === "demo" ? new DemoRepository() : new MySqlRepository();
+// Fail before accepting traffic if the configured database is unavailable.
+await repository.health();
 const app = createApp({ repository, config });
 const server = app.listen(config.port, "127.0.0.1", () => {
   console.info(`Ascenta API listening on http://127.0.0.1:${config.port} (${config.dataMode} data mode)`);

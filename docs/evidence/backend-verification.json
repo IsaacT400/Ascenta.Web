@@ -1,0 +1,84 @@
+{
+    "observed_at_utc":  "2026-10-07T19:21:40.2765881Z",
+    "mysql":  {
+                  "version":  "8.4.9",
+                  "host":  "127.0.0.1",
+                  "port":  3307,
+                  "dedicated_instance":  true,
+                  "existing_3306_instance_unchanged":  true,
+                  "databases":  [
+                                    {
+                                        "database":  "ascenta_local",
+                                        "applied_migrations":  2,
+                                        "users":  1,
+                                        "reservations":  1,
+                                        "service_types":  5,
+                                        "vehicle_classes":  3
+                                    },
+                                    {
+                                        "database":  "ascenta_test",
+                                        "applied_migrations":  2,
+                                        "users":  0,
+                                        "reservations":  0,
+                                        "service_types":  5,
+                                        "vehicle_classes":  3
+                                    }
+                                ],
+                  "start_stop_start_verified":  true,
+                  "normal_seed_creates_demo_accounts":  false,
+                  "process_ownership_checks":  [
+                                                   "PID",
+                                                   "process start time",
+                                                   "installed mysqld executable",
+                                                   "recorded data directory",
+                                                   "actual process command-line data directory"
+                                               ]
+              },
+    "verification":  {
+                         "shared_database_build":  "passed",
+                         "prisma_generate":  "passed",
+                         "api_build":  "passed",
+                         "api_typecheck":  "passed",
+                         "migrations_deploy_local":  "2 applied",
+                         "migrations_deploy_test":  "2 applied",
+                         "catalog_seed_local":  "passed",
+                         "catalog_seed_test":  "passed",
+                         "integration_files":  2,
+                         "integration_tests_passed":  13,
+                         "integration_tests_skipped":  0,
+                         "demo_http_tests":  9,
+                         "mysql_process_tests":  4,
+                         "mysql_assertions":  [
+                                                  "registration and single-use verification",
+                                                  "password and session hashes",
+                                                  "authenticated roles",
+                                                  "CSRF rejection",
+                                                  "idempotency duplicate and payload conflict",
+                                                  "private reservation isolation",
+                                                  "organization authorization",
+                                                  "admin authorization",
+                                                  "persisted reservation and existing session after API process restart",
+                                                  "logout revocation",
+                                                  "same-organization members can read shared reservations",
+                                                  "corporate booker can submit to its organization",
+                                                  "second-organization member cannot read another organization requests",
+                                                  "corporate member cannot submit to another organization",
+                                                  "UTC pickup timestamp survives API restart",
+                                                  "HTTP MySQL service and vehicle order equals independent existing DemoRepository catalog",
+                                                  "NODE_ENV=development in invoking shell is overridden to test for integration workers",
+                                                  "actual DATABASE() equals configured isolated *_test target before any fixture write"
+                                              ],
+                         "test_fixture_cleanup":  "only suite UUID accounts, requests and organization deleted",
+                         "sandbox_note":  "tsx seed requires Windows userInfo; seed and integration executed with approved sandbox escalation",
+                         "latest_run_utc":  "2026-10-07T19:21:40.2765881Z",
+                         "mysql_fixture_accounts":  4,
+                         "mysql_fixture_organizations":  2,
+                         "isolation_regression":  "A prior launcher-exported NODE_ENV=development caused parent fixture setup to target the normal database while its test child used ascenta_test. Fixed with forced worker environment and a pre-write target assertion; the 4 exact orphaned accounts of suite deb6dbe1-5f0a-4847-a28a-6a92d756483e were removed only from ascenta_test. Normal database still contains 1 browser test user and 1 browser test reservation."
+                     },
+    "original_memory_api":  {
+                                "endpoint":  "http://localhost:4000/api/v1",
+                                "data_mode":  "demo",
+                                "reservations_observed_before_shutdown":  0,
+                                "account_export":  "No user enumeration endpoint exists; fixture accounts remain in explicit demo source."
+                            }
+}

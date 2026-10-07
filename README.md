@@ -1,94 +1,86 @@
-# Ascenta Executive
+# ASCENTA
 
-Migración local del proyecto aprobado de **Ascenta Executive · Private Chauffeur Service** a un monorepo React + Node.js + MySQL. La interfaz, navegación, copy, responsive y motion existentes se conservan; la nueva API añade sesiones, permisos y solicitudes de reserva reales sin inventar precios, disponibilidad ni condiciones comerciales.
+Aplicación local única: React 19 + Vite 8 + React Router, API Node.js 24/Express 5 y MySQL 8.4 con Prisma 7. Se conserva la interfaz local de referencia, sus imágenes, estilos, idiomas y flujos implementados.
 
-## Stack fijado
+## Inicio en Windows
 
-- Node.js 24 LTS, pnpm 11 y TypeScript 5.9.
-- Frontend React 19 con rutas Next-style, Vinext/Vite y Tailwind CSS 4.
-- API Express 5 bajo `/api/v1`.
-- MySQL 8.4 LTS y Prisma 7.
-- Vitest/Supertest para contratos e integración.
+Desde esta carpeta:
+
+```powershell
+.\Iniciar-Ascenta.ps1
+.\Detener-Ascenta.ps1
+```
+
+El inicio espera a web y API, abre http://localhost:5175/ y detecta instancias existentes. La API está en http://localhost:4000/api/v1 y su salud en /api/v1/health. Los procesos se identifican por PID, fecha de creación, ejecutable y archivo de entrada; los scripts no detienen otras aplicaciones.
+
+Node 24 y pnpm 11.19.0 están disponibles en herramientas locales ignoradas por Git. Para preparar un clon nuevo sin esas herramientas:
+
+```powershell
+.\scripts\Instalar-Herramientas.ps1
+. .\scripts\toolchain.ps1
+Invoke-AscentaPnpm install --frozen-lockfile
+.\Iniciar-Ascenta.ps1
+```
+
+También se admiten Node 24 y pnpm 11.19.0 instalados en PATH. Las rutas se resuelven desde los scripts; admiten espacios. No hace falta usar la carpeta de la aplicación anterior.
+
+## MySQL real
+
+El inicio normal usa MySQL; no existe fallback automático a demo. En este equipo se utilizan los binarios de MySQL 8.4 instalados en Program Files para una instancia dedicada en 127.0.0.1:3307. No se modifica el servicio preexistente en 3306.
+
+- Datos persistentes: `.local/mysql`.
+- Base de la aplicación: `ascenta_local`.
+- Base aislada para pruebas: `ascenta_test`.
+- Credenciales aleatorias locales: `.env` y `.local/mysql-credentials.json`, ignorados por Git.
+- `scripts/db-start.ps1` solo inicializa un directorio nuevo; no recrea datos existentes.
+- El seed normal instala únicamente catálogos. Las cuentas y reservas demo requieren `pnpm db:seed:demo` explícito.
+- `.\Detener-Ascenta.ps1 -IncluirBaseDeDatos` también apaga esta instancia, conservando los datos.
+
+En otro equipo instala MySQL Community 8.4 o indica su directorio bin con `ASCENTA_MYSQL_BIN`. Para una base externa, configura `DATABASE_URL` en `.env`; el script respeta ese destino. Revisa el host y nombre de base antes de aplicar migraciones. Como alternativa, `docker compose up -d mysql` usa un volumen persistente; ajusta la conexión según `.env.example`. No borres el volumen para reiniciar.
+
+`.\Iniciar-Ascenta.ps1 -Demo` activa de forma explícita la API en memoria. Sus cuentas ficticias no pertenecen a la base MySQL normal.
+
+## Comandos
+
+Con Node/pnpm en PATH, utiliza `pnpm`; con herramientas locales, carga `. .\scripts\toolchain.ps1` y sustituye `pnpm` por `Invoke-AscentaPnpm`.
+
+| Comando | Función |
+| --- | --- |
+| `pnpm install --frozen-lockfile` | Instalación reproducible |
+| `pnpm dev` | API y Vite; requiere conexión configurada y migrada |
+| `pnpm build` | Paquetes, API compilada y frontend estático |
+| `pnpm typecheck` | Tipos de todos los paquetes |
+| `pnpm lint` | Reglas de código |
+| `pnpm test` | Pruebas unitarias |
+| `pnpm test:e2e` | API HTTP y MySQL aislado, incluyendo reinicio |
+| `pnpm test:browser` | Captura rutas e interacciones de la instancia activa con Edge |
+| `pnpm test:browser:flow` | Registro/verificación/viaje real contra MySQL local |
+| `pnpm test:visual` | Compara PNG guardados en el mismo modo de datos que la referencia |
+| `pnpm test:migration` | Comprueba limpieza, 214 destinos, assets exactos y secretos fuera de web |
+| `pnpm db:generate` | Cliente Prisma |
+| `pnpm db:validate` | Esquema Prisma |
+| `pnpm db:migrate:deploy` | Aplica migraciones SQL versionadas |
+| `pnpm db:seed` | Catálogos idempotentes |
+
+El frontend de producción está en `apps/web/dist`; su servidor debe devolver `index.html` para rutas del cliente. `pnpm --filter @ascenta/web start` ofrece una previsualización local con fallback SPA. La API compilada se inicia con `pnpm --filter @ascenta/api start`. Esta tarea no despliega nada.
+
+La comparación visual usa capturas de la referencia y de la nueva aplicación en modo demo explícito para comparar los mismos avisos y contenido. Las capturas normales MySQL y su flujo real se conservan por separado. `test:visual` verifica esas evidencias guardadas; para generar capturas nuevas consulta [las instrucciones de navegador](tests/visual/README.md).
 
 ## Estructura
 
 ```text
-apps/web/              interfaz React conservada
-apps/api/              API Node/Express
-packages/shared/       contratos Zod y tipos públicos
-packages/database/     esquema, cliente, migraciones y seed Prisma
-tests/integration/     flujos HTTP demo y MySQL
-tests/visual/          referencia y evidencia de regresión visual
-docs/                  inventario, matriz, API, datos y reporte
+apps/web/src/              páginas, router, componentes, contexto y estilos
+apps/web/public/brand/     seis assets originales
+apps/api/src/              Express, autenticación y repositorios
+packages/shared/          contratos y validaciones Zod
+packages/database/prisma/ esquema y migraciones MySQL
+scripts/                  herramientas y control local de procesos
+tests/                    unitarias, integración y navegador
+docs/                     matriz, contratos y evidencias
 ```
 
-## Ejecución local
+Solo las variables `VITE_*` públicas llegan al navegador. Las credenciales MySQL permanecen en el backend. Sesiones HttpOnly, CSRF, expiración, roles, aislamiento por usuario/organización e idempotencia se aplican en la API.
 
-Requisitos: Node 24, pnpm 11 y Docker compatible con Compose, o un servidor MySQL 8.4 accesible.
+Registro, verificación local, login/logout, borrador de viaje, solicitud persistida, portal personal, corporativo y administración de lectura están implementados. En desarrollo, la verificación muestra un enlace local y no envía correo externo. Contacto, recuperación de contraseña, edición de perfil, cotización, pago, despacho y cambios operativos continúan pendientes; la interfaz no simula éxito.
 
-```powershell
-Copy-Item .env.example .env
-pnpm install --frozen-lockfile
-docker compose up -d mysql
-pnpm db:migrate:deploy
-pnpm db:seed
-pnpm dev
-```
-
-Si usa otro MySQL 8.4 local/aislado, configure `DATABASE_URL` y los campos `DATABASE_*` para la misma base. Revise el host y el nombre antes de aplicar migraciones. La sesión de implementación no tenía el CLI Docker, así que Compose y MySQL no se validaron allí.
-
-- Web: `http://localhost:5173`
-- API: `http://localhost:4000/api/v1`
-- Salud: `http://localhost:4000/api/v1/health`
-
-Sin Docker, cree una base MySQL 8.4, copie las variables `DATABASE_*`/`DATABASE_URL` de `.env.example`, y ejecute las mismas migraciones y seed. El volumen `ascenta_mysql_data` preserva los datos entre reinicios de Compose.
-
-Para recorrer registro, verificación local, solicitud y portales sin MySQL, abra PowerShell en la raíz y ejecute `$env:DATA_MODE='demo'; pnpm dev`. Este modo conserva solicitudes solo mientras vive el proceso de API; no sustituye la persistencia MySQL y no se activa ante errores.
-
-## Cuentas ficticias de desarrollo
-
-El seed crea `demo.customer@ascenta.local`, `demo.corporate@ascenta.local` y `demo.admin@ascenta.local`, todas con la contraseña local `AscentaDemo!2026`. Son credenciales ficticias para una base local aislada; el seed se bloquea cuando `NODE_ENV=production`. `/admin` requiere el rol interno del tercer usuario.
-
-El alta de cuenta crea usuarios `CUSTOMER` sin privilegios internos. En desarrollo la pantalla ofrece una verificación local de un solo uso; no envía correo. Producción rechaza el alta mientras no exista un proveedor de correo configurado.
-
-## Comandos del proyecto
-
-```bash
-pnpm dev
-pnpm build
-pnpm typecheck
-pnpm lint
-pnpm test
-pnpm test:e2e
-pnpm test:visual
-pnpm db:validate
-pnpm db:generate
-pnpm db:migrate
-pnpm db:migrate:deploy
-pnpm db:seed
-```
-
-`db:migrate` crea migraciones durante desarrollo; `db:migrate:deploy` aplica únicamente migraciones versionadas. Nunca ejecute el seed ficticio contra producción.
-
-## Estado funcional
-
-- Sign-in real con contraseña bcrypt, cookie HttpOnly, expiración/revocación y CSRF.
-- Catálogo público desde API.
-- Creación y listado de reservas con idempotencia y aislamiento por usuario/organización.
-- Portales de cliente y empresa protegidos por sesión/rol, y recepción interna protegida por ASCENTA_ADMIN; analítica y exportaciones no implementadas.
-- En modo MySQL la solicitud se persiste y aparece en el portal del propietario y `/admin` para un usuario ASCENTA_ADMIN. En modo demo vive en memoria. Las peticiones usan API v1 y una sola familia de usuarios/sesiones; no hay API v2 activa.
-- Reset, facturación, pagos, disponibilidad, tarifas, dispatch, mapas y tracking de vuelos siguen pendientes: no se simulan como operaciones terminadas.
-- Fotografías Pexels y datos de flota/servicios siguen provisionales según la aprobación visual previa.
-
-## Documentación
-
-- [Inventario](./docs/PROJECT_INVENTORY.md)
-- [Matriz de migración](./docs/MIGRATION_MATRIX.md)
-- [Arquitectura](./ARCHITECTURE.md)
-- [API y OpenAPI](./docs/API.md)
-- [Modelo de datos](./docs/DATABASE_MODEL.md)
-- [Reporte de migración](./docs/MIGRATION_REPORT.md)
-- [Sistema visual](./DESIGN_SYSTEM.md)
-- [Decisiones](./DECISIONS.md)
-
-La rama de trabajo de integración es `feature/ascenta-integracion-v1`, basada en `migration/react-node-mysql`. No se ha hecho merge en `main` ni despliegue comercial. Consulte [estado de ejecución](./docs/ascenta/EXECUTION_STATE.md) para SHAs, pruebas, límites de MySQL y captura nueva.
+Consulta [la matriz](docs/MIGRATION_MATRIX.md), [el informe de verificación](docs/MIGRATION_REPORT.md), [el contrato API](docs/API.md) y [el esquema de datos](docs/DATABASE_MODEL.md).

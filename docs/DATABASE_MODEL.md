@@ -1,25 +1,17 @@
-# Database Model
+# Modelo de datos
 
-MySQL 8.4 LTS con Prisma 7. El esquema fuente está en `packages/database/prisma/schema.prisma`; las migraciones SQL versionadas son la única vía de despliegue.
+MySQL 8.4.9 y Prisma 7.10.0. Fuente: packages/database/prisma/schema.prisma; despliegue mediante las dos migraciones SQL versionadas existentes.
 
-## Relaciones
+Hay una familia de usuarios, tokens de verificación, sesiones, organizaciones, membresías, servicios, clases de vehículo, solicitudes, segmentos, planes de tarifa, reglas, cotizaciones y auditoría. No se duplican tablas al migrar el frontend.
 
-- `users` 1—N `sessions`, `reservations`, `memberships`, `audit_logs`; an account may have one `email_verification_tokens` row.
-- `organizations` N—N `users` mediante `memberships`; 1—N `reservations` y `rate_plans`.
-- `reservations` pertenece a creador, service type y vehicle class; puede pertenecer a organization y tener segmentos/quotes.
-- `rate_plans` contiene `pricing_rules` versionadas y puede ser público/corporativo/contractual.
-- `quotes` guarda snapshot reproducible, moneda, venta/costo en unidades menores y margen en basis points.
+Usuarios se relacionan con sesiones, membresías y solicitudes; las organizaciones agrupan membresías y solicitudes autorizadas. Email, hashes de tokens, referencia, claves de idempotencia y códigos de catálogo conservan unicidad. Las relaciones tienen claves foráneas e índices.
 
-## Integridad
+La solicitud conserva instante UTC y zona IANA. El frontend valida horas inexistentes/ambiguas por DST antes de convertirlas; los contratos validan campos. HOURLY requiere duración y admite destino ausente. El hash de payload permite detectar reintentos con la misma clave y contenido distinto.
 
-Email, token hash, reference, idempotency key y códigos de catálogo son únicos. Las relaciones principales tienen FKs e índices para usuario/organización/fecha. Las sesiones caducan y pueden revocarse. La API comprueba membresía antes de aceptar `organizationId`.
+La migración de verificación es aditiva: usuarios preexistentes permanecen verificados; las altas nuevas requieren token local de un solo uso. Sesiones guardan hashes, expiración y revocación; permisos de dueño/organización/administrador se aplican en Express y repositorio.
 
-`scheduled_at_utc` guarda el instante; `scheduled_time_zone` conserva la zona IANA que dio significado a la hora local. La cobertura específica de cambios DST queda pendiente de una librería/regla operativa aprobada.
+El seed normal instala cinco servicios y tres clases de vehículo sin crear personas, organizaciones ni solicitudes ficticias. seed-demo.ts permanece como opción explícita de desarrollo.
 
-La migración aditiva conserva los usuarios existentes como verificados, agrega verificación de alta y los datos opcionales de pasajero/duración. `destination_address` solo es nullable para solicitudes `HOURLY`, donde se requiere `duration_hours`; no se deriva una tarifa o mínimo comercial. Las solicitudes nuevas guardan `request_hash` con su clave idempotente. Las filas anteriores conservan hash vacío y su comportamiento v1 previo.
+En este equipo, ascenta_local y ascenta_test residen en la instancia dedicada 127.0.0.1:3307, datadir persistente .local/mysql. El servicio original 3306 quedó intacto. Las pruebas exigen TEST_DATABASE_URL con nombre terminado en _test y eliminan únicamente las filas que ellas crean.
 
-## Seed y recuperación
-
-El seed es reproducible, usa solo personas/organizaciones ficticias y se niega a correr en `NODE_ENV=production`. Antes de migrar datos existentes futuros se requerirán backup, mapeo, conteos, checksums/integridad y rollback; hoy no existe un dataset real accesible que migrar.
-
-Compose usa un volumen persistente. Para recuperar el código previo a esta migración: `git switch --detach checkpoint/pre-react-node-mysql` o cree una rama desde ese tag. Esto no modifica ni elimina la base local actual.
+Nunca se usa un error MySQL para activar memoria. Los scripts no borran datadir ni volúmenes. Guarda una copia segura del datadir y de las credenciales privadas para respaldar datos; el punto Git de recuperación protege código, no la base.

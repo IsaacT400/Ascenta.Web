@@ -1,0 +1,16 @@
+{
+  "startedAt": "2026-10-07T19:02:32.273Z",
+  "success": true,
+  "checks": [
+    {
+      "name": "Hourly mode, duration, pickup, date and time transfer to booking",
+      "passed": true
+    },
+    {
+      "name": "Journey draft survives full document reload",
+      "passed": true
+    }
+  ],
+  "jsErrors": [],
+  "finishedAt": "2026-10-07T19:02:40.859Z"
+}

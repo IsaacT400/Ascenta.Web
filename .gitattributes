@@ -1,0 +1,3 @@
+# Preserve the approved source stylesheet and raster assets byte-for-byte.
+apps/web/src/styles/ascenta.css -text whitespace=cr-at-eol
+apps/web/public/brand/* -text

@@ -13,13 +13,13 @@ export async function seedCatalog(prisma: AscentaPrismaClient) {
     await prisma.serviceType.upsert({ where: { code }, update: {}, create: { code, name } });
   }
   const vehicleClasses = [
-    ["EXECUTIVE_SUV", "Executive SUV", 3, 3],
+    ["EXECUTIVE_SUV", "Executive Sedan", 3, 3],
     ["PREMIUM_SUV", "Premium SUV", 5, 5],
     ["EXECUTIVE_VAN", "Executive Van", 10, 10],
   ] as const;
   for (const [code, name, passengerLimit, luggageLimit] of vehicleClasses) {
     await prisma.vehicleClass.upsert({
-      where: { code }, update: {}, create: { code, name, passengerLimit, luggageLimit },
+      where: { code }, update: { name }, create: { code, name, passengerLimit, luggageLimit },
     });
   }
 }

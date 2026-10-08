@@ -1,0 +1,1529 @@
+{
+  "startedAt": "2026-10-07T21:14:57.378Z",
+  "baseUrl": "http://localhost:5175",
+  "policy": "Read-only backend verification. Drafts stay in the isolated browser; no account, reservation, seed, or database mutation.",
+  "checks": [
+    {
+      "name": "Read-only API health succeeds",
+      "passed": true,
+      "details": {
+        "status": 200,
+        "dataMode": "mysql",
+        "health": "ok"
+      }
+    },
+    {
+      "name": "Read-only live catalog succeeds",
+      "passed": true,
+      "details": {
+        "status": 200,
+        "serviceTypes": [
+          "ONE_WAY",
+          "AIRPORT_TRANSFER",
+          "HOURLY",
+          "ROUND_TRIP",
+          "CITY_TO_CITY"
+        ],
+        "vehicleCount": 3
+      }
+    },
+    {
+      "name": "Starter offers only One way and By the hour",
+      "passed": true
+    },
+    {
+      "name": "Desktop: no horizontal overflow and one responsive form",
+      "passed": true,
+      "details": {
+        "viewport": 1440,
+        "documentWidth": 1425,
+        "forms": 1,
+        "form": {
+          "x": 92.5,
+          "y": 729.328125,
+          "width": 1240,
+          "height": 95.5,
+          "right": 1332.5,
+          "bottom": 824.828125
+        },
+        "modes": {
+          "x": 595.125,
+          "y": 664.328125,
+          "width": 234.734375,
+          "height": 50,
+          "right": 829.859375,
+          "bottom": 714.328125
+        },
+        "fields": [
+          {
+            "x": 107.5,
+            "y": 744.328125,
+            "width": 296.359375,
+            "height": 65.5,
+            "right": 403.859375,
+            "bottom": 809.828125
+          },
+          {
+            "x": 403.859375,
+            "y": 744.328125,
+            "width": 296.375,
+            "height": 65.5,
+            "right": 700.234375,
+            "bottom": 809.828125
+          },
+          {
+            "x": 700.234375,
+            "y": 744.328125,
+            "width": 208.46875,
+            "height": 65.5,
+            "right": 908.703125,
+            "bottom": 809.828125
+          },
+          {
+            "x": 908.703125,
+            "y": 744.328125,
+            "width": 183.953125,
+            "height": 65.5,
+            "right": 1092.65625,
+            "bottom": 809.828125
+          },
+          {
+            "x": 1106.65625,
+            "y": 747.078125,
+            "width": 210.84375,
+            "height": 60,
+            "right": 1317.5,
+            "bottom": 807.078125
+          }
+        ],
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 1425,
+          "height": 947.609375,
+          "right": 1425,
+          "bottom": 947.609375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1425,
+          "height": 98,
+          "right": 1425,
+          "bottom": 98
+        },
+        "labels": true
+      }
+    },
+    {
+      "name": "Desktop: horizontal bar with centered mode selector above",
+      "passed": true,
+      "details": {
+        "viewport": 1440,
+        "documentWidth": 1425,
+        "forms": 1,
+        "form": {
+          "x": 92.5,
+          "y": 729.328125,
+          "width": 1240,
+          "height": 95.5,
+          "right": 1332.5,
+          "bottom": 824.828125
+        },
+        "modes": {
+          "x": 595.125,
+          "y": 664.328125,
+          "width": 234.734375,
+          "height": 50,
+          "right": 829.859375,
+          "bottom": 714.328125
+        },
+        "fields": [
+          {
+            "x": 107.5,
+            "y": 744.328125,
+            "width": 296.359375,
+            "height": 65.5,
+            "right": 403.859375,
+            "bottom": 809.828125
+          },
+          {
+            "x": 403.859375,
+            "y": 744.328125,
+            "width": 296.375,
+            "height": 65.5,
+            "right": 700.234375,
+            "bottom": 809.828125
+          },
+          {
+            "x": 700.234375,
+            "y": 744.328125,
+            "width": 208.46875,
+            "height": 65.5,
+            "right": 908.703125,
+            "bottom": 809.828125
+          },
+          {
+            "x": 908.703125,
+            "y": 744.328125,
+            "width": 183.953125,
+            "height": 65.5,
+            "right": 1092.65625,
+            "bottom": 809.828125
+          },
+          {
+            "x": 1106.65625,
+            "y": 747.078125,
+            "width": 210.84375,
+            "height": 60,
+            "right": 1317.5,
+            "bottom": 807.078125
+          }
+        ],
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 1425,
+          "height": 947.609375,
+          "right": 1425,
+          "bottom": 947.609375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1425,
+          "height": 98,
+          "right": 1425,
+          "bottom": 98
+        },
+        "labels": true
+      }
+    },
+    {
+      "name": "Header starts dark over photography",
+      "passed": true
+    },
+    {
+      "name": "Light logo has real transparency over hero",
+      "passed": true,
+      "details": {
+        "src": "/brand/logo-wordmark-light.png",
+        "naturalWidth": 960,
+        "naturalHeight": 278,
+        "transparentFraction": 0.8991794064748202,
+        "visibleFraction": 0.0903402278177458,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "surfaceBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "Dark logo has real transparency over light section",
+      "passed": true,
+      "details": {
+        "src": "/brand/logo-wordmark-dark.png",
+        "naturalWidth": 960,
+        "naturalHeight": 278,
+        "transparentFraction": 0.8991794064748202,
+        "visibleFraction": 0.0903402278177458,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "surfaceBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "React changes logo variant with header background",
+      "passed": true,
+      "details": {
+        "darkSurface": "/brand/logo-wordmark-light.png",
+        "lightSurface": "/brand/logo-wordmark-dark.png"
+      }
+    },
+    {
+      "name": "Footer logo uses a transparent light variant",
+      "passed": true,
+      "details": {
+        "src": "/brand/logo-wordmark-light.png",
+        "naturalWidth": 960,
+        "naturalHeight": 278,
+        "transparentFraction": 0.8991794064748202,
+        "visibleFraction": 0.0903402278177458,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "surfaceBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "Footer uses the same light logo family as dark header",
+      "passed": true
+    },
+    {
+      "name": "Empty required fields stop home navigation",
+      "passed": true
+    },
+    {
+      "name": "Past pickup time shows an error and stays on home",
+      "passed": true
+    },
+    {
+      "name": "One-way home draft reaches current booking flow",
+      "passed": true,
+      "details": {
+        "pickup": "Boston Logan International Airport",
+        "destination": "Four Seasons Hotel Boston",
+        "date": "2026-10-15",
+        "time": "14:30",
+        "mode": "ONE_WAY"
+      }
+    },
+    {
+      "name": "Continue reaches real catalog vehicle options",
+      "passed": true
+    },
+    {
+      "name": "Booking Back preserves entered journey data",
+      "passed": true,
+      "details": {
+        "pickup": "Boston Logan International Airport",
+        "destination": "Four Seasons Hotel Boston",
+        "date": "2026-10-15",
+        "time": "14:30",
+        "mode": "ONE_WAY"
+      }
+    },
+    {
+      "name": "Browser Back preserves one-way home data",
+      "passed": true,
+      "details": {
+        "pickup": "Boston Logan International Airport",
+        "destination": "Four Seasons Hotel Boston",
+        "date": "2026-10-15",
+        "time": "14:30"
+      }
+    },
+    {
+      "name": "Full page reload restores one-way session draft",
+      "passed": true,
+      "details": {
+        "pickup": "Boston Logan International Airport",
+        "destination": "Four Seasons Hotel Boston",
+        "date": "2026-10-15",
+        "time": "14:30"
+      }
+    },
+    {
+      "name": "Toggling modes preserves the one-way destination",
+      "passed": true,
+      "details": {
+        "pickup": "Boston Logan International Airport",
+        "destination": "Four Seasons Hotel Boston",
+        "date": "2026-10-15",
+        "time": "14:30"
+      }
+    },
+    {
+      "name": "Hourly mode replaces destination with requested duration",
+      "passed": true
+    },
+    {
+      "name": "Hourly mode and duration reach booking",
+      "passed": true,
+      "details": {
+        "pickup": "Boston Back Bay Office",
+        "destination": "Four Seasons Hotel Boston",
+        "date": "2026-10-15",
+        "time": "09:15",
+        "hours": "3",
+        "mode": "HOURLY"
+      }
+    },
+    {
+      "name": "Hourly booking retains required itinerary semantics",
+      "passed": true
+    },
+    {
+      "name": "Hourly booking requires its itinerary before continuing",
+      "passed": true
+    },
+    {
+      "name": "Hourly booking rejects duration below supported minimum",
+      "passed": true
+    },
+    {
+      "name": "Hourly booking Back retains duration and itinerary",
+      "passed": true,
+      "details": {
+        "pickup": "Boston Back Bay Office",
+        "destination": "Boston meetings, returning to Back Bay",
+        "date": "2026-10-15",
+        "time": "09:15",
+        "hours": "3",
+        "mode": "HOURLY"
+      }
+    },
+    {
+      "name": "Hourly Browser Back retains home draft",
+      "passed": true,
+      "details": {
+        "pickup": "Boston Back Bay Office",
+        "date": "2026-10-15",
+        "time": "09:15",
+        "hours": "3"
+      }
+    },
+    {
+      "name": "Hourly draft survives document reload",
+      "passed": true,
+      "details": {
+        "pickup": "Boston Back Bay Office",
+        "date": "2026-10-15",
+        "time": "09:15",
+        "hours": "3"
+      }
+    },
+    {
+      "name": "tablet: no horizontal overflow and one responsive form",
+      "passed": true,
+      "details": {
+        "viewport": 834,
+        "documentWidth": 819,
+        "forms": 1,
+        "form": {
+          "x": 32,
+          "y": 649.78125,
+          "width": 755,
+          "height": 232,
+          "right": 787,
+          "bottom": 881.78125
+        },
+        "modes": {
+          "x": 292.125,
+          "y": 584.78125,
+          "width": 234.734375,
+          "height": 50,
+          "right": 526.859375,
+          "bottom": 634.78125
+        },
+        "fields": [
+          {
+            "x": 51,
+            "y": 664.78125,
+            "width": 358.5,
+            "height": 72.5,
+            "right": 409.5,
+            "bottom": 737.28125
+          },
+          {
+            "x": 409.5,
+            "y": 664.78125,
+            "width": 358.5,
+            "height": 72.5,
+            "right": 768,
+            "bottom": 737.28125
+          },
+          {
+            "x": 51,
+            "y": 737.28125,
+            "width": 358.5,
+            "height": 71.5,
+            "right": 409.5,
+            "bottom": 808.78125
+          },
+          {
+            "x": 409.5,
+            "y": 737.28125,
+            "width": 358.5,
+            "height": 71.5,
+            "right": 768,
+            "bottom": 808.78125
+          },
+          {
+            "x": 51,
+            "y": 818.78125,
+            "width": 717,
+            "height": 48,
+            "right": 768,
+            "bottom": 866.78125
+          }
+        ],
+        "hero": {
+          "x": 0,
+          "y": -20,
+          "width": 819,
+          "height": 1024.5625,
+          "right": 819,
+          "bottom": 1004.5625
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 819,
+          "height": 82,
+          "right": 819,
+          "bottom": 82
+        },
+        "labels": true
+      }
+    },
+    {
+      "name": "tablet hourly: no horizontal overflow and one responsive form",
+      "passed": true,
+      "details": {
+        "viewport": 834,
+        "documentWidth": 819,
+        "forms": 1,
+        "form": {
+          "x": 32,
+          "y": 649.78125,
+          "width": 755,
+          "height": 232,
+          "right": 787,
+          "bottom": 881.78125
+        },
+        "modes": {
+          "x": 292.125,
+          "y": 584.78125,
+          "width": 234.734375,
+          "height": 50,
+          "right": 526.859375,
+          "bottom": 634.78125
+        },
+        "fields": [
+          {
+            "x": 51,
+            "y": 664.78125,
+            "width": 358.5,
+            "height": 72.5,
+            "right": 409.5,
+            "bottom": 737.28125
+          },
+          {
+            "x": 409.5,
+            "y": 664.78125,
+            "width": 358.5,
+            "height": 72.5,
+            "right": 768,
+            "bottom": 737.28125
+          },
+          {
+            "x": 51,
+            "y": 737.28125,
+            "width": 358.5,
+            "height": 71.5,
+            "right": 409.5,
+            "bottom": 808.78125
+          },
+          {
+            "x": 409.5,
+            "y": 737.28125,
+            "width": 358.5,
+            "height": 71.5,
+            "right": 768,
+            "bottom": 808.78125
+          },
+          {
+            "x": 51,
+            "y": 818.78125,
+            "width": 717,
+            "height": 48,
+            "right": 768,
+            "bottom": 866.78125
+          }
+        ],
+        "hero": {
+          "x": 0,
+          "y": -20,
+          "width": 819,
+          "height": 1024.5625,
+          "right": 819,
+          "bottom": 1004.5625
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 819,
+          "height": 82,
+          "right": 819,
+          "bottom": 82
+        },
+        "labels": true
+      }
+    },
+    {
+      "name": "tablet shares the same draft after resize",
+      "passed": true,
+      "details": {
+        "pickup": "Boston Back Bay Office",
+        "date": "2026-10-15",
+        "time": "09:15",
+        "hours": "3"
+      }
+    },
+    {
+      "name": "tablet booking has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "mobile: no horizontal overflow and one responsive form",
+      "passed": true,
+      "details": {
+        "viewport": 390,
+        "documentWidth": 375,
+        "forms": 1,
+        "form": {
+          "x": 20,
+          "y": 504.546875,
+          "width": 335,
+          "height": 303,
+          "right": 355,
+          "bottom": 807.546875
+        },
+        "modes": {
+          "x": 74.125,
+          "y": 440.546875,
+          "width": 226.734375,
+          "height": 52,
+          "right": 300.859375,
+          "bottom": 492.546875
+        },
+        "fields": [
+          {
+            "x": 33,
+            "y": 517.546875,
+            "width": 309,
+            "height": 73,
+            "right": 342,
+            "bottom": 590.546875
+          },
+          {
+            "x": 33,
+            "y": 590.546875,
+            "width": 309,
+            "height": 73,
+            "right": 342,
+            "bottom": 663.546875
+          },
+          {
+            "x": 33,
+            "y": 663.546875,
+            "width": 154.5,
+            "height": 72,
+            "right": 187.5,
+            "bottom": 735.546875
+          },
+          {
+            "x": 187.5,
+            "y": 663.546875,
+            "width": 154.5,
+            "height": 72,
+            "right": 342,
+            "bottom": 735.546875
+          },
+          {
+            "x": 33,
+            "y": 745.546875,
+            "width": 309,
+            "height": 49,
+            "right": 342,
+            "bottom": 794.546875
+          }
+        ],
+        "hero": {
+          "x": 0,
+          "y": -40,
+          "width": 375,
+          "height": 977.734375,
+          "right": 375,
+          "bottom": 937.734375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 76,
+          "right": 375,
+          "bottom": 76
+        },
+        "labels": true
+      }
+    },
+    {
+      "name": "mobile hourly: no horizontal overflow and one responsive form",
+      "passed": true,
+      "details": {
+        "viewport": 390,
+        "documentWidth": 375,
+        "forms": 1,
+        "form": {
+          "x": 20,
+          "y": 504.546875,
+          "width": 335,
+          "height": 303,
+          "right": 355,
+          "bottom": 807.546875
+        },
+        "modes": {
+          "x": 74.125,
+          "y": 440.546875,
+          "width": 226.734375,
+          "height": 52,
+          "right": 300.859375,
+          "bottom": 492.546875
+        },
+        "fields": [
+          {
+            "x": 33,
+            "y": 517.546875,
+            "width": 309,
+            "height": 73,
+            "right": 342,
+            "bottom": 590.546875
+          },
+          {
+            "x": 33,
+            "y": 590.546875,
+            "width": 309,
+            "height": 73,
+            "right": 342,
+            "bottom": 663.546875
+          },
+          {
+            "x": 33,
+            "y": 663.546875,
+            "width": 154.5,
+            "height": 72,
+            "right": 187.5,
+            "bottom": 735.546875
+          },
+          {
+            "x": 187.5,
+            "y": 663.546875,
+            "width": 154.5,
+            "height": 72,
+            "right": 342,
+            "bottom": 735.546875
+          },
+          {
+            "x": 33,
+            "y": 745.546875,
+            "width": 309,
+            "height": 49,
+            "right": 342,
+            "bottom": 794.546875
+          }
+        ],
+        "hero": {
+          "x": 0,
+          "y": -40,
+          "width": 375,
+          "height": 977.734375,
+          "right": 375,
+          "bottom": 937.734375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 76,
+          "right": 375,
+          "bottom": 76
+        },
+        "labels": true
+      }
+    },
+    {
+      "name": "mobile shares the same draft after resize",
+      "passed": true,
+      "details": {
+        "pickup": "Boston Back Bay Office",
+        "date": "2026-10-15",
+        "time": "09:15",
+        "hours": "3"
+      }
+    },
+    {
+      "name": "mobile booking has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "First keyboard stop is the visible skip link",
+      "passed": true
+    },
+    {
+      "name": "Skip link moves keyboard focus to main content",
+      "passed": true
+    },
+    {
+      "name": "Keyboard opens mobile navigation with focus inside dialog",
+      "passed": true
+    },
+    {
+      "name": "Mobile menu logo has real transparency",
+      "passed": true,
+      "details": {
+        "src": "/brand/logo-wordmark-dark.png",
+        "naturalWidth": 960,
+        "naturalHeight": 278,
+        "transparentFraction": 0.8991794064748202,
+        "visibleFraction": 0.0903402278177458,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "surfaceBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "Modal navigation keeps tab focus away from page controls",
+      "passed": true
+    },
+    {
+      "name": "Escape closes menu and restores focus to trigger",
+      "passed": true
+    },
+    {
+      "name": "Keyboard switches journey mode to hourly",
+      "passed": true
+    },
+    {
+      "name": "Journey fields have a visible keyboard focus indicator",
+      "passed": true,
+      "details": {
+        "id": "home-pickup",
+        "visible": true,
+        "style": "solid",
+        "width": "3px"
+      }
+    },
+    {
+      "name": "Existing route renders /services",
+      "passed": true
+    },
+    {
+      "name": "Existing route renders /fleet",
+      "passed": true
+    },
+    {
+      "name": "Existing route renders /business",
+      "passed": true
+    },
+    {
+      "name": "Existing route renders /help",
+      "passed": true
+    },
+    {
+      "name": "Existing route renders /contact",
+      "passed": true
+    },
+    {
+      "name": "Existing route renders /login",
+      "passed": true
+    },
+    {
+      "name": "Existing route renders /booking",
+      "passed": true
+    },
+    {
+      "name": "Existing route renders /privacy",
+      "passed": true
+    },
+    {
+      "name": "Existing route renders /terms",
+      "passed": true
+    },
+    {
+      "name": "Access screen brand has real transparency",
+      "passed": true,
+      "details": {
+        "src": "/brand/logo-lockup-light.png",
+        "naturalWidth": 960,
+        "naturalHeight": 495,
+        "transparentFraction": 0.9048295454545454,
+        "visibleFraction": 0.08645412457912457,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "surfaceBackground": null
+      }
+    },
+    {
+      "name": "Existing approach anchor navigation works",
+      "passed": true
+    },
+    {
+      "name": "Browser Back restores anchor route and scroll",
+      "passed": true
+    },
+    {
+      "name": "Reduced motion keeps content visible and disables decorative movement",
+      "passed": true,
+      "details": {
+        "reduced": true,
+        "header": "1e-05s",
+        "scroll": "auto",
+        "reveal": [
+          {
+            "opacity": "1",
+            "transform": "none",
+            "transition": "1e-05s"
+          },
+          {
+            "opacity": "1",
+            "transform": "none",
+            "transition": "1e-05s"
+          },
+          {
+            "opacity": "1",
+            "transform": "none",
+            "transition": "1e-05s"
+          },
+          {
+            "opacity": "1",
+            "transform": "none",
+            "transition": "1e-05s"
+          },
+          {
+            "opacity": "1",
+            "transform": "none",
+            "transition": "1e-05s"
+          },
+          {
+            "opacity": "1",
+            "transform": "none",
+            "transition": "1e-05s"
+          },
+          {
+            "opacity": "1",
+            "transform": "none",
+            "transition": "1e-05s"
+          },
+          {
+            "opacity": "1",
+            "transform": "none",
+            "transition": "1e-05s"
+          },
+          {
+            "opacity": "1",
+            "transform": "none",
+            "transition": "1e-05s"
+          },
+          {
+            "opacity": "1",
+            "transform": "none",
+            "transition": "1e-05s"
+          },
+          {
+            "opacity": "1",
+            "transform": "none",
+            "transition": "1e-05s"
+          },
+          {
+            "opacity": "1",
+            "transform": "none",
+            "transition": "1e-05s"
+          },
+          {
+            "opacity": "1",
+            "transform": "none",
+            "transition": "1e-05s"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Fresh home starts in One way with empty journey fields",
+      "passed": true
+    },
+    {
+      "name": "Spanish desktop: no horizontal overflow and one responsive form",
+      "passed": true,
+      "details": {
+        "viewport": 1440,
+        "documentWidth": 1425,
+        "forms": 1,
+        "form": {
+          "x": 92.5,
+          "y": 729.328125,
+          "width": 1240,
+          "height": 95.5,
+          "right": 1332.5,
+          "bottom": 824.828125
+        },
+        "modes": {
+          "x": 601.796875,
+          "y": 664.328125,
+          "width": 221.40625,
+          "height": 50,
+          "right": 823.203125,
+          "bottom": 714.328125
+        },
+        "fields": [
+          {
+            "x": 107.5,
+            "y": 744.328125,
+            "width": 296.359375,
+            "height": 65.5,
+            "right": 403.859375,
+            "bottom": 809.828125
+          },
+          {
+            "x": 403.859375,
+            "y": 744.328125,
+            "width": 296.375,
+            "height": 65.5,
+            "right": 700.234375,
+            "bottom": 809.828125
+          },
+          {
+            "x": 700.234375,
+            "y": 744.328125,
+            "width": 208.46875,
+            "height": 65.5,
+            "right": 908.703125,
+            "bottom": 809.828125
+          },
+          {
+            "x": 908.703125,
+            "y": 744.328125,
+            "width": 183.953125,
+            "height": 65.5,
+            "right": 1092.65625,
+            "bottom": 809.828125
+          },
+          {
+            "x": 1106.65625,
+            "y": 747.078125,
+            "width": 210.84375,
+            "height": 60,
+            "right": 1317.5,
+            "bottom": 807.078125
+          }
+        ],
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 1425,
+          "height": 947.609375,
+          "right": 1425,
+          "bottom": 947.609375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1425,
+          "height": 98,
+          "right": 1425,
+          "bottom": 98
+        },
+        "labels": true
+      }
+    },
+    {
+      "name": "Spanish desktop: horizontal bar with centered mode selector above",
+      "passed": true,
+      "details": {
+        "viewport": 1440,
+        "documentWidth": 1425,
+        "forms": 1,
+        "form": {
+          "x": 92.5,
+          "y": 729.328125,
+          "width": 1240,
+          "height": 95.5,
+          "right": 1332.5,
+          "bottom": 824.828125
+        },
+        "modes": {
+          "x": 601.796875,
+          "y": 664.328125,
+          "width": 221.40625,
+          "height": 50,
+          "right": 823.203125,
+          "bottom": 714.328125
+        },
+        "fields": [
+          {
+            "x": 107.5,
+            "y": 744.328125,
+            "width": 296.359375,
+            "height": 65.5,
+            "right": 403.859375,
+            "bottom": 809.828125
+          },
+          {
+            "x": 403.859375,
+            "y": 744.328125,
+            "width": 296.375,
+            "height": 65.5,
+            "right": 700.234375,
+            "bottom": 809.828125
+          },
+          {
+            "x": 700.234375,
+            "y": 744.328125,
+            "width": 208.46875,
+            "height": 65.5,
+            "right": 908.703125,
+            "bottom": 809.828125
+          },
+          {
+            "x": 908.703125,
+            "y": 744.328125,
+            "width": 183.953125,
+            "height": 65.5,
+            "right": 1092.65625,
+            "bottom": 809.828125
+          },
+          {
+            "x": 1106.65625,
+            "y": 747.078125,
+            "width": 210.84375,
+            "height": 60,
+            "right": 1317.5,
+            "bottom": 807.078125
+          }
+        ],
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 1425,
+          "height": 947.609375,
+          "right": 1425,
+          "bottom": 947.609375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1425,
+          "height": 98,
+          "right": 1425,
+          "bottom": 98
+        },
+        "labels": true
+      }
+    },
+    {
+      "name": "Spanish mobile: no horizontal overflow and one responsive form",
+      "passed": true,
+      "details": {
+        "viewport": 390,
+        "documentWidth": 375,
+        "forms": 1,
+        "form": {
+          "x": 20,
+          "y": 588.765625,
+          "width": 335,
+          "height": 303,
+          "right": 355,
+          "bottom": 891.765625
+        },
+        "modes": {
+          "x": 80.796875,
+          "y": 524.765625,
+          "width": 213.40625,
+          "height": 52,
+          "right": 294.203125,
+          "bottom": 576.765625
+        },
+        "fields": [
+          {
+            "x": 33,
+            "y": 601.765625,
+            "width": 309,
+            "height": 73,
+            "right": 342,
+            "bottom": 674.765625
+          },
+          {
+            "x": 33,
+            "y": 674.765625,
+            "width": 309,
+            "height": 73,
+            "right": 342,
+            "bottom": 747.765625
+          },
+          {
+            "x": 33,
+            "y": 747.765625,
+            "width": 154.5,
+            "height": 72,
+            "right": 187.5,
+            "bottom": 819.765625
+          },
+          {
+            "x": 187.5,
+            "y": 747.765625,
+            "width": 154.5,
+            "height": 72,
+            "right": 342,
+            "bottom": 819.765625
+          },
+          {
+            "x": 33,
+            "y": 829.765625,
+            "width": 309,
+            "height": 49,
+            "right": 342,
+            "bottom": 878.765625
+          }
+        ],
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 1021.953125,
+          "right": 375,
+          "bottom": 1021.953125
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 76,
+          "right": 375,
+          "bottom": 76
+        },
+        "labels": true
+      }
+    },
+    {
+      "name": "Frontend receives live catalog through its existing API adapter",
+      "passed": true
+    },
+    {
+      "name": "Verification sends no API mutations",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "No uncaught JavaScript or unexpected console/network errors",
+      "passed": true,
+      "details": {
+        "jsErrors": [],
+        "consoleErrors": [],
+        "networkErrors": []
+      }
+    }
+  ],
+  "screenshots": [
+    "home-desktop.png",
+    "header-light-desktop.png",
+    "services-desktop.png",
+    "footer-desktop.png",
+    "booking-one-way-desktop.png",
+    "home-hourly-desktop.png",
+    "booking-hourly-desktop.png",
+    "home-tablet.png",
+    "home-form-tablet.png",
+    "home-hourly-tablet.png",
+    "booking-tablet.png",
+    "home-mobile.png",
+    "home-form-mobile.png",
+    "home-hourly-mobile.png",
+    "booking-mobile.png",
+    "mobile-navigation.png",
+    "login-desktop.png",
+    "login-mobile.png",
+    "home-reduced-motion.png",
+    "home-desktop.png",
+    "home-tablet.png",
+    "home-mobile.png",
+    "home-desktop-es.png",
+    "home-mobile-es.png"
+  ],
+  "apiResponses": [
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "url": "http://localhost:5175/api/v1/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5175/api/v1/catalog",
+      "status": 200
+    }
+  ],
+  "apiMutations": [],
+  "jsErrors": [],
+  "consoleErrors": [],
+  "networkErrors": [],
+  "limitations": [],
+  "success": true,
+  "backend": {
+    "status": 200,
+    "dataMode": "mysql",
+    "health": "ok"
+  },
+  "finishedAt": "2026-10-07T21:15:48.524Z"
+}

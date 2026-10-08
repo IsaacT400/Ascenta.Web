@@ -96,7 +96,7 @@ export function AuthPage() {
     };
     return <section className="auth-page" data-nav-theme="light"><div className="auth-layout">
         <div className="auth-story"><img src="/brand/journey-hero.webp" alt="" />
-            <div><Brand full /><p className="eyebrow">{t('A LITTLE MORE CERTAINTY', 'UN POCO MÁS DE CERTEZA')}</p>
+            <div><Brand full variant="light" /><p className="eyebrow">{t('A LITTLE MORE CERTAINTY', 'UN POCO MÁS DE CERTEZA')}</p>
                 <h2>{t('A personal space.\nA considered journey.', 'Un espacio personal.\nUn viaje bien pensado.')}</h2>
                 <p>{t('Your requests, their details and their status. Clearly connected.', 'Tus solicitudes, sus detalles y sus estados. Claramente conectados.')}</p>
                 <span>EXECUTIVE TRANSPORTATION</span>

@@ -34,9 +34,9 @@ export function Header() {
         return () => { document.body.style.overflow = before; };
     }, [open]);
     const close = () => { menu.current?.close(); setOpen(false); };
-    const links = [[t('Our services', 'Servicios'), '/services'], [t('Our approach', 'Nuestra esencia'), '/#experience'], [t('For business', 'Empresas'), '/business'], [t('Help', 'Ayuda'), '/help']];
+    const links = [[t('Our services', 'Servicios'), '/services'], [t('Fleet', 'Flota'), '/fleet'], [t('Our approach', 'Nuestra esencia'), '/#experience'], [t('For business', 'Empresas'), '/business'], [t('Contact', 'Contacto'), '/contact'], [t('Help', 'Ayuda'), '/help']];
     return <React.Fragment><a className={"skip-link"} href={"#main-content"} onClick={e => { e.preventDefault(); document.getElementById('main-content')?.focus(); }}>{t('Skip to content', 'Saltar al contenido')}</a>
-    <header className={"site-header"} data-theme={theme} data-raised={raised} ref={header}><div className={"nav-shell"}><Link href={"/"} className={"brand-surface"} aria-label={t('ASCENTA home', 'Inicio ASCENTA')}><Brand /></Link>
+    <header className={"site-header"} data-theme={theme} data-raised={raised} ref={header}><div className={"nav-shell"}><Link href={"/"} className={"brand-surface"} aria-label={t('ASCENTA home', 'Inicio ASCENTA')}><Brand variant={theme === 'dark' ? 'light' : 'dark'} /></Link>
     <nav className={"desktop-nav"} aria-label={t('Main navigation', 'Navegación principal')}>{links.map(([name, href]) => <Link key={href} href={href} aria-current={path === href ? 'page' : undefined}>{name}</Link>)}</nav>
     <div className={"nav-actions"}><button className={"language-button"} onClick={() => setLang(lang === 'en' ? 'es' : 'en')} aria-label={lang === 'en' ? 'Cambiar a español' : 'Switch to English'}><Icon name={"globe"} size={16}/>
     <span>{lang.toUpperCase()}</span></button>
@@ -45,12 +45,10 @@ export function Header() {
     <Link className={"button button-primary nav-book"} href={"/booking"}>{t('Plan a journey', 'Planificar viaje')}
     <Icon name={"arrow"} size={17}/></Link>
     <button className={"mobile-menu-button"} ref={menuButton} onClick={() => { menu.current?.showModal(); setOpen(true); }} aria-label={t('Open navigation', 'Abrir navegación')} aria-expanded={open} aria-controls={"mobile-navigation"}><Icon name={"menu"}/></button></div></div></header>
-    <dialog id={"mobile-navigation"} className={"mobile-dialog"} ref={menu} onClose={() => { setOpen(false); menuButton.current?.focus(); }}><div className={"mobile-dialog-top"}><Link href={"/"} className={"brand-surface"} onClick={close}><Brand /></Link>
+    <dialog id={"mobile-navigation"} className={"mobile-dialog"} aria-label={t('Main navigation', 'Navegación principal')} ref={menu} onClose={() => { setOpen(false); menuButton.current?.focus(); }}><div className={"mobile-dialog-top"}><Link href={"/"} className={"brand-surface"} onClick={close}><Brand /></Link>
     <button className={"icon-button"} onClick={close} aria-label={t('Close navigation', 'Cerrar navegación')}><Icon name={"close"}/></button></div>
     <nav aria-label={t('Mobile navigation', 'Navegación móvil')}>{links.map(([name, href]) => <Link key={href} href={href} onClick={close}>{name}
         <Icon name={"arrow"}/></Link>)}
-    <Link href={"/fleet"} onClick={close}>{t('Vehicle preferences', 'Vehículos')}
-    <Icon name={"car"}/></Link>
     <Link href={user ? '/dashboard' : '/login'} onClick={close}>{user ? t('My account', 'Mi cuenta') : t('Sign in / create account', 'Acceder / crear cuenta')}
     <Icon name={"user"}/></Link></nav>
     <Link href={"/booking"} onClick={close} className={"button button-primary"}>{t('Plan a journey', 'Planificar viaje')}
@@ -64,7 +62,7 @@ export function Footer() {
     <em>{t('thoughtfully considered.', 'pensado con cuidado.')}</em></h2></div>
     <Link className={"button button-light"} href={"/booking"}>{t('Start your request', 'Comenzar solicitud')}
     <Icon name={"arrow"}/></Link></div>
-    <div className={"container footer-grid"}><div><Link href={"/"} className={"brand-surface footer-brand"}><Brand /></Link>
+    <div className={"container footer-grid"}><div><Link href={"/"} className={"brand-surface footer-brand"}><Brand variant="light" /></Link>
     <p className={"footer-tagline"}>{"Certainty from reservation to arrival."}</p>
     <p className={"footer-note"}>{t('A clear beginning. A considered journey.', 'Un comienzo claro. Un viaje bien pensado.')}</p></div>
     <div><h3>{t('Explore', 'Explorar')}</h3>

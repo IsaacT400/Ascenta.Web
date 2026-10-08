@@ -1,0 +1,110 @@
+.ascenta .scroll-statement {
+    font-size: clamp(60px, 6.5vw, 96px);
+}
+
+.ascenta .statement-anchor {
+    min-height: 210px;
+}
+
+.ascenta .editorial-pair {
+    max-width: 1120px;
+    gap: 56px;
+}
+
+.ascenta .editorial-image img {
+    height: 400px;
+}
+
+.ascenta .editorial-image-offset img {
+    height: 400px;
+}
+
+.ascenta .care-picture {
+    min-height: 650px;
+}
+
+.ascenta .vehicle-visual {
+    height: 240px;
+    overflow: hidden;
+}
+
+.ascenta .vehicle-visual .vehicle-photo,
+.ascenta .vehicle-art .vehicle-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ascenta .vehicle-visual .vehicle-photo {
+    position: absolute;
+    inset: 0;
+    object-position: center 56%;
+}
+
+.ascenta .vehicle-art {
+    position: relative;
+    height: 240px;
+    min-height: 240px;
+    overflow: hidden;
+}
+
+@media (max-width: 900px) {
+    .ascenta .scroll-statement {
+        font-size: 72px;
+    }
+
+    .ascenta .statement-anchor {
+        min-height: 160px;
+    }
+
+    .ascenta .editorial-pair {
+        gap: 28px;
+    }
+
+    .ascenta .editorial-image img,
+    .ascenta .editorial-image-offset img {
+        height: 350px;
+    }
+
+    .ascenta .care-picture {
+        min-height: 650px;
+    }
+
+    .ascenta .vehicle-visual {
+        height: 220px;
+    }
+}
+
+@media (max-width: 640px) {
+    .ascenta .scroll-statement {
+        font-size: 60px;
+    }
+
+    .ascenta .statement-anchor {
+        min-height: 136px;
+    }
+
+    .ascenta .editorial-pair {
+        gap: 14px;
+    }
+
+    .ascenta .editorial-image img,
+    .ascenta .editorial-image-offset img {
+        height: 245px;
+    }
+
+    .ascenta .care-picture {
+        height: 400px;
+        min-height: 0;
+    }
+
+    .ascenta .vehicle-visual {
+        height: 205px;
+    }
+
+    .ascenta .vehicle-art {
+        height: 205px;
+        min-height: 205px;
+    }
+}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link, useApp } from './context';
-import { Alert, Button, EmptyState, Field, Icon, Loading, Reveal } from './ui';
+import { Alert, Button, EmptyState, Field, Icon, Loading, Reveal, VehicleCategoryVisual } from './ui';
 const services: { code?: 'AIRPORT_TRANSFER' | 'HOURLY' | 'CITY_TO_CITY' | 'ROUND_TRIP' | 'ONE_WAY'; icon: string; en: string; es: string; body: [string, string] }[] = [
     { code: 'AIRPORT_TRANSFER', icon: 'plane', en: 'Airport journeys', es: 'Viajes al aeropuerto', body: ['Share your flight context, pickup details and destination. The request keeps them together for review.', 'Comparte el contexto del vuelo, la recogida y el destino. La solicitud conserva todo junto para revisión.'] },
     { code: 'HOURLY', icon: 'clock', en: 'Time, on your terms', es: 'Tiempo a tu medida', body: ['Request a duration and an itinerary for a schedule with more than one stop. Availability and terms are reviewed separately.', 'Solicita una duración y un itinerario para una agenda con varias paradas. La disponibilidad y las condiciones se revisan por separado.'] },
@@ -37,7 +37,7 @@ export function FleetPage() {
     <h1>{t('A considered choice.', 'Una elección bien pensada.')}</h1>
     <p>{t('Request the category that suits your party. An assigned vehicle is confirmed separately.', 'Solicita la categoría adecuada para tu grupo. El vehículo asignado se confirma por separado.')}</p></div>
         {catalogError ? <Alert type={"error"}>{t('Catalog unavailable.', 'Catálogo no disponible.')}
-        <Button onClick={() => void refreshCatalog()}>{t('Retry', 'Reintentar')}</Button></Alert> : !catalog ? <Loading /> : <React.Fragment><div className={"vehicle-grid"}>{catalog.vehicleClasses.filter(v => v.isActive).map(v => <article className={"vehicle-card"} key={v.code}><div className={"vehicle-art"}><Icon name={v.code.includes('VAN') ? 'van' : 'car'} size={120}/></div>
+        <Button onClick={() => void refreshCatalog()}>{t('Retry', 'Reintentar')}</Button></Alert> : !catalog ? <Loading /> : <React.Fragment><div className={"vehicle-grid"}>{catalog.vehicleClasses.filter(v => v.isActive).map(v => <article className={"vehicle-card"} key={v.code}><div className={"vehicle-art"}><VehicleCategoryVisual code={v.code} size={120}/></div>
             <div className="fleet-card-copy"><p className={"eyebrow"}>{t('REQUEST A CATEGORY', 'SOLICITAR CATEGORÍA')}</p>
             <h2>{v.name}</h2>
             <p className={"vehicle-capacity"}><Icon name={"users"}/>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { possibleInstants } from './platform';
 import { Link, useApp } from './context';
-import { Button, ErrorMessage, Icon, Reveal, ScrollStatement, SectionHeading } from './ui';
+import { Brand, Button, ErrorMessage, Icon, Reveal, ScrollStatement, SectionHeading, VehicleCategoryVisual } from './ui';
 export function JourneyStarter() {
     const { t, draft, updateDraft, navigate, ready } = useApp();
     const [error, setError] = React.useState<Error | null>(null);
@@ -46,16 +46,21 @@ export function Home() {
         { icon: 'clock', title: t('By the hour', 'Por horas'), copy: t('Share your schedule and the time you need. Shape the request around your day.', 'Comparte tu agenda y el tiempo que necesitas. Diseña la solicitud alrededor de tu día.'), mode: 'HOURLY' as const },
         { icon: 'building', title: t('Business travel', 'Viajes de negocios'), copy: t('For the traveler, the assistant and everyone coordinating behind the scenes.', 'Para el viajero, el asistente y quienes coordinan cada detalle.'), mode: 'ONE_WAY' as const },
     ];
-    return <React.Fragment><section className={"hero"} data-nav-theme={"dark"}><img className={"hero-photo"} src={"/brand/journey-hero.webp"} alt={""} width={"1098"} height={"758"} fetchPriority={"high"}/>
+    return <React.Fragment><section className={"hero"} data-nav-theme={"dark"}><img className={"hero-photo"} src={"/brand/executive-journey.jpeg"} alt={""} width={"4170"} height={"2614"} fetchPriority={"high"}/>
     <div className={"hero-shade"}/>
-    <div className={"container hero-content"}><p className={"eyebrow hero-eyebrow"}>{"EXECUTIVE TRANSPORTATION. "}
-    {t('THOUGHTFULLY CONSIDERED.', 'CON CUIDADO EN CADA DETALLE.')}</p>
-    <h1>{t('Certainty from', 'Certeza desde la reserva')}
-    <br />
-    <em>{t('reservation to arrival.', 'hasta la llegada.')}</em></h1>
-    <p className={"hero-subtitle"}>{t('Your time matters. Begin a journey with clarity, care and a personal sense of direction.', 'Tu tiempo importa. Comienza un viaje con claridad, cuidado y atención personal.')}</p></div>
+    <div className={"container hero-content"}><div className={"hero-copy"}>
+    <p className={"eyebrow hero-eyebrow"}>{t('EXECUTIVE MOBILITY', 'MOVILIDAD EJECUTIVA')}</p>
+    <h1><span>{t('A higher', 'Un nivel')}</span><span>{t('standard', 'superior')}</span><em>{t('in motion.', 'en movimiento.')}</em></h1>
+    <p className={"hero-subtitle"}>{t('Executive and corporate transportation, thoughtfully arranged around you.', 'Transporte ejecutivo y corporativo, pensado alrededor de ti.')}</p>
+    <div className={"hero-services"} aria-label={t('Explore transportation services', 'Explorar servicios de transporte')}>
+        <Link href={"/services"}><Icon name={"plane"} size={22}/><span>{t('Airport', 'Traslados al')}<br />{t('transfers', 'aeropuerto')}</span></Link>
+        <Link href={"/business"}><Icon name={"building"} size={22}/><span>{t('Corporate', 'Viajes')}<br />{t('travel', 'corporativos')}</span></Link>
+        <Link href={"/services"}><Icon name={"clock"} size={22}/><span>{t('By the hour', 'Por horas')}<br />{t('At your pace', 'A tu ritmo')}</span></Link>
+    </div>
+    <Link href={"/services"} className={"hero-explore"}>{t('Explore our services', 'Explorar servicios')}<Icon name={"arrow"} size={18}/></Link>
+    </div><p className={"hero-signature"}>{t('LUXURY', 'ELEGANCIA')}<br />{t('CONFIDENCE', 'CONFIANZA')}<br />{t('MOVEMENT', 'MOVIMIENTO')}</p></div>
     <div className={"container hero-booking"}><JourneyStarter /></div>
-    <div className={"hero-bottom container"}><span>{t('EVERY DETAIL STARTS WITH YOU', 'CADA DETALLE COMIENZA CONTIGO')}</span>
+    <div className={"hero-bottom container"}><span>{t('MORE THAN A RIDE. A HIGHER STANDARD.', 'MÁS QUE UN VIAJE. UN NIVEL SUPERIOR.')}</span>
     <Link href={"/#experience"} className={"discover-link"}>{t('Discover ASCENTA', 'Descubre ASCENTA')}
     <span>{"\u2193"}</span></Link></div></section>
     <section className={"experience-section"} id={"experience"} data-nav-theme={"light"}><div className={"container"}><p className={"eyebrow centered"}>{t('THE ASCENTA APPROACH', 'LA ESENCIA DE ASCENTA')}</p>
@@ -102,7 +107,7 @@ export function Home() {
         {" "}
         <em>{t('to arrive well.', 'para llegar bien.')}</em></React.Fragment>} action={<Link href={"/fleet"} className={"text-link"}>{t('View vehicle preferences', 'Ver preferencias de vehículo')}
         <Icon name={"arrow"}/></Link>}>{t('Choose a preferred category. Availability, final vehicle and capacity are confirmed during review.', 'Elige una categoría preferida. La disponibilidad, el vehículo y su capacidad se confirman durante la revisión.')}</SectionHeading>
-        {catalog ? <div className={"vehicle-grid"}>{catalog.vehicleClasses.filter(v => v.isActive).map((vehicle, i) => <Reveal key={vehicle.code} delay={i * 70}><Link href={"/booking"} className={"vehicle-card"} onClick={() => updateDraft({ vehicleClassCode: vehicle.code })}><div className={"vehicle-visual"}><Icon name={vehicle.code.includes('VAN') ? 'van' : 'car'} size={90}/>
+        {catalog ? <div className={"vehicle-grid"}>{catalog.vehicleClasses.filter(v => v.isActive).map((vehicle, i) => <Reveal key={vehicle.code} delay={i * 70}><Link href={"/booking"} className={"vehicle-card"} onClick={() => updateDraft({ vehicleClassCode: vehicle.code })}><div className={"vehicle-visual"}><VehicleCategoryVisual code={vehicle.code}/>
             <span>{String(i + 1).padStart(2, '0')}</span></div>
             <div className={"vehicle-card-copy"}><div><p className={"eyebrow"}>{t('PREFERRED CATEGORY', 'CATEGORÍA PREFERIDA')}</p>
             <h3>{vehicle.name}</h3></div>
@@ -115,7 +120,7 @@ export function Home() {
     <p>{t('Travel coordination should not be another uncertainty. Start a corporate conversation, separate the booker from the traveler and keep requests connected to the right account.', 'La coordinación del transporte no debería ser otra incertidumbre. Inicia una conversación empresarial, distingue a quien reserva de quien viaja y vincula las solicitudes con la cuenta correcta.')}</p>
     <Link href={"/business"} className={"button button-primary"}>{t('Explore business travel', 'Explorar viajes de negocios')}
     <Icon name={"arrow"}/></Link></Reveal>
-    <Reveal variant={"right"} className={"account-illustration"}><div className={"illustration-top"}><span className={"mini-brand"}>{"ASCENTA"}</span>
+    <Reveal variant={"right"} className={"account-illustration"}><div className={"illustration-top"}><Brand />
     <span>{t('Your journey, in focus', 'Tu viaje, con claridad')}</span></div>
     <div className={"illustration-content"}><span className={"illustration-icon"}><Icon name={"user"} size={25}/></span>
     <p className={"eyebrow"}>{t('ACCOUNT EXPERIENCE', 'EXPERIENCIA DE CUENTA')}</p>

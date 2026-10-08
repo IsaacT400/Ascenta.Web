@@ -1,0 +1,25 @@
+{
+  "source": "BRANDING ASCENTA #02.pdf",
+  "source_sha256": "12089cb20fe6e7f4d7088be15b54f11c59cfcecd4f22962668e0ac4f8b91aaaa",
+  "logos": {
+    "logo-lockup-light.svg": {
+      "page": 2,
+      "artwork": "Central approved lockup; original vector paths and outlined tagline glyphs; background excluded."
+    },
+    "logo-wordmark-light.svg": {
+      "page": 6,
+      "artwork": "Approved horizontal logo variation; original vector paths and outlined tagline glyphs; background excluded."
+    },
+    "dark_variants": "Identical path geometry with official dark #101B2C applied to the light neutral fills, following the dark-on-light treatment illustrated on page 3. Original blue swoosh preserved.",
+    "pngs": "Transparent 960px raster exports of the adjacent SVG sources; no generated or traced artwork."
+  },
+  "executive-journey.jpeg": {
+    "page": 11,
+    "image_xref": 3582,
+    "width": 4170,
+    "height": 2614,
+    "sha256": "317262cd2df5625b48b7d1522423e5f84827c1177682b64b77ed11865f4e15e6",
+    "extraction": "Original embedded JPEG bytes, without cropping, retouching, generative edits, added branding, or recompression. Branding image; not evidence of company-owned fleet or staff."
+  },
+  "fonts": "Grift is shown in the branding PDF, but no standalone authorized webfont was supplied. Embedded PDF subsets were not extracted for website use."
+}

@@ -63,7 +63,7 @@ export class DemoRepository implements AscentaRepository {
         ["ONE_WAY", "One Way"], ["AIRPORT_TRANSFER", "Airport Transfer"], ["HOURLY", "Hourly"], ["ROUND_TRIP", "Round Trip"], ["CITY_TO_CITY", "City-to-City"],
       ].map(([code, name]) => ({ code, name })),
       vehicleClasses: [
-        { code: "EXECUTIVE_SUV", name: "Executive SUV", passengerLimit: 3, luggageLimit: 3 },
+        { code: "EXECUTIVE_SUV", name: "Executive Sedan", passengerLimit: 3, luggageLimit: 3 },
         { code: "PREMIUM_SUV", name: "Premium SUV", passengerLimit: 5, luggageLimit: 5 },
         { code: "EXECUTIVE_VAN", name: "Executive Van", passengerLimit: 10, luggageLimit: 10 },
       ],

@@ -44,8 +44,8 @@ export function Icon({ name, size = 20, ...props }: React.SVGProps<SVGSVGElement
     };
     return <svg width={size} height={size} viewBox={"0 0 24 24"} fill={"none"} stroke={"currentColor"} strokeWidth={"1.5"} strokeLinecap={"round"} strokeLinejoin={"round"} aria-hidden={"true"} focusable={"false"} {...props}>{paths[name] ?? paths.info}</svg>;
 }
-export function Brand({ full = false }: { full?: boolean }) {
-    return <img className={`brand-image ${full ? 'brand-image-full' : ''}`} src={full ? "/brand/logo-lockup.png" : "/brand/logo-wordmark.png"} alt={"ASCENTA \u2014 Executive Transportation"} width={full ? 1081 : 1081} height={full ? 553 : 222}/>;
+export function Brand({ full = false, variant = 'dark' }: { full?: boolean; variant?: 'dark' | 'light' }) {
+    return <img className={`brand-image ${full ? 'brand-image-full' : ''}`} src={`/brand/logo-${full ? 'lockup' : 'wordmark'}-${variant}.png`} alt={"ASCENTA \u2014 Executive Transportation"} width={960} height={full ? 495 : 278}/>;
 }
 export function Button({ children, tone = 'primary', className = '', busy, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement> & { tone?: 'primary' | 'secondary' | 'quiet' | 'light'; busy?: boolean }) {
     return <button className={`button button-${tone} ${className}`} type={"button"} aria-busy={busy || undefined} {...props} disabled={busy || props.disabled}>{busy && <span className={"spinner"} aria-hidden={"true"}/>}
@@ -120,24 +120,38 @@ export function Reveal({ children, variant = 'up', delay = 0, className = '' }: 
             return;
         const media = matchMedia('(prefers-reduced-motion: reduce)');
         let observer: IntersectionObserver | undefined;
-        let initialFrame = 0;
-        const show = () => { setVisible(true); setArmed(false); observer?.disconnect(); };
-        if (media.matches || !('IntersectionObserver' in window))
-            return;
-        if (node.getBoundingClientRect().top > innerHeight) {
-            initialFrame = requestAnimationFrame(() => { setArmed(true); setVisible(false); });
-            observer = new IntersectionObserver(([entry]) => {
-                if (entry.isIntersecting) {
-                    setVisible(true);
-                    observer?.disconnect();
-                }
-            }, { threshold: .08, rootMargin: '0px 0px -4% 0px' });
+        const updateMotion = () => {
+            if (media.matches || !('IntersectionObserver' in window)) {
+                observer?.disconnect();
+                setVisible(true);
+                setArmed(false);
+                return;
+            }
+            setVisible(false);
+            setArmed(true);
+            if (!observer)
+                observer = new IntersectionObserver(([entry]) => {
+                    setVisible(entry.isIntersecting);
+                }, { threshold: .08, rootMargin: '0px 0px -4% 0px' });
             observer.observe(node);
-        }
-        media.addEventListener('change', show);
-        return () => { cancelAnimationFrame(initialFrame); observer?.disconnect(); media.removeEventListener('change', show); };
+        };
+        updateMotion();
+        media.addEventListener('change', updateMotion);
+        return () => { observer?.disconnect(); media.removeEventListener('change', updateMotion); };
     }, []);
     return <div ref={ref} className={`as-reveal ${className}`} data-armed={armed} data-visible={visible} data-variant={variant} style={{ '--reveal-delay': `${delay}ms` } as React.CSSProperties}>{children}</div>;
+}
+export function VehicleCategoryVisual({ code, size = 90 }: { code: string; size?: number }) {
+    const photos: Record<string, string> = {
+        EXECUTIVE_SUV: '/brand/vehicle-executive-sedan.png',
+        PREMIUM_SUV: '/brand/vehicle-executive-van.png',
+        EXECUTIVE_VAN: '/brand/vehicle-executive-suv.png',
+        EXECUTIVE_SEDAN: '/brand/vehicle-executive-sedan.png',
+    };
+    const photo = photos[code];
+    if (!photo)
+        return <Icon name={code.includes('VAN') ? 'van' : 'car'} size={size}/>;
+    return <img className={"vehicle-photo"} src={photo} width={"1024"} height={"768"} loading={"lazy"} alt={""}/>;
 }
 export function ScrollStatement({ children }: { children: React.ReactNode }) {
     const anchor = React.useRef<HTMLDivElement>(null);

@@ -95,7 +95,7 @@ export class MySqlRepository implements AscentaRepository {
     ]);
     return {
       serviceTypes: orderCatalog(serviceTypes as ServiceTypeRecord[], serviceTypeOrder).map(({ code, name }) => ({ code, name })),
-      vehicleClasses: orderCatalog(vehicleClasses as VehicleClassRecord[], vehicleClassOrder).map(({ code, name, passengerLimit, luggageLimit }) => ({ code, name, passengerLimit, luggageLimit })),
+      vehicleClasses: orderCatalog(vehicleClasses as VehicleClassRecord[], vehicleClassOrder).map(({ code, name, passengerLimit, luggageLimit }) => ({ code, name: code === "EXECUTIVE_SUV" ? "Executive Sedan" : name, passengerLimit, luggageLimit })),
     };
   }
 

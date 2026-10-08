@@ -160,7 +160,8 @@
       "sha256": "d1c2de3b38119cc33d5f357c290c8af73a0a66e5035da3c120c77f970b59ae3d",
       "target": "apps/web/src/styles/ascenta.css",
       "disposition": "migrated",
-      "preserveBytes": true
+      "preserveBytes": false,
+      "changeReason": "User-authorized visual modernization on 2026-10-07. Original hash retained as migration history; current appearance is verified in docs/evidence/modernization."
     },
     {
       "original": "apps/web/app/booking/page.tsx",
